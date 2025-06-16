@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+  background-color: #1e1e30;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+  text-align: center;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ff4d6d;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #ff4d6d;
+}
+
+.back a {
+  color: #ff4d6d;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+.back a:hover {
+  color: #ff758c;
+}
+
+.anime-header img {
+  width: 650px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ff4d6d;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+.anime-header img:hover {
+  transform: scale(1.05);
+}
+
+#videoPlayer, #iframePlayer {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #ff4d6d;
+  margin-bottom: 2.5rem;
+  outline: none;
+  background-color: #000;
+}
+
+#iframePlayer {
+  height: 506px; /* 16:9 ratio for 900px width */
+  border: none;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#videoPlayer {
+  display: block;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto 3rem auto;
+}
+
+.episode-list button {
+  background-color: #2a2a40;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  padding: 1.2rem 1rem;
+  color: #ff4d6d;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  white-space: normal;
+  box-shadow: 0 0 10px #000;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.episode-list button:hover,
+.episode-list button.active {
+  background-color: #ff4d6d;
+  border-color: #ff758c;
+  color: #1e1e30;
+  box-shadow: 0 0 15px #ff758c;
+}
+
+@media (max-width: 1000px) {
+  .episode-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .episode-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h1>Episodios de Chainsaw Man</h1>
+  <div class="back">
+    <a href="../../../INICIO.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=85,width=1920/keyart/GVDHX8QNW-backdrop_wide" alt="Naruto" />
+  </div>
+  <h1>Temporada 1 <br><br>
+  <iframe
+  id="iframePlayer"
+  src=""
+  allowfullscreen
+></iframe>
+
+<video id="videoPlayer" controls preload="metadata" style="display:none;">
+  Tu navegador no soporta video.
+</video>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Un perro y una motosierra</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Llegada a Tokio</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>El paradero de Nyako</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>Rescate</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Demonio Pistola</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>Matar a Denji</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>El sabor de un beso</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>Tiroteo</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>Desde Kioto</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>Magullado y maltratado</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>Comienzo de la misión</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>Espada vs Motosierra</button>
+
+
+  </div>
+
+  <script>
+   const videos = {
+  1: { iframeSrc: "https://mega.nz/embed/1e8CmDJQ#IeVExP6uFRqnq9m3a3UtESnqteRUmAu5IQN9Bhgsg1Q" },
+  2: { iframeSrc: "https://mega.nz/embed/1G8ziYQY#gHUnywM3QAQNoWH0ULzmQMfFBAOl4WeFwICuOUuzngQ" },
+  3: { iframeSrc: "https://mega.nz/embed/0CN3xIbT#aE0DU62aHKjPqnwq7vy_wmwndwX9bCrYkLltuoWi8KY" },
+  4: { iframeSrc: "https://mega.nz/embed/NPlgxCAA#YhgmBuKZxnVXKQrrh9zPYaNkqiQljJK3SPlwk9kv0k8" },
+  5: { iframeSrc: "https://mega.nz/embed/gD9EmS6K#kVmgQ0K_kNd6E5fzxpVt7uHDvR5HCkQQfV7uK7BTN2E" },
+  6: { iframeSrc: "https://mega.nz/embed/UPUgmTqY#LVmhBtVtJ84MHPrMKeJ3DstTwY66mLWJDwHM6BgrTAo" },
+  7: { iframeSrc: "https://mega.nz/embed/1GcGCDCa#IG0ftT-TvNhPGErGcr12eGZHsQm_gQXe9MqO-_R9Q9Q" },
+  8: { iframeSrc: "https://mega.nz/embed/J3NWQCzT#sOMg77r8JVzhhiaq38DDZD-Pl50KaN-hIO5TKU0FT6Q" },
+  9: { iframeSrc: "https://mega.nz/embed/da8ilbpD#NbTHS9W_XU-TkC1v8GdeXJqcjqIr1I20N4kfLtyPOi8" },
+  10: { iframeSrc: "https://mega.nz/embed/trkXRARQ#HcEzWwkcj_1Z7iPSvLYfHvnOa0lbYlrq6XpxTblDeRo" },
+  11: { iframeSrc: "https://mega.nz/embed/AHFwUYrY#2FY5yWexgwgjiHCn1a6jVuW--X6gbkTNtbsPuXtUaLc" },
+  12: { iframeSrc: "https://mega.nz/embed/Bv8mwTzI#0C_CpdEOtb7JOHp72gxEGhjJFYv9-l4zwPCAiUU3fIo" }
+};
+
+
+
+
+
+
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      document.querySelectorAll('.episode-list button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+  </script>
+  <h1><br><br>
+</body>
+</html>
