@@ -1,1 +1,322 @@
-<hi>ANIMEFLIX</hi>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnimeFlix - Anime</title>
+  <link rel="icon" href="3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .back {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .back a:hover {
+      text-decoration: underline;
+    }
+    .search {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .search input {
+      padding: 0.6rem;
+      width: 300px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background-color: #16213e;
+      color: white;
+      border: 1px solid #ff4d6d;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background-color: #ff4d6d;
+      color: white;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: #16213e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #000;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      position: relative;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff4d6d;
+      color: inherit;
+      text-decoration: none;
+    }
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    .card h3 {
+      padding: 0.8rem;
+      font-size: 1.1rem;
+    }
+    .status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0.3rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .completed {
+      color: #4caf50;
+    }
+    .not-completed {
+      color: #ff9800;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media screen and (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media screen and (max-width: 400px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+  </style>
+</head> 
+<body>
+  <h1>Catálogo de Anime</h1>
+  <div class="back">
+    <a href="index.html">← Volver a inicio</a>
+  </div>
+  <div class="filter-buttons">
+    <button class="filter-btn active" onclick="filterByStatus('all')">Todos</button>
+    <button class="filter-btn" onclick="filterByStatus('completed')">Completados</button>
+    <button class="filter-btn" onclick="filterByStatus('not-completed')">Sin Completar</button>
+  </div>
+  <div class="search">
+    <input type="text" id="searchAnime" placeholder="Buscar anime..." onkeyup="filterAnime()">
+  </div>
+  <div class="grid" id="animeGrid">
+    <a href="anime/n/naruto/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://pbs.twimg.com/media/CEv_EsGWAAAr8m_.jpg" alt="Naruto">
+      <h3>Naruto</h3>
+    </a>
+    <a href="anime/o/onepiece/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg" alt="One Piece">
+      <h3>One Piece</h3>
+    </a>
+    <a href="anime/s/shingekinokyojin/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=85,width=1920/keyart/GR751KNZY-backdrop_wide" alt="Shingeki No Kyojin">
+      <h3>Shingeki No Kyojin</h3>
+    </a>
+    <a href="anime/d/deathnote/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BYTgyZDhmMTEtZDFhNi00MTc4LTg3NjUtYWJlNGE5Mzk2NzMxXkEyXkFqcGc@._V1_.jpg" alt="Death Note">
+      <h3>Death Note</h3>
+    </a>
+    <a href="anime/j/jujutsukaisen/episodios.html" class="card" data-status="completed">
+      <div class="status completed">Completado</div>
+      <img loading="lazy" src="https://www.selecta-vision.com/wp-content/uploads/2025/02/JujutsuBD.jpg" alt="Jujutsu Kaisen">
+      <h3>Jujutsu Kaisen</h3>
+    </a>
+    <a href="anime/k/kimetsunoyaiba/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://espadasymas.com/cdn/shop/articles/1366_2000.jpg?v=1701361229&width=1500" alt="Kimetsu No Yaiba">
+      <h3>Kimetsu No Yaiba</h3>
+    </a>
+    <a href="anime/b/bokunoheroacademia/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BNzgxMzI3NzgtYzE2Zi00MzlmLThlNWEtNWVmZWEyZjNkZWYyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Boku No Hero Academia">
+      <h3>Boku No Hero Academia</h3>
+    </a>
+    <a href="anime/t/tokyoghoul/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/07/tokyo-ghoul-poster-anime.jpg?q=70&fit=contain&w=1200&h=628&dpr=1" alt="Tokyo Ghoul">
+      <h3>Tokyo Ghoul</h3>
+    </a>
+    <a href="anime/b/bleach/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://pics.filmaffinity.com/Bleach_Serie_de_TV-235942666-large.jpg" alt="Bleach">
+      <h3>Bleach</h3>
+    </a>
+    <a href="anime/c/chainsawman/episodios.html" class="card" data-status="completed">
+      <div class="status completed">Completado</div>
+      <img loading="lazy" src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=85,width=1920/keyart/GVDHX8QNW-backdrop_wide" alt="Chainsaw Man">
+      <h3>Chainsaw Man</h3>
+    </a>
+    <a href="anime/b/blackclover/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BZmZkZjNhMWMtM2U0Mi00MjdlLTk3NmMtMTMwZjgwOTJmODMzXkEyXkFqcGc@._V1_.jpg" alt="Black Clover">
+      <h3>Black Clover</h3>
+    </a>
+    <a href="anime/y/yourlieinapril/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2024/04/09/your-lie-in-april-2014.png" alt="Shigatsu Wa Kimi No Uso">
+      <h3>Your Lie in April</h3>
+    </a>
+    <a href="anime/s/swordartonline/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://alfabetajuega.com/hero/2023/03/sword-art-online-anime.jpg?width=1200" alt="Sword Art Online">
+      <h3>Sword Art Online</h3>
+    </a>
+    <a href="anime/f/fairytail/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://ramenparados.com/wp-content/uploads/2016/03/Fairy-Tail-anime-34838784-1280-7201.jpg" alt="Fairy Tail">
+      <h3>Fairy Tail</h3>
+    </a>
+    <a href="anime/d/dragonball/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://i.pinimg.com/736x/2b/33/ce/2b33ce117f5052d26044fb6d6e521c2c.jpg" alt="Dragon Ball">
+      <h3>Dragon Ball</h3>
+    </a>
+    <a href="anime/b/bluelock/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://a.storyblok.com/f/178900/1064x1596/75c61ae895/bluelock-key-visual.png/m/filters:quality(95)format(webp)" alt="Blue Lock">
+      <h3>Blue Lock</h3>
+    </a>
+    <a href="anime/c/classroomoftheelite/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://images.justwatch.com/poster/298573879/s718/youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e.jpg" alt="Yōkoso Jitsuryoku Shijō Shugi no Kyōshitsu">
+      <h3>Classroom of the Elite</h3>
+    </a>
+    <a href="anime/f/fireforce/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BZWZlMTFjNDgtYTdkOC00MmYxLTk0YmEtZGQ4NmE5MTM3OTg0XkEyXkFqcGc@._V1_.jpg" alt="Fire Force">
+      <h3>Fire Force</h3>
+    </a>
+    <a href="anime/j/jojosbizarreadventure/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BMzIyNzY4NTMtNmVhYS00OWFhLTkwMWMtOGFkNTdmNWU2ZDdiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="JoJo's Bizarre Adventure">
+      <h3>JoJo's Bizarre Adventure</h3>
+    </a>
+    <a href="anime/v/vinlandsaga/episodios.html" class="card" data-status="completed">
+      <div class="status completed">Completado</div>
+      <img loading="lazy" src="https://es.web.img3.acsta.net/pictures/19/09/16/17/09/4903250.jpg" alt="Vinland Saga">
+      <h3>Vinland Saga</h3>
+    </a>
+    <a href="anime/d/dragonballz/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BNmFiM2FkYTYtY2FiOS00ZWJkLTkyOTgtNmFmODI4NjcwNDgzXkEyXkFqcGc@._V1_.jpg" alt="Dragon Ball Z">
+      <h3>Dragon Ball Z</h3>
+    </a>
+    <a href="anime/k/kurokonobasket/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://images.justwatch.com/poster/181383869/s718/kuroko-no-basket.jpg" alt="Kuroko no Basket">
+      <h3>Kuroko no Basket</h3>
+    </a>
+    <a href="anime/b/baki/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://pics.filmaffinity.com/Baki_Hanma_Serie_de_TV-969727790-large.jpg" alt="Baki">
+      <h3>Baki</h3>
+    </a>
+    <a href="anime/o/onepunchman/episodios.html" class="card" data-status="completed">
+      <div class="status completed">Completado</div>
+      <img loading="lazy" src="https://es.web.img3.acsta.net/pictures/17/02/27/17/41/046707.jpg" alt="One Punch Man">
+      <h3>One Punch Man</h3>
+    </a>
+    <a href="anime/h/haikyuu/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://pics.filmaffinity.com/Haikyu_Los_ases_del_vaoley_Serie_de_TV-446939831-large.jpg" alt="Haikyuu!!">
+      <h3>Haikyuu</h3>
+    </a>
+    <a href="anime/s/sololeveling/episodios.html" class="card" data-status="completed">
+      <div class="status completed">Completado</div>
+      <img loading="lazy" src="https://m.media-amazon.com/images/M/MV5BM2M4YzdkMTEtMjUyYy00ZWY0LWI5ODQtNGRkZWQ1MzU5MWM2XkEyXkFqcGc@._V1_.jpg" alt="Solo Leveling">
+      <h3>Solo Leveling</h3>
+    </a>
+    <a href="anime/t/tenseishitaraslimedattaken/episodios.html" class="card" data-status="not-completed">
+      <div class="status not-completed">Sin Completar</div>
+      <img loading="lazy" src="https://somoskudasai.com/wp-content/uploads/2023/12/tensura3_KEY_C.jpg" alt="Tensei Shitara Slime Datta Ken">
+      <h3>Tensei Shitara Slime Datta Ken</h3>
+    </a>
+  </div>
+
+  <script>
+    function filterAnime() {
+      const input = document.getElementById("searchAnime").value.toLowerCase();
+      const cards = document.querySelectorAll("#animeGrid .card");
+      cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+
+    function filterByStatus(status) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(status) || 
+            (status === 'all' && btn.textContent.toLowerCase() === 'todos')) {
+          btn.classList.add('active');
+        }
+      });
+
+      const cards = document.querySelectorAll("#animeGrid .card");
+      cards.forEach(card => {
+        if (status === 'all') {
+          card.style.display = 'block';
+        } else {
+          const cardStatus = card.getAttribute('data-status');
+          card.style.display = cardStatus === status ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
