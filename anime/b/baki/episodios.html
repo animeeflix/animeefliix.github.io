@@ -1,1 +1,248 @@
-<h1>hola</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Baki</h1>
+  <div class="back">
+    <a href="../../../INICIO.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://pics.filmaffinity.com/Baki_Hanma_Serie_de_TV-969727790-large.jpg" alt="Shingeki No Kyojin" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Sincronicidad</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Artes marciales oscuras</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>¡Ya están aquí!</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>La batalla comienza</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>¿Quieres más?</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>El informe del oficial Katahira</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>Un equipo formidable</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>Tiempo de lucha</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>Shin Shin Kai en shock</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>Duelo en las alturas</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>Cazador de tigres</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>Dulces</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>El Sr. Oliva</button>
+  </div>
+
+  <script>
+    const videos = {
+      1: { iframeSrc: "https://mega.nz/embed/vYdERT6B#_G7krFWVD5yM8yLXDtOKzwoK5Nl-6qKIeFuqnF1_Q_A" },
+  2: { iframeSrc: "https://mega.nz/embed/fAEWAJTI#eRdrQUCw6Dlv_dye0g6iqoG5knc1w9cOzffgjsxTcRg" },
+  3: { iframeSrc: "https://mega.nz/embed/eYcSRLDS#UepL_aYTCf3LYo7X5DWWmUD2jc5a91YHHWDBuvODUYw" },
+  4: { iframeSrc: "https://mega.nz/embed/KcdggL7L#3qU4x6wwHMYmupyqqZT0uGmW65KElstM9mOhE8xHHag" },
+  5: { iframeSrc: "https://mega.nz/embed/6NdkWLrb#IQaNjkOCbqZD9N9ylB_tBHeGNAR4ONfWqV77jlgg9-o" },
+  6: { iframeSrc: "https://mega.nz/embed/3AViDbgY#1HM3sh9tUvrhI18e9I8Z8fPCyTc5qi9TSHPMe8K9BOU" },
+  7: { iframeSrc: "https://mega.nz/embed/mUEmzbyb#aLOVTUl4YQIQG2iNRP321aWiKUXwmrvsRbJHwJYKjko" },
+  8: { iframeSrc: "https://mega.nz/embed/iBFmQBpB#2dRTbSQtUG2i-aQjR-0DlDtPMFkxSiaETCmYNT4ScyE" },
+  9: { iframeSrc: "https://mega.nz/embed/zIMi2DIa#nS9jsZorcYz_5pFA6kQd8kAyPTJQ_NJBnPar_FIMWT8" },
+  10: { iframeSrc: "https://mega.nz/embed/bRcygDiD#ZH_2s_UUfluAYF6d43mL46Bf63s173xl-Ugq0NL0CUU" },
+  11: { iframeSrc: "https://mega.nz/embed/fRVGFThJ#a0PhUTJYjXwyZTMl7bmScrO6WB457KZS9Hq94ZdC8lA" },
+  12: { iframeSrc: "https://mega.nz/embed/aEdCTRhC#JwlBiZjBnPT-FujFxFw18xD0H3t7nNCyA3jyNjujHNc" },
+  13: { iframeSrc: "https://mega.nz/embed/WIM0iZCC#rYW4ZlRIbYkf1GWJIH5v3Nety0zhiN_1Xamw6x709n4" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+</body>
+</html>
