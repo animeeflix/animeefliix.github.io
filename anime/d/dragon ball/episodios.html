@@ -1,1 +1,552 @@
-<h1>hola</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Dragon Ball</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://i.pinimg.com/736x/2b/33/ce/2b33ce117f5052d26044fb6d6e521c2c.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>SAGA DE PILAF</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Bulma y Son Gokū</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>¡Aaaaargh! ¡No están las bolas!</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>La Nube Kinto de Kame Sen'nin</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>Oolong, el demonio secuestrador</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>El malvado y poderoso Yamcha del desierto</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>Los visitantes de medianoche</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>Ox-Satán de la montaña Frypan</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>El Kame Hame Ha del Kame Sen'nin</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>La habilidad especial del Jefe Conejo</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>¡Las bolas de dragón han sido robadas!</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>¡Finalmente aparece el dragón!</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>¡Un deseo a Shenlong!</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>La gran transformación de Gokū</button>
+  </div>
+
+  <script>
+    const videos = {
+  1: { iframeSrc: "https://mega.nz/embed/D7ZDwCTJ#6jFWAaE_Bg9bliG6V6cD3Sc5qaq-tX1omI6oST6MQIM" },
+  2: { iframeSrc: "https://mega.nz/embed/r7QlVYiT#pVC80QWhMM7F7xfUWXnvUsyc1yiPMHS6iBaXpDHmSK0" },
+  3: { iframeSrc: "https://mega.nz/embed/ziIVGKKS#i9gVgu9PQdH7t4UDAHlpP_yxT2LRXRZg_2paATSWkio" },
+  4: { iframeSrc: "https://mega.nz/embed/j2IlFaqB#-gmYGCj54jHtcZAXc0Y0X9GfxZjIwa0idwp_kOnAziA" },
+  5: { iframeSrc: "https://mega.nz/embed/fuQD0S6Z#SuafAgFUGVcSkJ8XQC4gEsWcPNHMC9t074Yi2gB3UxI" },
+  6: { iframeSrc: "https://mega.nz/embed/YO0SlZYb#WBepuzTpR_CEU8mOiusS8hP3oKmi9Qo92eM4LMccOl8" },
+  7: { iframeSrc: "https://mega.nz/embed/6jBmFYBR#GSEyo4AnI0EDceu2hxX-2tnxAb91CmTYFrK8FeL4kZU" },
+  8: { iframeSrc: "https://mega.nz/embed/GyIDCQaY#HPlKhWmRLkD5TZOOulfhfyBpwVKyNIwCNNuU46chcfE" },
+  9: { iframeSrc: "https://mega.nz/embed/n6AlDaba#Klq6PlL-6QXro-YzbE69ZEFnINGeWT3-4_Lt1M9fGEs" },
+  10: { iframeSrc: "https://mega.nz/embed/quQUjaAL#uDtL9AUMgN6Eojrtw_2Q29C31YxZVFazcpYnpq2zQCU" },
+  11: { iframeSrc: "https://mega.nz/embed/izA0SaYD#_xQXNtAq-BlNZ14o4EK2pDKLEvPmMBCWIHUBFVkBTS0" },
+  12: { iframeSrc: "https://mega.nz/embed/znJQkYbR#9BkiQgy4_QBfJlW9GnmL4InSwXhFcrKAqfAcODcB19Y" },
+  13: { iframeSrc: "https://mega.nz/embed/vjYSSA7T#2yhond6npLT34KcLCQnTsZw8GxLO6NvcyLy-NuSsX9U" },
+  14: { iframeSrc: "https://mega.nz/embed/DuQiSSiQ#G9CC2TxYEX2jX0Ov4Y3m5WLJFY4InHi3NFA3SuXM25g" },
+  15: { iframeSrc: "https://mega.nz/embed/CjAAiC4a#phVj0nkZFV2JGMoTT_EY2iOJ7I1gxnWy8FZ1jpAlydw" },
+  16: { iframeSrc: "https://mega.nz/embed/qiQwmaCB#jNBFRE0EWFdlp2awgoHgydOLN41taqFFhL-hZOcXW5w" },
+  17: { iframeSrc: "https://mega.nz/embed/SrBk1S6L#tK3ix7NFKOc96dPWfwtrchmDt3n9E5TZjMXEL0pF0TQ" },
+  18: { iframeSrc: "https://mega.nz/embed/PvIEDAQb#6IIMwci0GgRkl2salu6fv6ljyrYS9pVgNSz8wBF_AUk" },
+  19: { iframeSrc: "https://mega.nz/embed/66AwhYyR#oFuBOR6mY8wzLLZh2-56i8BdGjbWorXzeddZes8_GR0" },
+  20: { iframeSrc: "https://mega.nz/embed/izQmWYwK#PQ4mYCDK45m3m9jALEXqllp6NKfVPYuZw7AWpgN7mMY" },
+  21: { iframeSrc: "https://mega.nz/embed/arJ2GILB#53mrJa1QWVRp-tXgv9oIcWDUzaHbLvpA32zXxSx-peo" },
+  22: { iframeSrc: "https://mega.nz/embed/P2QACajI#1UiU4pIeDlewzIavpzQkXDBpC9jrBGb_lGSBaKRG_iQ" },
+  23: { iframeSrc: "https://mega.nz/embed/C2ZgDSyC#SJNBeD4OckB1T5vCeOfs7GFGpYWGRNz9NjfSI2ghZf0" },
+  24: { iframeSrc: "https://mega.nz/embed/qvYUHABI#Suof5Vmu-P9xTDZBs46a010Lx9Plhticp0Jg6Wu13dk" },
+  25: { iframeSrc: "https://mega.nz/embed/22RWjaJA#jZL4-vCoepYLmybYe8b3ZhA5iXCAk0TH48JJckzex7w" },
+  26: { iframeSrc: "https://mega.nz/embed/b3BAXaqQ#pb2IYq3FtgL-uu4qCe3Kh7o7esmOunHAsYKIVkpGrEc" },
+  27: { iframeSrc: "https://mega.nz/embed/WqYQBYJT#5-_U8G3Hl68D1pDF1X87YFlLG9MkSEBFTqlYYBHZAfU" },
+  28: { iframeSrc: "https://mega.nz/embed/O2BA2K5Z#Sj1f0Um3cVeQl7a0fbbmFNKYV_1kPx8nmRb3sK8qZrs" },
+  29: { iframeSrc: "https://mega.nz/embed/2zIkyIIT#X-2J0dYDkrFPUNUNRk3jdZfCZOqZyJyT-2hc0rx_HVg" },
+  30: { iframeSrc: "https://mega.nz/embed/avRkiCxJ#ToLo0ILUt74DIwumE1r8963uY_ZpVlpa5YhKTgKCD0M" },
+  31: { iframeSrc: "https://mega.nz/embed/LzJCnALS#DZgzeveDWrwhqQ_fmzuHazpjYD81sGjF2OhF5LvVJYY" },
+  32: { iframeSrc: "https://mega.nz/embed/znYSiKZL#oWMFohOTsenROn0Qz8YYinn6FKE7hgB-EURXxOmEzsU" },
+  33: { iframeSrc: "https://mega.nz/embed/oS8QVT7L#ka1MekGnV09694Uv7dZCgzMM7KIcs4DJQLcCoHGq05Y" },
+  34: { iframeSrc: "https://mega.nz/embed/eiQDBSCQ#omtGxQ1LaEvBvIE4yK7o2FtMQ2RjkQEaXR9SOHho8FE" },
+  35: { iframeSrc: "https://mega.nz/embed/vr5wmQhJ#SQtWjewnWA__xhJ57a1m5sFPFlZynAOr3uaVK1Lev4k" },
+  36: { iframeSrc: "https://mega.nz/embed/WqRR1aAa#UYTCLQXjcsXPqsp5GSQpPEtuGUAGcnp2BG7TkJiDC5Y" },
+  37: { iframeSrc: "https://mega.nz/embed/7nAxjSjZ#w9cTLPD3JjcHnRzdVTwD-119Lb9I0EkpHPzJBhGndW0" },
+  38: { iframeSrc: "https://mega.nz/embed/77J1SaCa#2ZjleAIhZ3URLtsp8_XULCo3T_LPQZ-AdL5L5Ug9c14" },
+  39: { iframeSrc: "https://mega.nz/embed/C6ZXlITb#BHHIbLz_eTG4X6Qs4ipXE-dKm10oWX56rA7C6jTdBhA" },
+  40: { iframeSrc: "https://mega.nz/embed/SzAVSATQ#RFIlKudGyf3AHI0qq9cpaGbvJbQJNAGcEQO8HpTeiNY" },
+  41: { iframeSrc: "https://mega.nz/embed/8C9jSDzY#hmduOhhIdYXlG7IQEUu4p6N9w0JyPSMUNCjJXO4csq0" },
+  42: { iframeSrc: "https://mega.nz/embed/Tr5gBC5A#PRH_WyMjfunTkpTJBMb4zrBq11OhNwnsA-FrXnbuCF4" },
+  43: { iframeSrc: "https://mega.nz/embed/23AnSIjA#I0tBGhuqnniniy5ecWtgUF2KsKH3dzKYOFUlUmnwxfo" },
+  44: { iframeSrc: "https://mega.nz/embed/jmhSFAZY#rx56Wr1stydV3EECw_aVBpmxpnwHAPW2_93x13gvawI" },
+  45: { iframeSrc: "https://mega.nz/embed/7ngwzIoJ#aRS6zvPcSqKbd8907eSnTpY7mHnUgKPDpmgeWjgrkT4" },
+  46: { iframeSrc: "https://mega.nz/embed/e34AAaKJ#fDMPUSDjvduaH6O9CyFa2UpH5lcoWEZ2dd46EqTTl8s" },
+  47: { iframeSrc: "https://mega.nz/embed/qzhCEAiJ#tGXUYMWiUzsxQSitThnB0r8pyJVIGjGu1PqxdU6iWhs" },
+  48: { iframeSrc: "https://mega.nz/embed/765yEQhD#UB4W_y9bQXSfXdLvSJAMCXCNp8RXJVBgKv7CKxkVvtg" },
+  49: { iframeSrc: "https://mega.nz/embed/P3pGyaDI#3HAXQBqTJElPytanwvXaBQ3eW6x1uAIxVVesE-2q_14" },
+  50: { iframeSrc: "https://mega.nz/embed/frxC1SoC#MF2w6fOIEH9KeztFFudAtSKLC0BqLIrGA2j9I-cIiIw" },
+  51: { iframeSrc: "https://mega.nz/embed/33xgmCAQ#K9nE0_1KWgHjvZ8mE9NN5_bsZBY6bNFbnbogx7x2zw4" },
+  52: { iframeSrc: "https://mega.nz/embed/Gj4QBa7D#dsrdCTp_YGVroJVmCFnuySy-dbevIHA1OoTgc68jZF0" },
+  53: { iframeSrc: "https://mega.nz/embed/m74yAYSI#W2xWsJSIzxaj6ZAq79vtcZIAyMDTTxiTyhjmxAGoRZ4" },
+  54: { iframeSrc: "https://mega.nz/embed/uz5GCQhQ#b30FgW4SAyRjvf4amJ3Yqm07P1A1onYBK3IRHcDTeFU" },
+  55: { iframeSrc: "https://mega.nz/embed/imxkTArB#Xg0TfWjNLfc8n2fy_MGkOm_n7kEtrNhwqMxb-hT1ftI" },
+  56: { iframeSrc: "https://mega.nz/embed/ivxUQIqL#btohg36axLFy58sqJ5b5IC-bwISUa5YKIa7AeBAvErc" },
+  57: { iframeSrc: "https://mega.nz/embed/vnoAGQAQ#Rnz5BimNI8AWZjgzQKrY4eldL9dwa7EBowE9d_ddoRs" },
+  58: { iframeSrc: "https://mega.nz/embed/qvhAmSpQ#mjgxieMaVkltCfrlvJzlcl8e52zaDCvHQRE6n4cwIrI" },
+  59: { iframeSrc: "https://mega.nz/embed/Hv40zCCJ#cUXHAEWIIC4vNIYJ5zGaZmb4FVHVOKDxDLpQlA8PbEM" },
+  60: { iframeSrc: "https://mega.nz/embed/G3omwIbD#GHy7-8f6XRzOPA6UAEW1x9clpLiQVb9MnF1xNj2VC4k" },
+  61: { iframeSrc: "https://mega.nz/embed/u2hSkaDT#gS6RawaDAQnDwBJ0wpNDUrvYxKbWT-4SS0ZUeZsM6C4" },
+  62: { iframeSrc: "https://mega.nz/embed/76okgSxT#FF0_vTWgA1ZwSEO2INiH3bNNqKP7HKwbXFFvJIsVWKY" },
+  63: { iframeSrc: "https://mega.nz/embed/iy4QDaDZ#uv0sJwrSB24voSpUnHJbH9Tc2YbONi08ccJpr1uREL4" },
+  64: { iframeSrc: "https://mega.nz/embed/q6w2QYxD#4LVJf0xXgSTKbfAxrJIJuaDCaU2IQ5d4AL23He9nGHU" },
+  65: { iframeSrc: "https://mega.nz/embed/v65iCQ6A#R46JAjWAnZOcrncDS2SjAQLoofqUfGnOpL0uYXNv5-M" },
+  66: { iframeSrc: "https://mega.nz/embed/7zgijC4J#43PThijKPHSeTDkVLLHXh3wfbWLbzCtXA0KZAlnx634" },
+  67: { iframeSrc: "https://mega.nz/embed/PnxAgKDJ#8X5tvBAHRVxzhatd8bx9t2LmXiHb9jTF7h4wv4RpoqE" },
+  68: { iframeSrc: "https://mega.nz/embed/m6wWVARS#0li3RCHznEgYXx2qng2Ji3kAVbUvdohJ1RFgiWvpmQ4" },
+  69: { iframeSrc: "https://mega.nz/embed/vnwWCaCS#H3TGOLUQ1mCjao3jbmAH3tQZS1dLBx7FKXMCn9rdxvM" },
+  70: { iframeSrc: "https://mega.nz/embed/i650CARL#piy65U7bq98QcfMVwoQsv1kXx-JnkwUfKcnbpwge4B0" },
+  71: { iframeSrc: "https://mega.nz/embed/iigAkALR#wdRGqcx5ovB-VjQEfn8qa3T54bkqs-0_jkS84yM4B5U" },
+  72: { iframeSrc: "https://mega.nz/embed/z7pG2IbD#W1EvH800_JGLsKhnilykEgJWoeJyrKy7Lk4vex0ktig" },
+  73: { iframeSrc: "https://mega.nz/embed/viwW2KAD#1eA1ZVFZ9OjPxR3cmsSN_FIcohVqU4BzRT2ildE9pVw" },
+  74: { iframeSrc: "https://mega.nz/embed/buxwxCrC#moEwspnt6C_bIj-9Pg45Wlu9wHvzWzAcrhzGWDwW4Pw" },
+  75: { iframeSrc: "https://mega.nz/embed/nzhknK6R#jkMjQz5hBZvoVrUDVDlmuhbIF2rnJo09CBr13CC8yjE" },
+  76: { iframeSrc: "https://mega.nz/embed/Wy4AxSBb#8UboUEATzNd3-roj5eQJvDFDizmpYIdt0Rd5Bdqtyh8" },
+  77: { iframeSrc: "https://mega.nz/embed/zqgUXARR#9Ea8LOpOUXxJdi6ahhOxOWjykgWS6aH_-ae6cz4YYI4" },
+  78: { iframeSrc: "https://mega.nz/embed/LjxmjYQC#50U8-twKAr8zJo-i8i07-_eGyqP8v-kK1KvtqjGFq3w" },
+  79: { iframeSrc: "https://mega.nz/embed/6noiGSTR#zO6dds1GJpveLh7Qk3AWKKPuJWX8C__PFLk2aiCgml0" },
+  80: { iframeSrc: "https://mega.nz/embed/DjxySCTC#RlkMMvrvZVzpxgDAbqHg-92wARTwEmYz1J1iHsB2T08" },
+  81: { iframeSrc: "https://mega.nz/embed/u7hG2A4R#e658lqqlAb_1pEcVd5Vl-QkBUGJw4f5x93i5TbFeP7s" },
+  82: { iframeSrc: "https://mega.nz/embed/S3wSHKYY#jIS2w9QS7trtkHZL0ciu80nH6GbbfEumEcR4E1Z_xCc" },
+  83: { iframeSrc: "https://mega.nz/embed/f2wE1Q7Y#DQj3cm-nFVqROOrEF70E5PqrqpcXM7BsNWM5ppSsQgs" },
+  84: { iframeSrc: "https://mega.nz/embed/f3pmxCrZ#m401QE7ODLVx8-bKgGMTE89n5tPmyhzd3dxeBqa7iY8" },
+  85: { iframeSrc: "https://mega.nz/embed/C3o01SAY#SovknvOwnTosaILcHwGGbqohoRYK3gXpdouDbR_qVhI" },
+  86: { iframeSrc: "https://mega.nz/embed/6qw2iYgD#uWMGCKGtiTfmM5G1knPHnwrF3d3J0wcKdblaVTVANqw" },
+  87: { iframeSrc: "https://mega.nz/embed/zzx2jI4L#KKMtiTYC4PmB-IqsJmvkCmHkJvWSLtvkgtaEXJgFSIc" },
+  88: { iframeSrc: "https://mega.nz/embed/ripkUKDB#ixnbYqAtxFEa7ujMPfDN3j4VZbhQbj9-jfylObvT_aY" },
+  89: { iframeSrc: "https://mega.nz/embed/i2oySYwA#8dxzFv8sN79QMgSnG2W3LuPVylLKVQ2GImP84PJU-kU" },
+  90: { iframeSrc: "https://mega.nz/embed/nq4kDQKI#wyXuo8dFlXvDzgWTyGNwfKoZe0b6-X0Rs2NKwcIhM38" },
+  91: { iframeSrc: "https://mega.nz/embed/m6hwiQrT#aIriX3WfXeQW4xbPCXeRxR8-sdteYjiscLiosvBHJec" },
+  92: { iframeSrc: "https://mega.nz/embed/2jgQhKyJ#mwsXJPTCTgPZVdNwlSS5p-v32D3ot-z2CB295gau3Gc" },
+  93: { iframeSrc: "https://mega.nz/embed/GrhADAqC#kj07vmRkZs1ADmtaaDpL3UxxYSyuGW8PVPcw8hUcb6s" },
+  94: { iframeSrc: "https://mega.nz/embed/e3o2hK4L#jNQvL1QYBCLm-e8_cOthBq1BLc7UbwD1EmwKLrAqHkQ" },
+  95: { iframeSrc: "https://mega.nz/embed/O7pQCA6b#6QsZr9mhyQ_FgGSksOYGVm8d1YaxWsP-KPH83Jl_vkw" },
+  96: { iframeSrc: "https://mega.nz/embed/zjhAHAQY#B-c-QLlJG9TcH2jWifjxndHilIwK6zBg4sGmltHy0dA" },
+  97: { iframeSrc: "https://mega.nz/embed/1W9XUR4D#v4iEa8XrNQNlaTm3e9bN1kIBJoU3z5Lg7nnTi6JNu1Y" },
+  98: { iframeSrc: "https://mega.nz/embed/X2gCBIhB#1q5LAGoABOk3jnpRh3F7OgXTHX2KIBdUlOEnbaxHHmI" },
+  99: { iframeSrc: "https://mega.nz/embed/sekBhbgD#lpYgeiBmDk5rvGEzpFB-T_U45pPL5v1E1RdnALUzRsc" },
+  100: { iframeSrc: "https://mega.nz/embed/2mgUWIBA#ND7C7ks4f9Xf0RQU3VKeHLJLBJzqmVaX02FQzf8O3mM" },
+  101: { iframeSrc: "https://mega.nz/embed/e65gFYQY#EKIXh2KX_QXtQUb5tjB2kOF1tvPUEshV1UowotCA-HM" },
+  102: { iframeSrc: "https://mega.nz/embed/6ugwVK4T#0jwpwmfQplNr-F3oJNslOUEmAb2k4jln_DvNBcjISSg" },
+  103: { iframeSrc: "https://mega.nz/embed/LqpGnCpT#XhV6bC8Y6O6GFFkkKdbqETkKaj7kFLOX7TcKWHgGtCs" },
+  104: { iframeSrc: "https://mega.nz/embed/P2gExYQK#2yYlso3zdziHqZGw23oDGv_2NBQnXpAx8vYqVVvUb5o" },
+  105: { iframeSrc: "https://mega.nz/embed/Pj50FCCK#49GHNTOUHD6rW7vHWQkgjjzwaJN6br0bdIRdLZ8oscc" },
+  106: { iframeSrc: "https://mega.nz/embed/Hm5EGKoT#TNgirsE7ETP6KFgVxwwOMJ5AUeIA1NpynIEriLhsv14" },
+  107: { iframeSrc: "https://mega.nz/embed/n3hETKIT#STQBSfI975wCwNFpTbKQF7CTjhzV0XLqqEa9ce5N2oI" },
+  108: { iframeSrc: "https://mega.nz/embed/iz5inCrI#qSbFEnXeOXTRTcL5BQp3wYW_QrcbfPcd7XDXty4WWSg" },
+  109: { iframeSrc: "https://mega.nz/embed/yyogmAwI#9VxuDri5qfhyuLbP8h178ldx3gpPPYBOQp7VILJMDBE" },
+  110: { iframeSrc: "https://mega.nz/embed/8fdm3bLD#C4YjqU53MfhEvEZ1XJHjlinv1jDSkdd4kdxpRcLiOEw" },
+  111: { iframeSrc: "https://mega.nz/embed/y6hwXCLD#6x2Yp2iC9pO3GfQn9s0IISU50yk7l0Zuebr6ddpwJA4" },
+  112: { iframeSrc: "https://mega.nz/embed/uvgClIRa#W2gdI_AwetDYAFev9UE6LneX2UksTbXVblgPE93Uk_0" },
+  113: { iframeSrc: "https://mega.nz/embed/rvxAWQYC#IdDbz_WbSpiRKbrtR4Q-R3rmKc_Mh4u7aU9fiLjZgSQ" },
+  114: { iframeSrc: "https://mega.nz/embed/z3wUSC7L#EMiheFQngmSdpB5X0EtorNVPaLSR_B5b1OPIPjp9tRc" },
+  115: { iframeSrc: "https://mega.nz/embed/av5S1aab#sdUZgPMh7WGyPTObZWTZzHlUiGCK8MJ-aHImztuQxd8" },
+  116: { iframeSrc: "https://mega.nz/embed/r6xSQSpZ#QA9H_HIm0dQ3dSABIyRxnz3EN91UjFs-8lid6B3azog" },
+  117: { iframeSrc: "https://mega.nz/embed/erpSCKZI#OF5OKUVZA_MeDctRwVFc1Kylleoi1f3Xx05k9Y1oUYc" },
+  118: { iframeSrc: "https://mega.nz/embed/Lnp23K6Y#ad3kX_y2zfQRjudmW4pxjccra_Xks8gNr1r30Wiv6js" },
+  119: { iframeSrc: "https://mega.nz/embed/7yxUGYKA#gpYbj78dLyFQShPn_wE0-JWa5w69UcCO6GF10hEz3kA" },
+  120: { iframeSrc: "https://mega.nz/embed/Wm4ygKDD#dok2J8v3V79VvPmLO6VWxtPrVwsRtEMHi7puIQIs3QE" },
+  121: { iframeSrc: "https://mega.nz/embed/Py4QxQRK#ygQh2BQqlV7pY046tAkIY39ntggFCSQwLp_Vmv9CIBk" },
+  122: { iframeSrc: "https://mega.nz/embed/anoCgaQZ#cDhHiRe9K3eCMrtq9Zey2Uymmpf6nwEplDbeDfk0fkY" },
+  123: { iframeSrc: "https://mega.nz/embed/avh0nILB#luyuzPmfTfWnHEr5VU3n7W3f6NFs1F-8bhK4gJO7hBs" },
+  124: { iframeSrc: "https://mega.nz/embed/mmhAGaqI#OudBUOWmcHBL8vgaezwsuySqnKxDEnw8mbWdjjXLFHw" },
+  125: { iframeSrc: "https://mega.nz/embed/a7wmQKDS#n4ejCobQYlghqV_lv7QWQQPHBsXujBveS9MzIH_QEs0" },
+  126: { iframeSrc: "https://mega.nz/embed/a2o2AQgA#uehvn0ow0LvznZKP3A88dP6Ot8CGfOhD77hHv0bmZqw" },
+  127: { iframeSrc: "https://mega.nz/embed/TyoWyShR#MY6Cht1jxSi4ZiyZKAWiEBt26zSjavpG2PcaPPsFaBI" },
+  128: { iframeSrc: "https://mega.nz/embed/aihS1ASR#SZB6tQAGBtMwQTgKnJaSfmoR22YfFhkYljN86zAhi1M" },
+  129: { iframeSrc: "https://mega.nz/embed/62oi2Q7I#fuyHYELGsFdpW75iyIgnVtHajXIMOr_-pdTVgiRRBUU" },
+  130: { iframeSrc: "https://mega.nz/embed/Ou5QWCqb#J0j3vxzzmZ8S2xN-f24yvbd-kGriUPiWBpukhez_p1A" },
+  131: { iframeSrc: "https://mega.nz/embed/LzgCFSKQ#BeQbanjsPAE6bdXQiQeN3T3_n_Uv-YsTi1A-skN8noM" },
+  132: { iframeSrc: "https://mega.nz/embed/62pQWK5C#fGPY-Ask9CVjJ89PCdADniDPSlhvEuN-RFxcj2Z9Y5U" },
+  133: { iframeSrc: "https://mega.nz/embed/D2g0DIZJ#omzvij6SifBNT5WTg7sUT_vvgQfQWHiO2sAHSMeY9v0" },
+  134: { iframeSrc: "https://mega.nz/embed/qi4mCCSZ#4iLOGqWOyLNcV1YDD_8k2dWuJijaE-W9_n1ujQU2ge8" },
+  135: { iframeSrc: "https://mega.nz/embed/zjpw3Aab#LP3cw5mtafeg6Fgt0Dkontoy-fOXwe-4jtNu75DjjYQ" },
+  136: { iframeSrc: "https://mega.nz/embed/y2pCWYZY#DsDCecEGCST6aniymSpaTgJUWXe1nnVuyKEbaV296UI" },
+  137: { iframeSrc: "https://mega.nz/embed/3moWUSaK#9Kz8uzvnNJIZRcRGkXdLcyAgVG_q0lDYKt7Rs1FPNyY" },
+  138: { iframeSrc: "https://mega.nz/embed/jrpm3SIY#pbfyz-RIaBKHw0tS83VkHIABq85IyQg3QndO3y-IrAg" },
+  139: { iframeSrc: "https://mega.nz/embed/vr50FaZT#hpU4MnMGyB2Ol4IJ1RwbtWozpHkMr-h5_gBrlBu-GY4" },
+  140: { iframeSrc: "https://mega.nz/embed/bmhw1YBS#IZOPjlqemp_-Hwbn9cVHnNNY98aTzdTXrbTfD9NHNAQ" },
+  141: { iframeSrc: "https://mega.nz/embed/Xywi2YZK#dPxnWg147FWYkAkw5cP0_A9EaL90La2VadgQKu-LPDc" },
+  142: { iframeSrc: "https://mega.nz/embed/Xyxm0agI#GuKLx1IRuVg6lybbI7eEJ8WgowQ99nuKZq5gv78IuyA" },
+  143: { iframeSrc: "https://mega.nz/embed/LrhiTQaZ#bDdYA-CJhlJcTMvdYs_mJ_B-pEyA9-xxD79bgXGcGBg" },
+  144: { iframeSrc: "https://mega.nz/embed/f3p0SCKC#wseoedJvSB-Ic-t87asPXCnGShu0EthWg_zdnjRvG8o" },
+  145: { iframeSrc: "https://mega.nz/embed/mmgSkaLB#cz3Gii_JEhXdt4r9-wi9ytb5IyuVwjGapCAYjHX0Jvg" },
+  146: { iframeSrc: "https://mega.nz/embed/6npA3YDR#Wrk1X-DeMmxfpOymZDCanC2U90gCvkEVTJKwZ-VeoXo" },
+  147: { iframeSrc: "https://mega.nz/embed/i6g2DSAI#7HD6mlR-Y_0qRWdjNsmj13dGcOC2UCdL01cppsC8Rr0" },
+  148: { iframeSrc: "https://mega.nz/embed/qnpkCIhR#bFLORLR8G_V_JzmYc9s-2armdDWTdvGARtDziK6KNS0" },
+  149: { iframeSrc: "https://mega.nz/embed/brRnASDB#osMmzVwZQ4gDlwwphnOCHRlKPOw5RhuwOp1g0spTvLI" },
+  150: { iframeSrc: "https://mega.nz/embed/eiwkUaxb#-TR7o1TIzy-6OhJy-sbwbLcCRDXRj3LcK7ZKAxR6cLc" },
+  151: { iframeSrc: "https://mega.nz/embed/evwGDIjD#t68QtKwIvCBW0sRgDOzlvItZMfEi7SVkKguUoINvbEM" },
+  152: { iframeSrc: "https://mega.nz/embed/yvggEACK#zPH9L7GVX9XWx2WxdWFOvsPk1q1B2qb9JvCWvrTiZno" },
+  153: { iframeSrc: "https://mega.nz/embed/qupUxSrS#JiTayrUrSt4zobaQb7yv_2n6SOE2kmo4qIIg-Y3B-RE" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>21° Torneo de las Artes Marciales</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 14)">Episodio 14<br>¿El rival de Gokū? ¡Aparece!</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>Lunch, una niña misteriosa</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>Entrenamiento: Búsqueda de piedras</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>¡Arriesgando la vida! Los repartidores de leche</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>Entrenamiento intenso al estilo de Kame Sen'nin</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>¡Comienza el Tenkaichi Budōkai!</button>
+<button onclick="changeVideo(this, 20)">Episodio 20<br>¿Podrá? El poder del entrenamiento</button>
+<button onclick="changeVideo(this, 21)">Episodio 21<br>¡Cuidado, Krilin!</button>
+<button onclick="changeVideo(this, 22)">Episodio 22<br>Yamcha contra Jackie Chun</button>
+<button onclick="changeVideo(this, 23)">Episodio 23<br>¡Aparece! Giran, el formidable enemigo</button>
+<button onclick="changeVideo(this, 24)">Episodio 24<br>La gran lucha ofensiva y defensiva desesperada de Krilin</button>
+<button onclick="changeVideo(this, 25)">Episodio 25<br>¡Levántate Gokū! El temible Tenkū Pekeji Ken</button>
+<button onclick="changeVideo(this, 26)">Episodio 26<br>¡Es la final! Kame-Hame-Ha</button>
+<button onclick="changeVideo(this, 27)">Episodio 27<br>Gokū - Grandísimo peligro</button>
+<button onclick="changeVideo(this, 28)">Episodio 28<br>¡Choque! Poder contra poder</button>
+  </div>
+
+  <h1>Saga del Ejército de la Patrulla Roja</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 29)">Episodio 29<br>Retorna la aventura, el lago ambulante</button>
+<button onclick="changeVideo(this, 30)">Episodio 30<br>Pilaf y el ejército misterioso</button>
+<button onclick="changeVideo(this, 31)">Episodio 31<br>¡Je je! ¡Aparece un falso Gokū!</button>
+<button onclick="changeVideo(this, 32)">Episodio 32<br>¿Ha desaparecido? La fortaleza voladora</button>
+<button onclick="changeVideo(this, 33)">Episodio 33<br>La leyenda del dragón</button>
+<button onclick="changeVideo(this, 34)">Episodio 34<br>La despiadada Red Ribbon</button>
+<button onclick="changeVideo(this, 35)">Episodio 35<br>Suno, la chica del Norte</button>
+<button onclick="changeVideo(this, 36)">Episodio 36<br>El terror de la Muscle Tower</button>
+<button onclick="changeVideo(this, 37)">Episodio 37<br>Aparece el Ninja Murasaki</button>
+<button onclick="changeVideo(this, 38)">Episodio 38<br>¡Temible! El arte de la multiplicación</button>
+<button onclick="changeVideo(this, 39)">Episodio 39<br>El misterioso Androide #8</button>
+<button onclick="changeVideo(this, 40)">Episodio 40<br>¿Qué vas a hacer, Gokū? ¡El temible Buyon!</button>
+<button onclick="changeVideo(this, 41)">Episodio 41<br>El final de Muscle Tower</button>
+<button onclick="changeVideo(this, 42)">Episodio 42<br>¡Peligro inminente! Aguanta Androide Número 8</button>
+<button onclick="changeVideo(this, 43)">Episodio 43<br>La casa de Bulma en la Capital del Oeste</button>
+<button onclick="changeVideo(this, 44)">Episodio 44<br>Gokū, los amigos y mucho peligro</button>
+<button onclick="changeVideo(this, 45)">Episodio 45<br>¡Tengamos cuidado! La trampa aérea</button>
+<button onclick="changeVideo(this, 46)">Episodio 46<br>El gran fracaso de Bulma</button>
+<button onclick="changeVideo(this, 47)">Episodio 47<br>¡Kame House es descubierta!</button>
+<button onclick="changeVideo(this, 48)">Episodio 48<br>¡El General Blue comienza el ataque!</button>
+<button onclick="changeVideo(this, 49)">Episodio 49<br>Cuidado, Lunch</button>
+<button onclick="changeVideo(this, 50)">Episodio 50<br>La trampa de los piratas</button>
+<button onclick="changeVideo(this, 51)">Episodio 51<br>El guardián del fondo del mar</button>
+<button onclick="changeVideo(this, 52)">Episodio 52<br>¡Grandioso! El tesoro es descubierto</button>
+<button onclick="changeVideo(this, 53)">Episodio 53<br>Los terribles ojos brillantes</button>
+<button onclick="changeVideo(this, 54)">Episodio 54<br>¡Huyamos, huyamos! El gran escape</button>
+<button onclick="changeVideo(this, 55)">Episodio 55<br>¡N'cha! La lejana Aldea Pingüino</button>
+<button onclick="changeVideo(this, 56)">Episodio 56<br>¡Jojojoi! Arale sube en la nube</button>
+<button onclick="changeVideo(this, 57)">Episodio 57<br>¡Desafío! Arale contra Blue</button>
+<button onclick="changeVideo(this, 58)">Episodio 58<br>La encantada Tierra Sagrada de Karin</button>
+<button onclick="changeVideo(this, 59)">Episodio 59<br>¡Ha llegado! "Tao Pai Pai", el mejor asesino del mundo</button>
+<button onclick="changeVideo(this, 60)">Episodio 60<br>¡Un reto! El Kame-Hame-Ha contra el Dodonpa</button>
+<button onclick="changeVideo(this, 61)">Episodio 61<br>El señor Karin de la Torre de Karin</button>
+<button onclick="changeVideo(this, 62)">Episodio 62<br>¿En serio?! Los efectos del Agua Supersagrada</button>
+<button onclick="changeVideo(this, 63)">Episodio 63<br>El contraataque de Son Gokū</button>
+<button onclick="changeVideo(this, 64)">Episodio 64<br>El final de Tao Pai Pai</button>
+<button onclick="changeVideo(this, 65)">Episodio 65<br>¡Vamos, Gokū! Comienza el ataque</button>
+<button onclick="changeVideo(this, 66)">Episodio 66<br>La defensa y ofensa desesperada del Ejército Red Ribbon</button>
+<button onclick="changeVideo(this, 67)">Episodio 67<br>¡El Comandante Red muere!</button>
+<button onclick="changeVideo(this, 68)">Episodio 68<br>La última Esfera del Dragón</button>
+  </div>
+
+  <h1>El Palacio de Uranai Baba</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 69)">Episodio 69<br>¿Qué guapa, eh? ¡Es Baba, la adivina!</button>
+<button onclick="changeVideo(this, 70)">Episodio 70<br>¡Al ataque! Nosotros somos los cinco guerreros</button>
+<button onclick="changeVideo(this, 71)">Episodio 71<br>Una gran batalla sangrienta a muerte</button>
+<button onclick="changeVideo(this, 72)">Episodio 72<br>¡Encuentro con Son Gokū! El váter del diablo</button>
+<button onclick="changeVideo(this, 73)">Episodio 73<br>Rayo Akumigth, ¿¡Técnica mortal?!</button>
+<button onclick="changeVideo(this, 74)">Episodio 74<br>El misterioso quinto hombre</button>
+<button onclick="changeVideo(this, 75)">Episodio 75<br>¡Colisión! Poderoso contrincante</button>
+<button onclick="changeVideo(this, 76)">Episodio 76<br>¿La verdadera identidad del hombre enmascarado...?!</button>
+<button onclick="changeVideo(this, 77)">Episodio 77<br>La gran estrategia de Pilaf</button>
+<button onclick="changeVideo(this, 78)">Episodio 78<br>Regresa Shenlong</button>
+<button onclick="changeVideo(this, 79)">Episodio 79<br>Oro, Plata y una cantimplora come hombres</button>
+<button onclick="changeVideo(this, 80)">Episodio 80<br>¡Antes de que empiece el juego! Gokū contra Tenlong</button>
+<button onclick="changeVideo(this, 81)">Episodio 81<br>Gokū va al mundo de los Demonios</button>
+<button onclick="changeVideo(this, 82)">Episodio 82<br>El violento monstruo Inoshikachō</button>
+  </div>
+
+  <h1>22° Torneo de las Artes Marciales</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 83)">Episodio 83<br>¡Deprisa, Gokū! El Tenkaichi Budōkai</button>
+<button onclick="changeVideo(this, 84)">Episodio 84<br>¡Apunta a ser el mejor artista marcial!</button>
+<button onclick="changeVideo(this, 85)">Episodio 85<br>¡Concentrados en ganar! Sobrevivir en las preliminares</button>
+<button onclick="changeVideo(this, 86)">Episodio 86<br>¡Decidido! Los 8 valientes</button>
+<button onclick="changeVideo(this, 87)">Episodio 87<br>¡Desafío! Yamcha contra Tenshinhan</button>
+<button onclick="changeVideo(this, 88)">Episodio 88<br>¡Cuidado, Yamcha! El temible Tenshinhan</button>
+<button onclick="changeVideo(this, 89)">Episodio 89<br>¡Terror! El rencor de la Luna Llena</button>
+<button onclick="changeVideo(this, 90)">Episodio 90<br>¡Qué, qué, qué…! ¿Qué has dicho? ¿Dodonpa?</button>
+<button onclick="changeVideo(this, 91)">Episodio 91<br>¡Inversión! El plan matemático de Krilin</button>
+<button onclick="changeVideo(this, 92)">Episodio 92<br>¡Espera! ¡Llamando a Gokū!</button>
+<button onclick="changeVideo(this, 93)">Episodio 93<br>¡Habilidades iguales! Tenshinhan contra Jackie</button>
+<button onclick="changeVideo(this, 94)">Episodio 94<br>¡Gegege! Taiyōken, la nueva técnica sagrada</button>
+<button onclick="changeVideo(this, 95)">Episodio 95<br>¡Lucha! Gokū contra Krilin</button>
+<button onclick="changeVideo(this, 96)">Episodio 96<br>No puede ser, ¡¿Gokū?! La gran estrategia de Krilin</button>
+<button onclick="changeVideo(this, 97)">Episodio 97<br>¡Ronda Final! ¿Quién será el artista marcial más fuerte bajo el cielo?</button>
+<button onclick="changeVideo(this, 98)">Episodio 98<br>Higi–Haikyūken y el poder de la batalla</button>
+<button onclick="changeVideo(this, 99)">Episodio 99<br>¡La agonía de Ten Shin Han!</button>
+<button onclick="changeVideo(this, 100)">Episodio 100<br>¡¿La vida o la muerte?! La última alternativa</button>
+<button onclick="changeVideo(this, 101)">Episodio 101<br>¡El gran encuentro de artistas marciales termina! ¡Sin embargo...!</button>
+  </div>
+
+  <h1>Saga de Piccolo Daimaō</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 102)">Episodio 102<br>¡La muerte de Krilin, un complot horrible!</button>
+<button onclick="changeVideo(this, 103)">Episodio 103<br>¡El terror de Piccolo Daimaō!</button>
+<button onclick="changeVideo(this, 104)">Episodio 104<br>¡Regresa Son Gokū!</button>
+<button onclick="changeVideo(this, 105)">Episodio 105<br>¡El chico misterioso: Aparece Yajirobe!</button>
+<button onclick="changeVideo(this, 106)">Episodio 106<br>¡La bestia: Tanbourin ha llegado!</button>
+<button onclick="changeVideo(this, 107)">Episodio 107<br>¡Son Gokū: Explosión de ira!</button>
+<button onclick="changeVideo(this, 108)">Episodio 108<br>Una difícil decisión</button>
+<button onclick="changeVideo(this, 109)">Episodio 109<br>Gokū contra Piccolo</button>
+<button onclick="changeVideo(this, 110)">Episodio 110<br>¡Aguanta! ¡Son Gokū!</button>
+<button onclick="changeVideo(this, 111)">Episodio 111<br>El último combate del Maestro Mutenroshi</button>
+<button onclick="changeVideo(this, 112)">Episodio 112<br>En busca de la eterna juventud</button>
+<button onclick="changeVideo(this, 113)">Episodio 113<br>Ataque al castillo del Rey</button>
+<button onclick="changeVideo(this, 114)">Episodio 114<br>La esperanza de Gokū</button>
+<button onclick="changeVideo(this, 115)">Episodio 115<br>¡Ponla en mis manos! La misteriosa Chōshinsui</button>
+<button onclick="changeVideo(this, 116)">Episodio 116<br>El Maestro Mutenroshi reaparece</button>
+<button onclick="changeVideo(this, 117)">Episodio 117<br>Gokū se reencarna</button>
+<button onclick="changeVideo(this, 118)">Episodio 118<br>Ten Shinhan toma una decisión</button>
+<button onclick="changeVideo(this, 119)">Episodio 119<br>Jugándose la vida</button>
+<button onclick="changeVideo(this, 120)">Episodio 120<br>La cólera de Gokū</button>
+<button onclick="changeVideo(this, 121)">Episodio 121<br>Un combate difícil</button>
+<button onclick="changeVideo(this, 122)">Episodio 122<br>El fin de Piccolo</button>
+<button onclick="changeVideo(this, 123)">Episodio 123<br>Comienza el 23º Tenkaichi Budōkai</button>
+<button onclick="changeVideo(this, 124)">Episodio 124<br>Los primeros combates intensos</button>
+<button onclick="changeVideo(this, 125)">Episodio 125<br>La sorpresa de Gokū</button>
+<button onclick="changeVideo(this, 126)">Episodio 126<br>La fuerza desatada</button>
+<button onclick="changeVideo(this, 127)">Episodio 127<br>Un rival imponente</button>
+<button onclick="changeVideo(this, 128)">Episodio 128<br>La revancha de Yamcha</button>
+<button onclick="changeVideo(this, 129)">Episodio 129<br>Un combate a muerte</button>
+<button onclick="changeVideo(this, 130)">Episodio 130<br>El despertar del espíritu guerrero</button>
+<button onclick="changeVideo(this, 131)">Episodio 131<br>Golpes y sacrificios</button>
+<button onclick="changeVideo(this, 132)">Episodio 132<br>La evolución de Tenshinhan</button>
+  </div>
+
+  <h1>23º Torneo de las Artes Marciales</h1>
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 133)">Episodio 133<br>El combate estratégico</button>
+<button onclick="changeVideo(this, 134)">Episodio 134<br>El poder oculto de Krilin</button>
+<button onclick="changeVideo(this, 135)">Episodio 135<br>La lucha de los 8 valientes</button>
+<button onclick="changeVideo(this, 136)">Episodio 136<br>Intensidad en el ring</button>
+<button onclick="changeVideo(this, 137)">Episodio 137<br>El desafío de los guerreros</button>
+<button onclick="changeVideo(this, 138)">Episodio 138<br>La victoria que se avecina</button>
+<button onclick="changeVideo(this, 139)">Episodio 139<br>La última prueba de Gokū</button>
+<button onclick="changeVideo(this, 140)">Episodio 140<br>Batalla sin cuartel</button>
+<button onclick="changeVideo(this, 141)">Episodio 141<br>El momento decisivo</button>
+<button onclick="changeVideo(this, 142)">Episodio 142<br>¡El clímax del 23º torneo!</button>
+<button onclick="changeVideo(this, 143)">Episodio 143<br>La determinación de los luchadores</button>
+<button onclick="changeVideo(this, 144)">Episodio 144<br>Un golpe inesperado</button>
+<button onclick="changeVideo(this, 145)">Episodio 145<br>El sacrificio final</button>
+<button onclick="changeVideo(this, 146)">Episodio 146<br>La fuerza del corazón</button>
+<button onclick="changeVideo(this, 147)">Episodio 147<br>La victoria inminente</button>
+<button onclick="changeVideo(this, 148)">Episodio 148<br>El final del 23º Tenkaichi Budōkai</button>
+<button onclick="changeVideo(this, 149)">Episodio 149<br>El vestido de novia dentro de las llamas</button>
+<button onclick="changeVideo(this, 150)">Episodio 150<br>El fantasmal ave traga fuego</button>
+<button onclick="changeVideo(this, 151)">Episodio 151<br>Gracias al entrenamiento de Chichi para ser buena esposa</button>
+<button onclick="changeVideo(this, 152)">Episodio 152<br>¡Deprisa Gokū! El misterio del monte de los cinco elementos</button>
+<button onclick="changeVideo(this, 153)">Episodio 153<br>¡Arde montaña Frypan! Una decisión de vida o muerte</button>
+  </div>
+
+
+</body>
+</html>
