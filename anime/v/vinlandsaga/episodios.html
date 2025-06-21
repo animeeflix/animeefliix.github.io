@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer,
+    #videoPlayer2, #iframePlayer2 {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer, #iframePlayer2 {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer, #videoPlayer2 {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer, #iframePlayer2 {
+        height: 300px;
+      }
+    }
+
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Vinland Saga</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://es.web.img3.acsta.net/pictures/19/09/16/17/09/4903250.jpg" alt="Vinland Saga" />
+  </div>
+  
+  <!-- Reproductor para Temporada 1 -->
+  <div class="player-container video-anchor" id="playerTop1">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 1<br>En cualquier otro lugar</button>
+    <button onclick="changeVideo(this, 2, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 2<br>Espada</button>
+    <button onclick="changeVideo(this, 3, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 3<br>Trol</button>
+    <button onclick="changeVideo(this, 4, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 4<br>Un verdadero guerrero</button>
+    <button onclick="changeVideo(this, 5, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 5<br>El hijo del Trol</button>
+    <button onclick="changeVideo(this, 6, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 6<br>Empieza el viaje</button>
+    <button onclick="changeVideo(this, 7, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 7<br>Los Normandos</button>
+    <button onclick="changeVideo(this, 8, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 8<br>Más allá del límite del mar</button>
+    <button onclick="changeVideo(this, 9, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 9<br>La batalla del Puente de Londres</button>
+    <button onclick="changeVideo(this, 10, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 10<br>Ragnarök</button>
+    <button onclick="changeVideo(this, 11, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 11<br>Una apuesta</button>
+    <button onclick="changeVideo(this, 12, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 12<br>La tierra en la lejana orilla</button>
+    <button onclick="changeVideo(this, 13, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 13<br>Hijo de un héroe</button>
+    <button onclick="changeVideo(this, 14, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 14<br>La luz del amanecer</button>
+    <button onclick="changeVideo(this, 15, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 15<br>Después de Yule</button>
+    <button onclick="changeVideo(this, 16, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 16<br>Historia de bestias</button>
+    <button onclick="changeVideo(this, 17, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 17<br>Sirviente</button>
+    <button onclick="changeVideo(this, 18, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 18<br>Fuera de la cuna</button>
+    <button onclick="changeVideo(this, 19, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 19<br>Un frente unido</button>
+    <button onclick="changeVideo(this, 20, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 20<br>Corona</button>
+    <button onclick="changeVideo(this, 21, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 21<br>Reencuentro</button>
+    <button onclick="changeVideo(this, 22, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 22<br>Lobo solitario</button>
+    <button onclick="changeVideo(this, 23, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 23<br>Error de cálculo</button>
+    <button onclick="changeVideo(this, 24, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 24<br>Fin Del Prólogo</button>
+  </div>
+
+  <!-- Reproductor para Temporada 2 -->
+  <div class="player-container video-anchor" id="playerTop2">
+    <h1>Temporada 2</h1>
+    <iframe
+      id="iframePlayer2"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer2" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 25, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 25<br>Esclavo</button>
+    <button onclick="changeVideo(this, 26, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 26<br>La granja de Ketil</button>
+    <button onclick="changeVideo(this, 27, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 27<br>Serpiente</button>
+    <button onclick="changeVideo(this, 28, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 28<br>Despertar</button>
+    <button onclick="changeVideo(this, 29, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 29<br>Camino de sangre</button>
+    <button onclick="changeVideo(this, 30, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 30<br>Necesitamos un caballo</button>
+    <button onclick="changeVideo(this, 31, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 31<br>Ketil Puño de Hierro</button>
+    <button onclick="changeVideo(this, 32, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 32<br>Un hombre vacío</button>
+    <button onclick="changeVideo(this, 33, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 33<br>Juramento</button>
+    <button onclick="changeVideo(this, 34, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 34<br>La cabeza maldita</button>
+    <button onclick="changeVideo(this, 35, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 35<br>Reyes y espadas</button>
+    <button onclick="changeVideo(this, 36, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 36<br>Por el amor perdido</button>
+    <button onclick="changeVideo(this, 37, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 37<br>Nubarrones</button>
+    <button onclick="changeVideo(this, 38, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 38<br>Libertad</button>
+    <button onclick="changeVideo(this, 39, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 39<br>Tormenta</button>
+    <button onclick="changeVideo(this, 40, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 40<br>Un gran propósito</button>
+    <button onclick="changeVideo(this, 41, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 41<br>El camino a casa</button>
+    <button onclick="changeVideo(this, 42, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 42<br>El primer método</button>
+    <button onclick="changeVideo(this, 43, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 43<br>La batalla de la granja de Ketil</button>
+    <button onclick="changeVideo(this, 44, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 44<br>Dolor</button>
+    <button onclick="changeVideo(this, 45, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 45<br>Coraje</button>
+    <button onclick="changeVideo(this, 46, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 46<br>El rey de la rebelión</button>
+    <button onclick="changeVideo(this, 47, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 47<br>Dos caminos</button>
+    <button onclick="changeVideo(this, 48, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 48<br>Hogar</button>
+  </div>
+
+  <script>
+    const videos = {
+      1: { iframeSrc: "https://mega.nz/embed/arI3wayA#hSzqrNMvxga-6tWbUAZYjUAk0TAoF40INwU1oxjjVBk" },
+      2: { iframeSrc: "https://mega.nz/embed/DjRDwKST#JnA2R-T1ygCRwdb2fwkO5pjdWpSdYsP51sy0__jfdCg" },
+      3: { iframeSrc: "https://mega.nz/embed/a3QFlShS#Dj_FGKuBYil637C67tEIAGeKopHL0jrtVstTgF3-iTs" },
+      4: { iframeSrc: "https://mega.nz/embed/m1gS3SiL#SBuRKrXhKM1AICajEBhCjaridX2V67uS7AizFuVdZM4" },
+      5: { iframeSrc: "https://mega.nz/embed/66QRTS6B#Izsuk6DSvxMa52ar0sgDHnX-rvkwPzPYkE28ugPwGzA" },
+      6: { iframeSrc: "https://mega.nz/embed/juQxnSIJ#ORjRfWJRA9TI_KvaYhR5V42pFZMsZf9huufudWAbf8A" },
+      7: { iframeSrc: "https://mega.nz/embed/6f4l3aJR#bweZVxB3BIB7mMXFvpfgfOMTQ-oUCjYm_2PvH586sEE" },
+      8: { iframeSrc: "https://mega.nz/embed/nfxlyARK#ebBxSbX-4etT4XGhjr6h3nufCUzzsWpmjXR-aIhb6hI" },
+      9: { iframeSrc: "https://mega.nz/embed/Xb4zkIhL#gVAvLcSbuwhSt0T2oZgBqF7yzQU0kLWc4apDYkN1Nhs" },
+      10: { iframeSrc: "https://mega.nz/embed/OKoXwQBb#68yUiyMqCDeTt3x5zeNdy3KTSYLQN6NenufTGnaXqlg" },
+      11: { iframeSrc: "https://mega.nz/embed/6KZwzIiA#BWN6Tx8j2F0IPxSwfoYf0qno3HJp0TAP2zC6e8-2Tg4" },
+      12: { iframeSrc: "https://mega.nz/embed/HagRBQzY#fpDIRMyYYJMyP3iydKYvGBLdN66368c_FBX3PiYqaOY" },
+      13: { iframeSrc: "https://mega.nz/embed/HLhTwADR#J-O2E5V3LkOlS311in3WuXoK0whXngC89DrCmL2qkAA" },
+      14: { iframeSrc: "https://mega.nz/embed/jaQGDYTS#hXvVyNTZufj0pZhFPNwloFz-x1jBTYkmpIu8gVyHkw8" },
+      15: { iframeSrc: "https://mega.nz/embed/6PZizKQZ#8JQG3u8GZhFQnmX_LY5eU-wg7kzDDmZnBhoOoox8bso" },
+      16: { iframeSrc: "https://mega.nz/embed/PeA0DACb#Xq_0qpsaTUCp21O68cGFDY4bpk8QKO5TCpnU22nmSeQ" },
+      17: { iframeSrc: "https://mega.nz/embed/bLIznaKB#TAGalvFGoB-VApqRjtKZ10C878uzKmQK9kQmeTuVg3U" },
+      18: { iframeSrc: "https://mega.nz/embed/2shmQKJA#LXvgUDXA_6t-g4F0M96cG-RtfofYf7kR-qeYxnAGhag" },
+      19: { iframeSrc: "https://mega.nz/embed/WoxEjKAC#7MmqzapkDbExijgE7osmOIWHMV7RqMRLOYwdPcROpT4" },
+      20: { iframeSrc: "https://mega.nz/embed/a5wG3YiS#4QGHbZH1YZfgMtBqh0WwxXqiGoURo3cFWNK2VRU_7cY" },
+      21: { iframeSrc: "https://mega.nz/embed/Xk1TASpY#pI8PSjQJ-BryIJbAeG_x2xjG0jdAvRRbTAnp9PVZvL4" },
+      22: { iframeSrc: "https://mega.nz/embed/atVh0KgS#ByJruQ4hQIp5CUo7vKvgW4gQMn-ymd4zLiaMjMaOGEk" },
+      23: { iframeSrc: "https://mega.nz/embed/3lhwiIiR#AIdyGQXQ8W04uzGclei1oZ-NB45ZgM6w8Rm-JGFObf0" },
+      24: { iframeSrc: "https://mega.nz/embed/Ll5iwCjA#Bbojp_l29Gg-zSke_9CS82N71D1C7T1BNecx3R8J9-A" },
+      25: { iframeSrc: "https://mega.nz/embed/ZGkQxDaQ#TrR6MAGwwP2PZfJf58niB_a7vJnkyAd7RT1Arc5pt-U" },
+      26: { iframeSrc: "https://mega.nz/embed/IDMx2Y6S#WihOyZSqtZD00wN2engPxBsUF4Cep-cYAf7FyIG4Rlo" },
+      27: { iframeSrc: "https://mega.nz/embed/Aas2SZhI#SL18bar2IBl9yxcTlgGgP_dWsd1z7Ey1fYLTqAgtWyY" },
+      28: { iframeSrc: "https://mega.nz/embed/sGsXzTQR#0WaumlERXok61VPoVeCHLMqIn2EI02kse1ZgS43Hfcg" },
+      29: { iframeSrc: "https://mega.nz/embed/wXEiyTLI#gc57MYPDGw16Q4FplQlrXNHIhFDxyVzzim6TZROeB-4" },
+      30: { iframeSrc: "https://mega.nz/embed/8bt0ibZa#Lu97xJ3FmQXnSvJKlJil7a7Abe_I_MDXQwLewXn-bgQ" },
+      31: { iframeSrc: "https://mega.nz/embed/4CtAULqB#Ml-3dNxLLcouQmPZC4HOu9nsc-L8-nTl1sHy_7LPpo4" },
+      32: { iframeSrc: "https://mega.nz/embed/5D00jYTT#cY4b2MCFUYBNHoNZRIxF64fbw6phIo8Q-0P4NIxpcX4" },
+      33: { iframeSrc: "https://mega.nz/embed/8wxzlBSK#KmhxqDYcKG19d_p09eRI_KizSwi4I-Kzav9kB0yV4f0" },
+      34: { iframeSrc: "https://mega.nz/embed/gTMxxJ5A#7rhpYZXZT7-bu8N4ITSJFI0wQtvmspun45yNOCmRryw" },
+      35: { iframeSrc: "https://mega.nz/embed/FTEzVR5D#M14XDy3vKjsz-1-khUbACksF7JN6QFGW31ZFbE3VhMw" },
+      36: { iframeSrc: "https://mega.nz/embed/JfsnhBwL#97PYnQ7pbkxwexpgk-JCJdMlyFYzqJWG9_pFKyCHOic" },
+      37: { iframeSrc: "https://mega.nz/embed/YxkQmIwS#o3_KFr_PXsSODa7KChlBSO9IQkoF3_dBQj3pKeticWM" },
+      38: { iframeSrc: "https://mega.nz/embed/ckBgxK5J#j3CNxg_FjqQaLFLr2XPfWzikey6tvvhvwVfLzZAJ0zE" },
+      39: { iframeSrc: "https://mega.nz/embed/59lCkLbZ#TkqPngi0nBnlxVelysjsN1ezsQsmq09jKYsMFmcUQcY" },
+      40: { iframeSrc: "https://mega.nz/embed/lg5nlbzQ#mE-5BnZ1pocCdyZw8f2_ZGEnY8HgqhePA2u4kZFuH5o" },
+      41: { iframeSrc: "https://mega.nz/embed/tKNxWYwB#DhKc-miF1l-8Njj7UMbuFVOsyI3lKXUvRDb0RX9TYUM" },
+      42: { iframeSrc: "https://mega.nz/embed/8gxQ3bKI#leupnRC8lPX7tg26SHzorFLz76Ttrtyo3hEjLUPN71Q" },
+      43: { iframeSrc: "https://mega.nz/embed/p04HjbaL#z7uXypmI5Svq4mwTX9lryyEMCnU-SLO37YtNhPPMJ4I" },
+      44: { iframeSrc: "https://mega.nz/embed/QkJT1YyB#evMlTL8CLau45OZLhGIfasgnGcnvh8oxBO5nmjxm9xc" },
+      45: { iframeSrc: "https://mega.nz/embed/8lQSUYyL#aUSiCq4z3TpRKZQM_mApVK2-TMFBPw2SHOP3yO9TOr8" },
+      46: { iframeSrc: "https://mega.nz/embed/JGkmmbba#79dFCnBi5zppf8Bzk3l3DXhz7xjrMRO75KUWlvC5AP4" },
+      47: { iframeSrc: "https://mega.nz/embed/95IhwbwC#QVV2ERisuHwef_zBG7UXU6RqOFitjkBlNml58O4-9_0" },
+      48: { iframeSrc: "https://mega.nz/embed/s0IwRZTA#vM9ldrSLknrWzwGoEmRd6Xk-kcdNDjSjBgj-EvooPLs" }
+    };
+
+    function changeVideo(button, episode, iframeId, videoId, playerContainerId) {
+      const videoPlayer = document.getElementById(videoId);
+      const iframePlayer = document.getElementById(iframeId);
+
+      if(videos[episode]?.iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else if(videos[episode]?.sources) {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      // Remover clase active de todos los botones de la misma lista
+      const episodeList = button.parentElement;
+      episodeList.querySelectorAll('button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+      
+      // Scroll al reproductor correspondiente
+      document.getElementById(playerContainerId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop1').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
