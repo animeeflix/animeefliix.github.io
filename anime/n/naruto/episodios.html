@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 450px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Naruto</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://pbs.twimg.com/media/CEv_EsGWAAAr8m_.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>País de las Olas</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>¡Entra! ¡Naruto Uzumaki!</button>
+    <button onclick="changeVideo(this, 2)">Episodio 2<br>¡Mi Nombre es Konohamaru!</button>
+    <button onclick="changeVideo(this, 3)">Episodio 3<br>Sasuke y Sakura: ¡¿Amigos o Enemigos?!</button>
+    <button onclick="changeVideo(this, 4)">Episodio 4<br>Aprobar o Reprobar: Un Examen de Supervivencia</button>
+    <button onclick="changeVideo(this, 5)">Episodio 5<br>¿Descalificados? La Decisión Final de Kakashi</button>
+    <button onclick="changeVideo(this, 6)">Episodio 6<br>¡Misión Importante! ¡Superpartida al País de las Olas!</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>¡El Asesino de la Neblina!</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>El Juramento del Dolor</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>Kakashi del Sharingan</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>El Bosque de Chakra</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>El País Donde Existió un Héroe</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>¡Batalla en el Puente! ¡¡Zabuza Regresa!!</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>El Arte Secreto de Haku: Espejos Maléficos de Cristales de Hielo</button>
+<button onclick="changeVideo(this, 14)">Episodio 14<br>¡El Número Uno en Sorprender, la Batalla de Naruto!</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>¡Visibilidad cero! ¡El Sharingan se hace pedazos!</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>El Sello Roto</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>Pasado Blanco, Ambición Escondida</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>Las Herramientas Llamadas Shinobi</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>Zabuza, Caído en la Nieve...</button>
+  </div>
+
+  <script>
+    const videos = {
+  1: { iframeSrc: "https://mega.nz/embed/BTU1DKKR#RLPNcC8ohIh769HwlEZUPfJLH5n3Xsd2CiIZeEU0cBk"  },
+      2: { iframeSrc: "https://mega.nz/embed/BbVy1R5L#FNfYzANqiSthgkTCh5a2oDgKjFCt8uDUyiz448wkIlY"  },
+      3: { iframeSrc: "https://mega.nz/embed/xL1klaIL#2lla-h_Q6FrdtnmFAdGE-eRCQnpIO7Q-AY7pLZ5gzMc"  },
+      4: { iframeSrc: "https://mega.nz/embed/AGFQlBxL#xBBO1m-FAEs4LQk6cGHuCJgXnxQV6JYXkLEXu4pZkxk"  },
+      5: { iframeSrc: "https://mega.nz/embed/Vf9SVQQJ#fAeKNhwtcEUJ0VfljAD08jZeld6mqRONOThEQAH9fD8"  },
+      6: { iframeSrc: "https://mega.nz/embed/cbVDETQR#wo8ZqnC99uz1-8FXGutqTahntRIFEOuB7k90mqCPO00" },
+  7: { iframeSrc: "https://mega.nz/embed/ALM2VQzD#viHBG52IefnnTcOS6840SjWsp22uTsEz3JVcaFmFk90" },
+  8: { iframeSrc: "https://mega.nz/embed/gH1HWILb#rFOGFHaxDvoF6U4aVOz7KyJkecTuaQKSfVsCBFUbQvo" },
+  9: { iframeSrc: "https://mega.nz/embed/ofsxjZgY#i7E0ptp5mwtm5XA0cS6T-cVbJn-1cG15ULM12GJOMZA" },
+  10: { iframeSrc: "https://mega.nz/embed/0eVimTxD#HRiKktsXBLzZY8mwo9xwuR2sVNGHeHU7Hp4WGdZLTVk" },
+  11: { iframeSrc: "https://mega.nz/embed/JO9kVI7J#ZV47NTXOiBc8rKiEnsSvueZ2wfKGtC0PTaz6Jkl0IsQ" },
+  12: { iframeSrc: "https://mega.nz/embed/NaESGIKC#aqn1xlDLpzFtf3jd5mvAxEOn_ABRCxe2AO2LlSnMk9A" },
+  13: { iframeSrc: "https://mega.nz/embed/ALVDzK4b#dX0OKkTBCF09O6SyemUWZBODwc2jwStq_tKfwHCIyL8" },
+  14: { iframeSrc: "https://mega.nz/embed/JbcQiRDb#tUwZmS4H01RV5u8i-b_BqDI_g_l-6ob1qGbISt2GGrI" },
+  15: { iframeSrc: "https://mega.nz/embed/4Xd3WbSJ#blnhmkVU4R_UlZJTFL3zPmiul21_VNuYvwwxhEzyEzc" },
+  16: { iframeSrc: "https://mega.nz/embed/ZGUFGAoI#OcmMnz8DwcYgGHRm9lFhX7deZv82Q8Vqe7dBMa69Pfc" },
+  17: { iframeSrc: "https://mega.nz/embed/BeNExbBB#uLGwYrmAHd-hj9kQQ6KJfOfmo11T74peJ-qnvEQU06M" },
+  18: { iframeSrc: "https://mega.nz/embed/YGMgTLDB#_e8242UBePDo9Nm2bNBWvB09Geem5xCmzQJ6UpaElXo" },
+  19: { iframeSrc: "https://mega.nz/embed/FDVmXLzR#1_35ElYAk7oPJ7q-zeQ0uTj_uI1lvdubbaWWP78QZIY" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Exámenes Chūnin</h1>
+</body>
+</html>
