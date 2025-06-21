@@ -182,19 +182,13 @@
 <button onclick="changeVideo(this, 18)">Episodio 18<br>Las Herramientas Llamadas Shinobi</button>
 <button onclick="changeVideo(this, 19)">Episodio 19<br>Zabuza, Caído en la Nieve...</button>
     </div>
-<div class="player-container video-anchor" id="playerTop">
-    <h1>Exámenes Chūnin</h1>
-    <iframe
-      id="iframePlayer"
-      src=""
-      allowfullscreen
-    ></iframe>
-
-    <video id="videoPlayer" controls preload="metadata">
-      Tu navegador no soporta video.
-    </video>
-  </div>
-  <div class="episode-list" role="list">
+<div class="saga-container">
+    <h1>21° Torneo de las Artes Marciales</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga2">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+<div class="episode-list" role="list">
 <button onclick="changeVideo(this, 20)">Episodio 20 <br>(«Hiruko Contra las Dos Kunoichi»)</button>
 <button onclick="changeVideo(this, 21)">Episodio 21 <br>(«La verdadera cara de Sasori »)</button>
 <button onclick="changeVideo(this, 22)">Episodio 22 <br>(«La mano interna de Chiyo »)</button>
@@ -244,6 +238,8 @@
 <button onclick="changeVideo(this, 66)">Episodio 66 <br>(«Almas Reanimadas»)</button>
 <button onclick="changeVideo(this, 67)">Episodio 67 <br>(«Múltiples batallas»)</button>
     </div>
+  </div>
+  
   <script>
     const videos = {
   1: { iframeSrc: "https://mega.nz/embed/BTU1DKKR#RLPNcC8ohIh769HwlEZUPfJLH5n3Xsd2CiIZeEU0cBk"  },
