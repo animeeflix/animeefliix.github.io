@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer,
+    #videoPlayer2, #iframePlayer2 {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer, #iframePlayer2 {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer, #videoPlayer2 {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer, #iframePlayer2 {
+        height: 300px;
+      }
+    }
+
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Solo Leveling</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2M4YzdkMTEtMjUyYy00ZWY0LWI5ODQtNGRkZWQ1MzU5MWM2XkEyXkFqcGc@._V1_.jpg" alt="Solo Leveling" />
+  </div>
+  
+  <!-- Reproductor para Temporada 1 -->
+  <div class="player-container video-anchor" id="playerTop1">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 1<br>Ya estoy acostumbrado</button>
+    <button onclick="changeVideo(this, 2, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 2<br>Si tuviera otra oportunidad</button>
+    <button onclick="changeVideo(this, 3, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 3<br>Es como un videojuego</button>
+    <button onclick="changeVideo(this, 4, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 4<br>Tengo que hacerme más fuerte</button>
+    <button onclick="changeVideo(this, 5, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 5<br>Un muy buen trato</button>
+    <button onclick="changeVideo(this, 6, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 6<br>Comienza la verdadera caza</button>
+    <button onclick="changeVideo(this, 7, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 7<br>Veamos hasta dónde puedo llegar</button>
+    <button onclick="changeVideo(this, 8, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 8<br>Esto es frustrante</button>
+    <button onclick="changeVideo(this, 9, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 9<br>Has estado ocultando tus habilidades</button>
+    <button onclick="changeVideo(this, 10, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 10<br>¿Qué es esto, un pícnic?</button>
+    <button onclick="changeVideo(this, 11, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 11<br>Un caballero defendiendo un trono vacío</button>
+    <button onclick="changeVideo(this, 12, 'iframePlayer', 'videoPlayer', 'playerTop1')">Episodio 12<br>Álzate</button>
+  </div>
+
+  <!-- Reproductor para Temporada 2 -->
+  <div class="player-container video-anchor" id="playerTop2">
+    <h1>Temporada 2</h1>
+    <iframe
+      id="iframePlayer2"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer2" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 13, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 13<br>No eres de rango E, ¿verdad?</button>
+    <button onclick="changeVideo(this, 14, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 14<br>Parece que tú mismo no lo sabes</button>
+    <button onclick="changeVideo(this, 15, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 15<br>Aún queda mucho camino</button>
+    <button onclick="changeVideo(this, 16, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 16<br>Tengo que dejar de fingir</button>
+    <button onclick="changeVideo(this, 17, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 17<br>Estamos entrenados para esto</button>
+    <button onclick="changeVideo(this, 18, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 18<br>No menosprecies a los míos</button>
+    <button onclick="changeVideo(this, 19, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 19<br>El décimo Cazador de rango S</button>
+    <button onclick="changeVideo(this, 20, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 20<br>Mirar hacia arriba me estaba cansando</button>
+    <button onclick="changeVideo(this, 21, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 21<br>Valió la pena</button>
+    <button onclick="changeVideo(this, 22, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 22<br>Necesitamos un héroe</button>
+    <button onclick="changeVideo(this, 23, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 23<br>Se va a poner aún más intenso</button>
+    <button onclick="changeVideo(this, 24, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 24<br>¿Eres el rey de los humanos?</button>
+    <button onclick="changeVideo(this, 25, 'iframePlayer2', 'videoPlayer2', 'playerTop2')">Episodio 25<br>A por el siguiente objetivo</button>
+  </div>
+
+  <script>
+    const videos = {
+      1: { iframeSrc: "https://mega.nz/embed/4Htk2RgA#kBb0nNIIJiOZYcClwRmSAmWO-qljwlPgpgjuTilRcoE" },
+      2: { iframeSrc: "https://mega.nz/embed/9CVjxIRJ#suYaujR65YCeYNW8QkUxQb2AXqtPfcm8W_epBZ5baNI" },
+      3: { iframeSrc: "https://mega.nz/embed/0rs3GCiS#hPTJymiDdTMqycbJCuqDSDRyDQ2X3KRAAIEZhyTg_S0" },
+      4: { iframeSrc: "https://mega.nz/embed/oeVE1arD#GhGhTAjTgm_oZpQZZnLu5LMJbYue7VL-ZWcry51amss" },
+      5: { iframeSrc: "https://mega.nz/embed/AzcFiAKQ#kvnEum1HrxSYIHvxpCsOvjEZbD3yZquqnVLSBOojRf0" },
+      6: { iframeSrc: "https://mega.nz/embed/t7EAkRAA#wfk2Cz96cIByWG3aGEZXGMeQ_C6x5LXuMZdisK9hWy4" },
+      7: { iframeSrc: "https://mega.nz/embed/oOEDTbjb#pLoTfHMeTOcSebjfTYEbQzbTugR3hoUrpylpTCyDdKQ" },
+      8: { iframeSrc: "https://mega.nz/embed/RHdjHTgI#EOlZdevW_6CELRhVT8satl03cIqE-5ir0i_QOxjlUCg" },
+      9: { iframeSrc: "https://mega.nz/embed/EycV0Zoa#K80gOk3Mu3O_YXN333nZfI3V1R9prXytQV3hLpx8hVA" },
+      10: { iframeSrc: "https://mega.nz/embed/92VxXQSK#-_Xei9ZUJ-96BYXMhvoQyhRCTxTEUsqP18GB2-nuHLk" },
+      11: { iframeSrc: "https://mega.nz/embed/hGsmXSzT#DeNoTtOd_l6T-OZ4r25LwD5W-7kPIaVB1vKz2_6vUhk" },
+      12: { iframeSrc: "https://mega.nz/embed/ljlXmL6K#Nvl27t9Iffi40eGhdt61uc2ASwAGZlK9PV8zn1U4LwQ" },
+      13: { iframeSrc: "https://mega.nz/embed/HFdi2LiT#WkjkJnDKAqXx7BB14ugfwtqyyoatlys8VUVIuiQ8Md8" },
+      14: { iframeSrc: "https://mega.nz/embed/nNAW2YxI#qYTL5h1CXsBTRmQjc2oKrCP-8lTj1qYNBhBukov1u1Y" },
+      15: { iframeSrc: "https://mega.nz/embed/y2JHkZIL#kackqxBzTfMbqkgptwm9smyCoQLrAdKjK8kWxcSJilk" },
+      16: { iframeSrc: "https://mega.nz/embed/wx5lyLTb#sXExPmMqbV4_F4CJxuwlOeTYXLdBtWUlCcnXA6Xqwj4" },
+      17: { iframeSrc: "https://jkanime.net/jkplayer/um?e=cVhOdkc0OWJPK252T1BaQ1JEUTIwczhGMXBReGNtWWwvb3gvQVpMcEpxOGJ5U2hvU25zak1nQ3pWczZFTmp4YWhuYzhJRzVHcTgzenZwaVdabHpKZGlwbWYzOVhTVlltanpxNmxXbnRXYzQ9Ojo2e8yo.ku34Oox74SzJN3K&t=619bb1d83a2d850d61dca80ce62b87f8" },
+      18: { iframeSrc: "https://mega.nz/embed/dEYxmQzL#g1WG9IKfyacEh5Wj90LWlzOBf5yc61tEr1xnJtIgq8E" },
+      19: { iframeSrc: "https://mega.nz/embed/le1QVCpb#6ecDwAwLrMp6tMMYxGBNe3mXn5eQ4SHaBvcoAQvb_vI" },
+      20: { iframeSrc: "https://mega.nz/embed/vqAngSCT#igAFRbJZzdtZuO7Z-ZtIaF63rejjKWsrUUVxc6rBYaw" },
+      21: { iframeSrc: "https://mega.nz/embed/AgAxUbpI#YelzItU5-xsGVaQgGcACK3iN_cK_aHLA9a9JL11lW8Y" },
+      22: { iframeSrc: "https://jkanime.net/jkplayer/um?e=Y1dxaGo0YTlUSTJ5bWRWaGsweEFHU3ZwQThBSytEYThHTHRkMU9rdmo3bXVHSDF1UW8wUTAwbEhHamJkaGdkc3ZaT1pWMklyQjZiWEZ2RzNwZmg5VXhBcG0wejd5WWQrMkV6SDh0ZGphZjA9OjqnxSOVhAvSGgKG4Rjv21_3&t=397fedb64966a7a644c1374ae95aecea" },
+      23: { iframeSrc: "https://mega.nz/embed/IOdDQCKb#-zJWvt_fGnBFeExEy66VGJ1Vzcn_1K3-UVN2KHnl1AM" },
+      24: { iframeSrc: "https://mega.nz/embed/GhIEjLjY#vQgybLTFjypdDZ_UHrVoZHgk1JoK0c0wHCGGNryR9OA" },
+      25: { iframeSrc: "https://mega.nz/embed/DpYRFIpB#djBywFICnUCy7UVnpI4aHGhST9xcdXioDbEDkZNjUs8" }
+    };
+
+    function changeVideo(button, episode, iframeId, videoId, playerContainerId) {
+      const videoPlayer = document.getElementById(videoId);
+      const iframePlayer = document.getElementById(iframeId);
+
+      if(videos[episode]?.iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else if(videos[episode]?.sources) {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      // Remover clase active de todos los botones de la misma lista
+      const episodeList = button.parentElement;
+      episodeList.querySelectorAll('button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+      
+      // Scroll al reproductor correspondiente
+      document.getElementById(playerContainerId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop1').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
