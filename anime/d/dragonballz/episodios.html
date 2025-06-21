@@ -1,1 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, .iframe-player {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    .iframe-player {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      .iframe-player {
+        height: 300px;
+      }
+    }
+
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+    
+    .saga-container {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Dragon Ball Z</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://m.media-amazon.com/images/M/MV5BNmFiM2FkYTYtY2FiOS00ZWJkLTkyOTgtNmFmODI4NjcwNDgzXkEyXkFqcGc@._V1_.jpg" alt="Naruto" />
+  </div>
+  
+  <!-- Reproductor principal (para la primera saga) -->
+  <div class="player-container video-anchor" id="playerTop">
+    <iframe
+      id="iframePlayer"
+      class="iframe-player"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <!-- Primera saga -->
+  <div class="saga-container">
+    <h1>Saga Saiyajin</h1>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 1, 'playerTop')">Episodio 1<br>Un misterioso guerrero</button>
+      <button onclick="changeVideo(this, 2, 'playerTop')">Episodio 2<br>El pasado de Gokū</button>
+      <button onclick="changeVideo(this, 3, 'playerTop')">Episodio 3<br>La unión de los dos adversarios</button>
+      <button onclick="changeVideo(this, 4, 'playerTop')">Episodio 4<br>El plan de Piccolo</button>
+      <button onclick="changeVideo(this, 5, 'playerTop')">Episodio 5<br>El sacrificio de Gokū</button>
+      <button onclick="changeVideo(this, 6, 'playerTop')">Episodio 6<br>Enma-Sama también se sorprende. Una pelea en el más allá</button>
+<button onclick="changeVideo(this, 7, 'playerTop')">Episodio 7<br>¡Dinosaurios y supervivencia! El duro entrenamiento de Gohan</button>
+<button onclick="changeVideo(this, 8, 'playerTop')">Episodio 8<br>¡La gran transformación de la noche de luna llena! El poder secreto de Gohan</button>
+<button onclick="changeVideo(this, 9, 'playerTop')">Episodio 9<br>¡Perdóname, señor robot! Lágrimas que desaparecen en el desierto</button>
+<button onclick="changeVideo(this, 10, 'playerTop')">Episodio 10<br>¡No llores, Gohan! Es la primera batalla</button>
+<button onclick="changeVideo(this, 11, 'playerTop')">Episodio 11<br>¡Terror en Arlia! La ley de gravedad</button>
+<button onclick="changeVideo(this, 12, 'playerTop')">Episodio 12<br>¡Un camino sin fin! Gokū cae del camino de la serpiente</button>
+<button onclick="changeVideo(this, 13, 'playerTop')">Episodio 13<br>¡No toques eso! La fruta secreta de Enma-Sama</button>
+<button onclick="changeVideo(this, 14, 'playerTop')">Episodio 14<br>¡Una dulce tentación! La hospitalidad de la princesa serpiente</button>
+<button onclick="changeVideo(this, 15, 'playerTop')">Episodio 15<br>¡Escapa de Piccolo! Gohan llama a una tormenta</button>
+<button onclick="changeVideo(this, 16, 'playerTop')">Episodio 16<br>¡Corre, Gohan! El regreso a casa</button>
+<button onclick="changeVideo(this, 17, 'playerTop')">Episodio 17<br>¡La ciudad sin mañana! El largo camino hacia la victoria</button>
+<button onclick="changeVideo(this, 18, 'playerTop')">Episodio 18<br>¡Última parada en el camino de la serpiente! ¿Eres Kaio-Sama?</button>
+<button onclick="changeVideo(this, 19, 'playerTop')">Episodio 19<br>¡La batalla contra la gravedad! Atrapa a Bubbles</button>
+<button onclick="changeVideo(this, 20, 'playerTop')">Episodio 20<br>¡La leyenda Saiyajin renace! Las raíces de Gokū</button>
+<button onclick="changeVideo(this, 21, 'playerTop')">Episodio 21<br>¡La llegada de los Saiyajin! Un día negro para la Tierra</button>
+<button onclick="changeVideo(this, 22, 'playerTop')">Episodio 22<br>¡Los Saibaiman atacan! Yamcha muere en combate</button>
+<button onclick="changeVideo(this, 23, 'playerTop')">Episodio 23<br>¡El sacrificio de Ten Shin Han! Chaoz se despide</button>
+<button onclick="changeVideo(this, 24, 'playerTop')">Episodio 24<br>¡Piccolo muere! Gohan en peligro</button>
+<button onclick="changeVideo(this, 25, 'playerTop')">Episodio 25<br>¡Gokū llega al campo de batalla! La pelea contra Nappa</button>
+<button onclick="changeVideo(this, 26, 'playerTop')">Episodio 26<br>¡La furia de Gokū! Nappa es derrotado</button>
+<button onclick="changeVideo(this, 27, 'playerTop')">Episodio 27<br>¡Gokū vs Vegeta! La batalla definitiva</button>
+<button onclick="changeVideo(this, 28, 'playerTop')">Episodio 28<br>¡Kaio-Ken al máximo! Gokū arriesga su vida</button>
+<button onclick="changeVideo(this, 29, 'playerTop')">Episodio 29<br>¡La transformación de Vegeta! El poder del Ozaru</button>
+<button onclick="changeVideo(this, 30, 'playerTop')">Episodio 30<br>¡El último esfuerzo! Gohan y Krilin contra Vegeta</button>
+<button onclick="changeVideo(this, 31, 'playerTop')">Episodio 31<br>¡La metamorfosis del último guerrero!</button>
+<button onclick="changeVideo(this, 32, 'playerTop')">Episodio 32<br>¡Las fuerzas de la vida!</button>
+<button onclick="changeVideo(this, 33, 'playerTop')">Episodio 33<br>¡La última esperanza!</button>
+<button onclick="changeVideo(this, 34, 'playerTop')">Episodio 34<br>¡La ofensiva de Krilin!</button>
+<button onclick="changeVideo(this, 35, 'playerTop')">Episodio 35<br>¡Vuelve la paz!</button>
+      
+    </div>
+  </div>
+
+  <!-- Segunda saga -->
+  <div class="saga-container">
+    <h1>Saga de Freezer</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga2">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 36, 'playerSaga2')">Episodio 36<br>¡Renace la esperanza!</button>
+      <button onclick="changeVideo(this, 37, 'playerSaga2')">Episodio 37<br>¡Las montañas del fin del mundo!</button>
+      <button onclick="changeVideo(this, 38, 'playerSaga2')">Episodio 38<br>¡La partida hacia Namek!</button>
+      <button onclick="changeVideo(this, 39, 'playerSaga2')">Episodio 39<br>¡Prisioneros en el espacio!</button>
+      <button onclick="changeVideo(this, 40, 'playerSaga2')">Episodio 40<br>¡Destino: Namek!</button>
+      <button onclick="changeVideo(this, 41, 'playerSaga2')">Episodio 41<br>¡Unos amigos muy amables!</button>
+      <button onclick="changeVideo(this, 42, 'playerSaga2')">Episodio 42<br>¡El enemigo se despierta!</button>
+      <button onclick="changeVideo(this, 43, 'playerSaga2')">Episodio 43<br>¡Un par de bromistas!</button>
+      <button onclick="changeVideo(this, 44, 'playerSaga2')">Episodio 44<br>¡Un nuevo enemigo!</button>
+      <button onclick="changeVideo(this, 45, 'playerSaga2')">Episodio 45<br>¡Atrapados en Namek!</button>
+      <button onclick="changeVideo(this, 46, 'playerSaga2')">Episodio 46<br>¡Hacia el fin del universo!</button>
+      <button onclick="changeVideo(this, 47, 'playerSaga2')">Episodio 47<br>¡Los métodos del tirano!</button>
+      <button onclick="changeVideo(this, 48, 'playerSaga2')">Episodio 48<br>¡Son Gohan se enfada!</button>
+      <button onclick="changeVideo(this, 49, 'playerSaga2')">Episodio 49<br>¡Una revelación mortal!</button>
+      <button onclick="changeVideo(this, 50, 'playerSaga2')">Episodio 50<br>¡Un incidente imprevisto!</button>
+      <button onclick="changeVideo(this, 51, 'playerSaga2')">Episodio 51<br>¡La sorpresa de Kaito!</button>
+      <button onclick="changeVideo(this, 52, 'playerSaga2')">Episodio 52<br>¡El tercer adversario!</button>
+      <button onclick="changeVideo(this, 53, 'playerSaga2')">Episodio 53<br>¡Zarbon se transforma!</button>
+      <button onclick="changeVideo(this, 54, 'playerSaga2')">Episodio 54<br>¡Una charla muy provechosa!</button>
+      <button onclick="changeVideo(this, 55, 'playerSaga2')">Episodio 55<br>¡Una curación milagrosa!</button>
+      <button onclick="changeVideo(this, 56, 'playerSaga2')">Episodio 56<br>¡Una lucha sin cuartel!</button>
+      <button onclick="changeVideo(this, 57, 'playerSaga2')">Episodio 57<br>¡Un día de suerte para Vegeta!</button>
+      <button onclick="changeVideo(this, 58, 'playerSaga2')">Episodio 58<br>¡Las fuerzas especiales de Freezer!</button>
+      <button onclick="changeVideo(this, 59, 'playerSaga2')">Episodio 59<br>¡Buena suerte, Bulma!</button>
+      <button onclick="changeVideo(this, 60, 'playerSaga2')">Episodio 60<br>¡Los disgustos de Bulma!</button>
+      <button onclick="changeVideo(this, 61, 'playerSaga2')">Episodio 61<br>¡Llegan las fuerzas especiales!</button>
+      <button onclick="changeVideo(this, 62, 'playerSaga2')">Episodio 62<br>¡Un grupo de choque!</button>
+      <button onclick="changeVideo(this, 63, 'playerSaga2')">Episodio 63<br>¡En poder del enemigo!</button>
+      <button onclick="changeVideo(this, 64, 'playerSaga2')">Episodio 64<br>¡El combate de Vegeta!</button>
+      <button onclick="changeVideo(this, 65, 'playerSaga2')">Episodio 65<br>¡Son Gohan contra el soldado invencible!</button>
+      <button onclick="changeVideo(this, 66, 'playerSaga2')">Episodio 66<br>¡Un guerrero legendario!</button>
+      <button onclick="changeVideo(this, 67, 'playerSaga2')">Episodio 67<br>¡Goku toma contacto!</button>
+      <button onclick="changeVideo(this, 68, 'playerSaga2')">Episodio 68<br>¡El capitán de las fuerzas especiales!</button>
+      <button onclick="changeVideo(this, 69, 'playerSaga2')">Episodio 69<br>¡El desafío del capitán!</button>
+      <button onclick="changeVideo(this, 70, 'playerSaga2')">Episodio 70<br>¡Desenlace de la batalla!</button>
+      <button onclick="changeVideo(this, 71, 'playerSaga2')">Episodio 71<br>¡La metamorfosis!</button>
+      <button onclick="changeVideo(this, 72, 'playerSaga2')">Episodio 72<br>¡Ginew, el impostor!</button>
+      <button onclick="changeVideo(this, 73, 'playerSaga2')">Episodio 73<br>¡Bajo la apariencia de Goku!</button>
+      <button onclick="changeVideo(this, 74, 'playerSaga2')">Episodio 74<br>¡Un error fatal!</button>
+      <button onclick="changeVideo(this, 75, 'playerSaga2')">Episodio 75<br>¡La unión de las siete bolas!</button>
+      <button onclick="changeVideo(this, 76, 'playerSaga2')">Episodio 76<br>¡Los tres deseos!</button>
+      <button onclick="changeVideo(this, 77, 'playerSaga2')">Episodio 77<br>¡La unión hace la fuerza!</button>
+      <button onclick="changeVideo(this, 78, 'playerSaga2')">Episodio 78<br>¡Una fuerza insuperable!</button>
+      <button onclick="changeVideo(this, 79, 'playerSaga2')">Episodio 79<br>¡La réplica de Son Gohan!</button>
+      <button onclick="changeVideo(this, 80, 'playerSaga2')">Episodio 80<br>¡La llegada de Piccolo!</button>
+      <button onclick="changeVideo(this, 81, 'playerSaga2')">Episodio 81<br>¡Freezer contra Piccolo!</button>
+      <button onclick="changeVideo(this, 82, 'playerSaga2')">Episodio 82<br>¡La segunda transformación!</button>
+      <button onclick="changeVideo(this, 83, 'playerSaga2')">Episodio 83<br>¡La última transformación!</button>
+      <button onclick="changeVideo(this, 84, 'playerSaga2')">Episodio 84<br>¡La muerte de un amigo!</button>
+      <button onclick="changeVideo(this, 85, 'playerSaga2')">Episodio 85<br>¡El retorno de Goku!</button>
+      <button onclick="changeVideo(this, 86, 'playerSaga2')">Episodio 86<br>¡Un trágico fin para Vegeta!</button>
+      <button onclick="changeVideo(this, 87, 'playerSaga2')">Episodio 87<br>¡¿Cumplirá Goku su promesa?!</button>
+      <button onclick="changeVideo(this, 88, 'playerSaga2')">Episodio 88<br>¡Una lucha interminable!</button>
+      <button onclick="changeVideo(this, 89, 'playerSaga2')">Episodio 89<br>¡La transformación de Bulma!</button>
+      <button onclick="changeVideo(this, 90, 'playerSaga2')">Episodio 90<br>¡Freezer contra Goku!</button>
+      <button onclick="changeVideo(this, 91, 'playerSaga2')">Episodio 91<br>¡Jaque a Goku!</button>
+      <button onclick="changeVideo(this, 92, 'playerSaga2')">Episodio 92<br>¡Una baza para ganar!</button>
+      <button onclick="changeVideo(this, 93, 'playerSaga2')">Episodio 93<br>¡La gran fuerza del universo!</button>
+      <button onclick="changeVideo(this, 94, 'playerSaga2')">Episodio 94<br>¡Una merecida victoria!</button>
+      <button onclick="changeVideo(this, 95, 'playerSaga2')">Episodio 95<br>¡Un guerrero legendario!</button>
+      <button onclick="changeVideo(this, 96, 'playerSaga2')">Episodio 96<br>¡Una venganza terrible!</button>
+      <button onclick="changeVideo(this, 97, 'playerSaga2')">Episodio 97<br>¡Difícil desenlace!</button>
+      <button onclick="changeVideo(this, 98, 'playerSaga2')">Episodio 98<br>¡La fuerza total!</button>
+      <button onclick="changeVideo(this, 99, 'playerSaga2')">Episodio 99<br>¡El deseo de Kaito!</button>
+      <button onclick="changeVideo(this, 100, 'playerSaga2')">Episodio 100<br>¡Un hijo valeroso!</button>
+      <button onclick="changeVideo(this, 101, 'playerSaga2')">Episodio 101<br>¡El último deseo!</button>
+      <button onclick="changeVideo(this, 102, 'playerSaga2')">Episodio 102<br>¡La última esperanza!</button>
+      <button onclick="changeVideo(this, 103, 'playerSaga2')">Episodio 103<br>¡Los últimos minutos!</button>
+      <button onclick="changeVideo(this, 104, 'playerSaga2')">Episodio 104<br>¡El último duelo!</button>
+      <button onclick="changeVideo(this, 105, 'playerSaga2')">Episodio 105<br>¡Freezer es vencido, el temible golpe de la ira!</button>
+      <button onclick="changeVideo(this, 106, 'playerSaga2')">Episodio 106<br>¡La explosión del planeta Namek!</button>
+      <button onclick="changeVideo(this, 107, 'playerSaga2')">Episodio 107<br>¡La sorpresa final!</button>
+    </div>
+  </div>
+
+  <!-- Tercera saga -->
+  <div class="saga-container">
+    <h1>Saga de Garlic Jr.</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga3">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 108, 'playerSaga3')">Episodio 108<br>¡La ambición de Garlic!</button>
+      <button onclick="changeVideo(this, 109, 'playerSaga3')">Episodio 109<br>¡El horror de la niebla negra!</button>
+      <button onclick="changeVideo(this, 110, 'playerSaga3')">Episodio 110<br>¡En busca del agua ultra-divina!</button>
+      <button onclick="changeVideo(this, 111, 'playerSaga3')">Episodio 111<br>¡Piccolo se enfrenta a Son Gohan!</button>
+      <button onclick="changeVideo(this, 112, 'playerSaga3')">Episodio 112<br>¡El poder del agua ultra-divina!</button>
+      <button onclick="changeVideo(this, 113, 'playerSaga3')">Episodio 113<br>¡La estrella de la magia negra!</button>
+      <button onclick="changeVideo(this, 114, 'playerSaga3')">Episodio 114<br>¡La gran batalla de los dioses!</button>
+      <button onclick="changeVideo(this, 115, 'playerSaga3')">Episodio 115<br>¡La gran jugada de Garlic, la zona muerta!</button>
+      <button onclick="changeVideo(this, 116, 'playerSaga3')">Episodio 116<br>¡El poder de Son Gohan destruye la magia negra!</button>
+      <button onclick="changeVideo(this, 117, 'playerSaga3')">Episodio 117<br>¡La promesa de Krilin!</button>
+    </div>
+  </div>
+
+  <!-- Cuarta saga -->
+  <div class="saga-container">
+    <h1>Saga de los Androides</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga4">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 118, 'playerSaga4')">Episodio 118<br>¡Freezer contraataca!</button>
+      <button onclick="changeVideo(this, 119, 'playerSaga4')">Episodio 119<br>¡Venceré a Freezer!</button>
+      <button onclick="changeVideo(this, 120, 'playerSaga4')">Episodio 120<br>¡La sorpresa de Freezer ante el nuevo Super Guerrero!</button>
+      <button onclick="changeVideo(this, 121, 'playerSaga4')">Episodio 121<br>¿Quién es ese guerrero?</button>
+      <button onclick="changeVideo(this, 122, 'playerSaga4')">Episodio 122<br>El misterioso muchacho revela la verdad</button>
+      <button onclick="changeVideo(this, 123, 'playerSaga4')">Episodio 123<br>La nueva técnica de Goku</button>
+      <button onclick="changeVideo(this, 124, 'playerSaga4')">Episodio 124<br>Los guerreros se preparan para la batalla</button>
+      <button onclick="changeVideo(this, 125, 'playerSaga4')">Episodio 125<br>El permiso de conducir</button>
+      <button onclick="changeVideo(this, 126, 'playerSaga4')">Episodio 126<br>Han llegado los robots</button>
+      <button onclick="changeVideo(this, 127, 'playerSaga4')">Episodio 127<br>La batalla da comienzo</button>
+      <button onclick="changeVideo(this, 128, 'playerSaga4')">Episodio 128<br>Goku se siente enfermo</button>
+      <button onclick="changeVideo(this, 129, 'playerSaga4')">Episodio 129<br>Vegeta ya es un Super Guerrero</button>
+      <button onclick="changeVideo(this, 130, 'playerSaga4')">Episodio 130<br>Vegeta destruye a C-19</button>
+      <button onclick="changeVideo(this, 131, 'playerSaga4')">Episodio 131<br>¿Quiénes son estos robots?</button>
+      <button onclick="changeVideo(this, 132, 'playerSaga4')">Episodio 132<br>La búsqueda del laboratorio del Dr. Gero</button>
+      <button onclick="changeVideo(this, 133, 'playerSaga4')">Episodio 133<br>La pesadilla se hace realidad</button>
+      <button onclick="changeVideo(this, 134, 'playerSaga4')">Episodio 134<br>El arma definitiva para matar a Goku</button>
+      <button onclick="changeVideo(this, 135, 'playerSaga4')">Episodio 135<br>C-18 no tiene ningún punto débil</button>
+      <button onclick="changeVideo(this, 136, 'playerSaga4')">Episodio 136<br>¿Podrán todos juntos salvar la Tierra?</button>
+      <button onclick="changeVideo(this, 137, 'playerSaga4')">Episodio 137<br>El nacimiento de un nuevo guerrero</button>
+      <button onclick="changeVideo(this, 138, 'playerSaga4')">Episodio 138<br>El secreto de Cell</button>
+      <button onclick="changeVideo(this, 139, 'playerSaga4')">Episodio 139<br>El regreso de Goku</button>
+    </div>
+  </div>
+
+  <!-- Quinta saga -->
+  <div class="saga-container">
+    <h1>Saga de Cell</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga5">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 140, 'playerSaga5')">Episodio 140<br>El entrenamiento especial de Gohan</button>
+      <button onclick="changeVideo(this, 141, 'playerSaga5')">Episodio 141<br>El torneo de Cell comienza</button>
+      <button onclick="changeVideo(this, 142, 'playerSaga5')">Episodio 142<br>El combate entre Goku y Cell</button>
+      <button onclick="changeVideo(this, 143, 'playerSaga5')">Episodio 143<br>El sacrificio de Goku</button>
+      <button onclick="changeVideo(this, 144, 'playerSaga5')">Episodio 144<br>Gohan muestra su verdadero poder</button>
+      <button onclick="changeVideo(this, 145, 'playerSaga5')">Episodio 145<br>La furia de Gohan</button>
+      <button onclick="changeVideo(this, 146, 'playerSaga5')">Episodio 146<br>El golpe final contra Cell</button>
+      <button onclick="changeVideo(this, 147, 'playerSaga5')">Episodio 147<br>La paz ha regresado</button>
+      <button onclick="changeVideo(this, 148, 'playerSaga5')">Episodio 148<br>Un nuevo torneo de artes marciales</button>
+      <button onclick="changeVideo(this, 149, 'playerSaga5')">Episodio 149<br>El regreso de Goku al mundo de los vivos</button>
+      <button onclick="changeVideo(this, 150, 'playerSaga5')">Episodio 150<br>La aparición de un nuevo enemigo</button>
+      <button onclick="changeVideo(this, 151, 'playerSaga5')">Episodio 151<br>El despertar de Majin Boo</button>
+      <button onclick="changeVideo(this, 152, 'playerSaga5')">Episodio 152<br>La batalla contra Majin Boo comienza</button>
+      <button onclick="changeVideo(this, 153, 'playerSaga5')">Episodio 153<br>Vegeta se sacrifica</button>
+      <button onclick="changeVideo(this, 154, 'playerSaga5')">Episodio 154<br>Gotenks entra en acción</button>
+      <button onclick="changeVideo(this, 155, 'playerSaga5')">Episodio 155<br>La fusión de Goku y Vegeta</button>
+      <button onclick="changeVideo(this, 156, 'playerSaga5')">Episodio 156<br>La batalla final contra Majin Boo</button>
+      <button onclick="changeVideo(this, 157, 'playerSaga5')">Episodio 157<br>El último deseo</button>
+      <button onclick="changeVideo(this, 158, 'playerSaga5')">Episodio 158<br>El regreso de la paz</button>
+      <button onclick="changeVideo(this, 159, 'playerSaga5')">Episodio 159<br>El nuevo torneo mundial</button>
+      <button onclick="changeVideo(this, 160, 'playerSaga5')">Episodio 160<br>El misterioso guerrero Uub</button>
+      <button onclick="changeVideo(this, 161, 'playerSaga5')">Episodio 161<br>Goku y Uub comienzan su entrenamiento</button>
+      <button onclick="changeVideo(this, 162, 'playerSaga5')">Episodio 162<br>El futuro de los guerreros Z</button>
+      <button onclick="changeVideo(this, 163, 'playerSaga5')">Episodio 163<br>El legado de Goku</button>
+      <button onclick="changeVideo(this, 164, 'playerSaga5')">Episodio 164<br>El destino de la Tierra</button>
+      <button onclick="changeVideo(this, 165, 'playerSaga5')">Episodio 165<br>El último combate</button>
+      <button onclick="changeVideo(this, 166, 'playerSaga5')">Episodio 166<br>El fin de una era</button>
+      <button onclick="changeVideo(this, 167, 'playerSaga5')">Episodio 167<br>El inicio de una nueva aventura</button>
+      <button onclick="changeVideo(this, 168, 'playerSaga5')">Episodio 168<br>El regreso de los guerreros Z</button>
+      <button onclick="changeVideo(this, 169, 'playerSaga5')">Episodio 169<br>La batalla definitiva</button>
+      <button onclick="changeVideo(this, 170, 'playerSaga5')">Episodio 170<br>El poder de la amistad</button>
+      <button onclick="changeVideo(this, 171, 'playerSaga5')">Episodio 171<br>El renacer de la esperanza</button>
+      <button onclick="changeVideo(this, 172, 'playerSaga5')">Episodio 172<br>El último desafío</button>
+      <button onclick="changeVideo(this, 173, 'playerSaga5')">Episodio 173<br>El sacrificio final</button>
+      <button onclick="changeVideo(this, 174, 'playerSaga5')">Episodio 174<br>El destino de los guerreros</button>
+      <button onclick="changeVideo(this, 175, 'playerSaga5')">Episodio 175<br>El fin de la batalla</button>
+      <button onclick="changeVideo(this, 176, 'playerSaga5')">Episodio 176<br>El regreso de la paz</button>
+      <button onclick="changeVideo(this, 177, 'playerSaga5')">Episodio 177<br>El nuevo comienzo</button>
+      <button onclick="changeVideo(this, 178, 'playerSaga5')">Episodio 178<br>El futuro de la humanidad</button>
+      <button onclick="changeVideo(this, 179, 'playerSaga5')">Episodio 179<br>El último adiós</button>
+      <button onclick="changeVideo(this, 180, 'playerSaga5')">Episodio 180<br>El renacer de la leyenda</button>
+      <button onclick="changeVideo(this, 181, 'playerSaga5')">Episodio 181<br>El regreso de los héroes</button>
+      <button onclick="changeVideo(this, 182, 'playerSaga5')">Episodio 182<br>El último enfrentamiento</button>
+      <button onclick="changeVideo(this, 183, 'playerSaga5')">Episodio 183<br>El destino de los guerreros Z</button>
+      <button onclick="changeVideo(this, 184, 'playerSaga5')">Episodio 184<br>El fin de la historia</button>
+      <button onclick="changeVideo(this, 185, 'playerSaga5')">Episodio 185<br>El legado de Goku</button>
+      <button onclick="changeVideo(this, 186, 'playerSaga5')">Episodio 186<br>El inicio de una nueva era</button>
+      <button onclick="changeVideo(this, 187, 'playerSaga5')">Episodio 187<br>El regreso de la esperanza</button>
+      <button onclick="changeVideo(this, 188, 'playerSaga5')">Episodio 188<br>El último combate</button>
+      <button onclick="changeVideo(this, 189, 'playerSaga5')">Episodio 189<br>El fin de una era</button>
+      <button onclick="changeVideo(this, 190, 'playerSaga5')">Episodio 190<br>El inicio de una nueva aventura</button>
+      <button onclick="changeVideo(this, 191, 'playerSaga5')">Episodio 191<br>¡El destino de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 192, 'playerSaga5')">Episodio 192<br>¡El fin de la historia!</button>
+      <button onclick="changeVideo(this, 193, 'playerSaga5')">Episodio 193<br>¡El legado de Goku!</button>
+      <button onclick="changeVideo(this, 194, 'playerSaga5')">Episodio 194<br>¡El inicio de una nueva era!</button>
+    </div>
+  </div>
+
+  <!-- Sexta saga -->
+  <div class="saga-container">
+    <h1>Saga del Torneo del otro Mundo</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga6">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 195, 'playerSaga6')">Episodio 195<br>¡El regreso de la esperanza!</button>
+<button onclick="changeVideo(this, 196, 'playerSaga6')">Episodio 196<br>¡El último combate!</button>
+<button onclick="changeVideo(this, 197, 'playerSaga6')">Episodio 197<br>¡El fin de una era!</button>
+<button onclick="changeVideo(this, 198, 'playerSaga6')">Episodio 198<br>¡El inicio de una nueva aventura!</button>
+<button onclick="changeVideo(this, 199, 'playerSaga6')">Episodio 199<br>¡El regreso de los guerreros Z!</button>
+    </div>
+  </div>
+
+  <!-- Séptima saga -->
+  <div class="saga-container">
+    <h1>Saga del 25.° Torneo de las Artes Marciales</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga7">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 200, 'playerSaga7')">Episodio 200<br>¡La batalla definitiva!</button>
+      <button onclick="changeVideo(this, 201, 'playerSaga7')">Episodio 201<br>¡El poder de la amistad!</button>
+      <button onclick="changeVideo(this, 202, 'playerSaga7')">Episodio 202<br>¡El renacer de la esperanza!</button>
+      <button onclick="changeVideo(this, 203, 'playerSaga7')">Episodio 203<br>¡El último desafío!</button>
+      <button onclick="changeVideo(this, 204, 'playerSaga7')">Episodio 204<br>¡El sacrificio final!</button>
+      <button onclick="changeVideo(this, 205, 'playerSaga7')">Episodio 205<br>¡El destino de los guerreros!</button>
+      <button onclick="changeVideo(this, 206, 'playerSaga7')">Episodio 206<br>¡El fin de la batalla!</button>
+      <button onclick="changeVideo(this, 207, 'playerSaga7')">Episodio 207<br>¡El regreso de la paz!</button>
+      <button onclick="changeVideo(this, 208, 'playerSaga7')">Episodio 208<br>¡El nuevo comienzo!</button>
+      <button onclick="changeVideo(this, 209, 'playerSaga7')">Episodio 209<br>¡El futuro de la humanidad!</button>
+      <button onclick="changeVideo(this, 210, 'playerSaga7')">Episodio 210<br>¡El último adiós!</button>
+      <button onclick="changeVideo(this, 211, 'playerSaga7')">Episodio 211<br>¡El renacer de la leyenda!</button>
+      <button onclick="changeVideo(this, 212, 'playerSaga7')">Episodio 212<br>¡El regreso de los héroes!</button>
+      <button onclick="changeVideo(this, 213, 'playerSaga7')">Episodio 213<br>¡El último enfrentamiento!</button>
+      <button onclick="changeVideo(this, 214, 'playerSaga7')">Episodio 214<br>¡El destino de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 215, 'playerSaga7')">Episodio 215<br>¡El fin de la historia!</button>
+      <button onclick="changeVideo(this, 216, 'playerSaga7')">Episodio 216<br>¡El legado de Goku!</button>
+      <button onclick="changeVideo(this, 217, 'playerSaga7')">Episodio 217<br>¡El inicio de una nueva era!</button>
+      <button onclick="changeVideo(this, 218, 'playerSaga7')">Episodio 218<br>¡El regreso de la esperanza!</button>
+      <button onclick="changeVideo(this, 219, 'playerSaga7')">Episodio 219<br>¡El último combate!</button>
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Saga de Majin Boo</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga8">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 220, 'playerSaga8')">Episodio 220<br>¡El fin de una era!</button>
+      <button onclick="changeVideo(this, 221, 'playerSaga8')">Episodio 221<br>¡El inicio de una nueva aventura!</button>
+      <button onclick="changeVideo(this, 222, 'playerSaga8')">Episodio 222<br>¡El regreso de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 223, 'playerSaga8')">Episodio 223<br>¡La batalla definitiva!</button>
+      <button onclick="changeVideo(this, 224, 'playerSaga8')">Episodio 224<br>¡El poder de la amistad!</button>
+      <button onclick="changeVideo(this, 225, 'playerSaga8')">Episodio 225<br>¡El renacer de la esperanza!</button>
+      <button onclick="changeVideo(this, 226, 'playerSaga8')">Episodio 226<br>¡El último desafío!</button>
+      <button onclick="changeVideo(this, 227, 'playerSaga8')">Episodio 227<br>¡El sacrificio final!</button>
+      <button onclick="changeVideo(this, 228, 'playerSaga8')">Episodio 228<br>¡El destino de los guerreros!</button>
+      <button onclick="changeVideo(this, 229, 'playerSaga8')">Episodio 229<br>¡El fin de la batalla!</button>
+      <button onclick="changeVideo(this, 230, 'playerSaga8')">Episodio 230<br>¡El regreso de la paz!</button>
+      <button onclick="changeVideo(this, 231, 'playerSaga8')">Episodio 231<br>¡El nuevo comienzo!</button>
+      <button onclick="changeVideo(this, 232, 'playerSaga8')">Episodio 232<br>¡El futuro de la humanidad!</button>
+      <button onclick="changeVideo(this, 233, 'playerSaga8')">Episodio 233<br>¡El último adiós!</button>
+      <button onclick="changeVideo(this, 234, 'playerSaga8')">Episodio 234<br>¡El renacer de la leyenda!</button>
+      <button onclick="changeVideo(this, 235, 'playerSaga8')">Episodio 235<br>¡El regreso de los héroes!</button>
+      <button onclick="changeVideo(this, 236, 'playerSaga8')">Episodio 236<br>¡El último enfrentamiento!</button>
+      <button onclick="changeVideo(this, 237, 'playerSaga8')">Episodio 237<br>¡El destino de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 238, 'playerSaga8')">Episodio 238<br>¡El fin de la historia!</button>
+      <button onclick="changeVideo(this, 239, 'playerSaga8')">Episodio 239<br>¡El legado de Goku!</button>
+      <button onclick="changeVideo(this, 240, 'playerSaga8')">Episodio 240<br>¡El inicio de una nueva era!</button>
+      <button onclick="changeVideo(this, 241, 'playerSaga8')">Episodio 241<br>¡El regreso de la esperanza!</button>
+      <button onclick="changeVideo(this, 242, 'playerSaga8')">Episodio 242<br>¡El último combate!</button>
+      <button onclick="changeVideo(this, 243, 'playerSaga8')">Episodio 243<br>¡El fin de una era!</button>
+      <button onclick="changeVideo(this, 244, 'playerSaga8')">Episodio 244<br>¡El inicio de una nueva aventura!</button>
+      <button onclick="changeVideo(this, 245, 'playerSaga8')">Episodio 245<br>¡El regreso de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 246, 'playerSaga8')">Episodio 246<br>¡La batalla definitiva!</button>
+      <button onclick="changeVideo(this, 247, 'playerSaga8')">Episodio 247<br>¡El poder de la amistad!</button>
+      <button onclick="changeVideo(this, 248, 'playerSaga8')">Episodio 248<br>¡El renacer de la esperanza!</button>
+      <button onclick="changeVideo(this, 249, 'playerSaga8')">Episodio 249<br>¡El último desafío!</button>
+      <button onclick="changeVideo(this, 250, 'playerSaga8')">Episodio 250<br>¡El sacrificio final!</button>
+      <button onclick="changeVideo(this, 251, 'playerSaga8')">Episodio 251<br>¡El regreso de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 252, 'playerSaga8')">Episodio 252<br>¡La batalla definitiva!</button>
+      <button onclick="changeVideo(this, 253, 'playerSaga8')">Episodio 253<br>¡El poder de la amistad!</button>
+      <button onclick="changeVideo(this, 254, 'playerSaga8')">Episodio 254<br>¡El renacer de la esperanza!</button>
+      <button onclick="changeVideo(this, 255, 'playerSaga8')">Episodio 255<br>¡El último desafío!</button>
+      <button onclick="changeVideo(this, 256, 'playerSaga8')">Episodio 256<br>¡El sacrificio final!</button>
+      <button onclick="changeVideo(this, 257, 'playerSaga8')">Episodio 257<br>¡El destino de los guerreros!</button>
+      <button onclick="changeVideo(this, 258, 'playerSaga8')">Episodio 258<br>¡El fin de la batalla!</button>
+      <button onclick="changeVideo(this, 259, 'playerSaga8')">Episodio 259<br>¡El regreso de la paz!</button>
+      <button onclick="changeVideo(this, 260, 'playerSaga8')">Episodio 260<br>¡El nuevo comienzo!</button>
+      <button onclick="changeVideo(this, 261, 'playerSaga8')">Episodio 261<br>¡El futuro de la humanidad!</button>
+      <button onclick="changeVideo(this, 262, 'playerSaga8')">Episodio 262<br>¡El último adiós!</button>
+      <button onclick="changeVideo(this, 263, 'playerSaga8')">Episodio 263<br>¡El renacer de la leyenda!</button>
+      <button onclick="changeVideo(this, 264, 'playerSaga8')">Episodio 264<br>¡El regreso de los héroes!</button>
+      <button onclick="changeVideo(this, 265, 'playerSaga8')">Episodio 265<br>¡El último enfrentamiento!</button>
+      <button onclick="changeVideo(this, 266, 'playerSaga8')">Episodio 266<br>¡El destino de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 267, 'playerSaga8')">Episodio 267<br>¡El fin de la historia!</button>
+      <button onclick="changeVideo(this, 268, 'playerSaga8')">Episodio 268<br>¡El legado de Goku!</button>
+      <button onclick="changeVideo(this, 269, 'playerSaga8')">Episodio 269<br>¡El inicio de una nueva era!</button>
+      <button onclick="changeVideo(this, 270, 'playerSaga8')">Episodio 270<br>¡El regreso de la esperanza!</button>
+      <button onclick="changeVideo(this, 271, 'playerSaga8')">Episodio 271<br>¡El último combate!</button>
+      <button onclick="changeVideo(this, 272, 'playerSaga8')">Episodio 272<br>¡El fin de una era!</button>
+      <button onclick="changeVideo(this, 273, 'playerSaga8')">Episodio 273<br>¡El inicio de una nueva aventura!</button>
+      <button onclick="changeVideo(this, 274, 'playerSaga8')">Episodio 274<br>¡El regreso de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 275, 'playerSaga8')">Episodio 275<br>¡La batalla definitiva!</button>
+      <button onclick="changeVideo(this, 276, 'playerSaga8')">Episodio 276<br>¡El poder de la amistad!</button>
+      <button onclick="changeVideo(this, 277, 'playerSaga8')">Episodio 277<br>¡El renacer de la esperanza!</button>
+      <button onclick="changeVideo(this, 278, 'playerSaga8')">Episodio 278<br>¡El último desafío!</button>
+      <button onclick="changeVideo(this, 279, 'playerSaga8')">Episodio 279<br>¡El sacrificio final!</button>
+      <button onclick="changeVideo(this, 280, 'playerSaga8')">Episodio 280<br>¡El destino de los guerreros!</button>
+      <button onclick="changeVideo(this, 281, 'playerSaga8')">Episodio 281<br>¡El fin de la batalla!</button>
+      <button onclick="changeVideo(this, 282, 'playerSaga8')">Episodio 282<br>¡El regreso de la paz!</button>
+      <button onclick="changeVideo(this, 283, 'playerSaga8')">Episodio 283<br>¡El nuevo comienzo!</button>
+      <button onclick="changeVideo(this, 284, 'playerSaga8')">Episodio 284<br>¡El futuro de la humanidad!</button>
+      <button onclick="changeVideo(this, 285, 'playerSaga8')">Episodio 285<br>¡El último adiós!</button>
+      <button onclick="changeVideo(this, 286, 'playerSaga8')">Episodio 286<br>¡El renacer de la leyenda!</button>
+      <button onclick="changeVideo(this, 287, 'playerSaga8')">Episodio 287<br>¡El regreso de los héroes!</button>
+      <button onclick="changeVideo(this, 288, 'playerSaga8')">Episodio 288<br>¡El último enfrentamiento!</button>
+      <button onclick="changeVideo(this, 289, 'playerSaga8')">Episodio 289<br>¡El destino de los guerreros Z!</button>
+      <button onclick="changeVideo(this, 290, 'playerSaga8')">Episodio 290<br>¡El fin de la historia!</button>
+      <button onclick="changeVideo(this, 291, 'playerSaga8')">Episodio 291<br>¡El legado de Goku!</button>
+    </div>
+  </div>
+
+
+
+  <script>
+    const videos = {
+      1: {    iframeSrc: "https://mega.nz/embed/ooEixDDb#LRGBTp19GGltIqQN2ibj8vUXmTQPvkrpOE9ol2Ag_M8"  },
+  2: {    iframeSrc: "https://mega.nz/embed/8JkSTYpR#PO7e2Bb2hjhM7ZDyZwlwDeUuVW6WYFMEfWrbwcPZAF4"  },
+  3: {    iframeSrc: "https://mega.nz/embed/xVtiAKAb#GImL2fhXMKRzTGjoUCH7aR8Gyd8h1_l0iEeRltBdNP0"  },
+  4: {    iframeSrc: "https://mega.nz/embed/8RtQyC5A#GlxwMtsdvCloCzkksxiMFnn29q7IjkbEARk1i6uOeIw"  },
+  5: {    iframeSrc: "https://mega.nz/embed/YYs0Aa7R#ui_fRpcPL2oT_EyhLirYGkW-WqM7tJFPRE5S7Ics6yo"  },
+  6: { iframeSrc: "https://mega.nz/embed/dN8WkazB#O8naAPpQJnWMmtXmY3kT_rqKq4T7h9QZxOPolWt0y_s" },
+  7: { iframeSrc: "https://mega.nz/embed/tM0A0SBb#x0Zy53EFuDWHQTmwW70FjaiMMaXlW3w_gp2R224ZB9Y" },
+  8: { iframeSrc: "https://mega.nz/embed/o5NCzTJD#KzUkf9Kzfw_gvjIb4R0N-k__L3tLBpT4RhZRPJcRLik" },
+  9: { iframeSrc: "https://mega.nz/embed/GuInxK4Z#qHA4imhjVjBMyGqaxBUnLDmwTyQhAvY9SDG38PEl1UA" },
+  10: { iframeSrc: "https://mega.nz/embed/lE1wkIJK#zWWqng4hnH1Y4HxjFOUmPEYzxqwSzwu44GQjGveTse4" },
+  11: { iframeSrc: "https://mega.nz/embed/gYsyiIYR#_xdoxdgQ5ZCFWpdFSOB128FzlIInXnQXcl40YQuB3eg" },
+  12: { iframeSrc: "https://mega.nz/embed/xY8imQDa#f9wnEPwORnhGs-kGKvEeagZisPWQ-vcbLZCkQXqON6k" },
+  13: { iframeSrc: "https://mega.nz/embed/B1dgWJSJ#cx39PDc3WGTsVXHo2wPHwW6Nt2ixro3QyCcSepPH9Ps" },
+  14: { iframeSrc: "https://mega.nz/embed/sF0A0STR#sY3vrjlUOmpnOk1lv7EIaPPbO5OFz2Ds0IC6xvY5fWU" },
+  15: { iframeSrc: "https://mega.nz/embed/AU8GTAbJ#FTprTDyb5bgQLrFWFAP6WIAzZqpo3kzdCO988emKvTU" },
+  16: { iframeSrc: "https://mega.nz/embed/cVtGSKZR#PqhZqST9q3wSerw6MoQLHT-SgREfokVvR3ZEnDmemYc" },
+  17: { iframeSrc: "https://mega.nz/embed/8YlExarC#MI2qmMqBw0FotKBR-JfY_W3Yn_9_AadubUX3jX-ojdk" },
+  18: { iframeSrc: "https://mega.nz/embed/QRsWgSxC#NjVNrrqi8xDj4xZakppYi4FedTvitJJF3sGLaL3H8dw" },
+  19: { iframeSrc: "https://mega.nz/embed/ohc1nZLZ#T_o6KDqU2Yz2OnuSgQFkk0iwudpVH-Y1Z5wiQJtDDGQ" },
+  20: { iframeSrc: "https://mega.nz/embed/1AsWhCqK#8R1TYpFRAwi2do7ETyEaaFHq0N5-giRW0xoXjKoo604" },
+  21: { iframeSrc: "https://mega.nz/embed/lVkUjapB#ScsT3eLKuR7kvDuwVYZpag3G3770cdHtLGszpG6cmEQ" },
+  22: { iframeSrc: "https://mega.nz/embed/gUlQ0KaQ#3q8vRco9KDH5NLSfbS9WIq0vGSUMELzrNuhZhQjfIX4" },
+  23: { iframeSrc: "https://mega.nz/embed/gB8EQQZI#5HC6vrnIUlOBVG6KKGUd77f9BJfJl4Zuoqp1_leufIE" },
+  24: { iframeSrc: "https://mega.nz/embed/1Is2HSgb#NLVQ4ngiHSwHBzZGyhOrHUcXwC3SAKaMXO48WpiUIGA" },
+  25: { iframeSrc: "https://mega.nz/embed/tEkS0KqJ#UgYwzZXyuXVHMAfeIjH0Kk-ZPhTb1gk3oSTLz9D_c9U" },
+  26: { iframeSrc: "https://mega.nz/embed/hMtgDCjQ#-MhfS4XdHWKGEoOnGICNu84Dq5VYsBMJCSRzW05MVhA" },
+  27: { iframeSrc: "https://mega.nz/embed/4IkUxC4C#CTWseCuahHFccRHOUbUswTLgeu4v5JmpMywBZ8Wk9KI" },
+  28: { iframeSrc: "https://mega.nz/embed/Md1ymQoT#kf3EC5dnEV9rgRAmRXXeuigNQcwonFo-dI0nGn0AXH4" },
+  29: { iframeSrc: "https://mega.nz/embed/AJsiDYRS#BIBcPJtVEkJwN6l_tGcFDJCx3FzdXymi39TEK8QmlNo" },
+  30: { iframeSrc: "https://mega.nz/embed/0FtimQjY#ZqnI_xEiHxfEkOe1e_cG53fZbw5Chej62feSG2k2-0I" },
+  31: { iframeSrc: "https://mega.nz/embed/dQkQlADb#J4y4_l9_AyV-vbFiCqoEL-AjiqHxoF9FuFepNXd5Gq8" },
+  32: { iframeSrc: "https://mega.nz/embed/1QsgGaJR#tlFnejhoDz7PSkT1SYMw0Sv1vhoNh0R23m4WP2Wwvzk" },
+  33: { iframeSrc: "https://mega.nz/embed/lN903CDK#7cuEMmtEPg8rhYfMQ4kDqaAT6IoPGdEkWSIUdc4WatA" },
+  34: { iframeSrc: "https://mega.nz/embed/xZky2SbZ#wQCZulUiF5BzJxA0jgtG2vzUzawUJTO6_ke9-PgoEWU" },
+  35: { iframeSrc: "https://mega.nz/embed/wJtyjQbC#eVXG06JG04v6dj4xK26ppl8IvWP05oN1MCWcsRdIQZM" },
+  36: { iframeSrc: "https://mega.nz/embed/lV0w1S7A#q934FeED_ScbF_DfWJD3HO1A6d8VoseFSswz8wfGfYA" },
+  37: { iframeSrc: "https://mega.nz/embed/YJkgwSwK#DtX2FnDXxHOSLper68XgYeHkVHP-205CrODoRq6KVfQ" },
+  38: { iframeSrc: "https://mega.nz/embed/JM9AUS4R#R71y8v-iCrs_-SkjVdqEZSrpWjhuPJbExuSZVaBL-ZY" },
+  39: { iframeSrc: "https://mega.nz/embed/xcsiFYJK#xB5uat9taN6xiBbbGZnrIX7yc9ltmNQG3-NoG1OYfHY" },
+  40: { iframeSrc: "https://mega.nz/embed/EQlURIpL#jCzmloPqDofOmWM2D3ZymKArn4O8pG3txSuXCbeDMB8" },
+  41: { iframeSrc: "https://mega.nz/embed/B5lW1JQA#NLeM05B8K5vjQMLJ7SkIBl7F5-PRSMZfvVhzKlbQgEY" },
+  42: { iframeSrc: "https://mega.nz/embed/tU82WQaa#fKqNfXzeOEWhjdr6wq2yvSKRnp5_ns5d0kLUrPAFTTA" },
+  43: { iframeSrc: "https://mega.nz/embed/VQ1WUKCR#8VtvXgGYVNZcLInSG-LVhyCTTRMi3gFUy9sI5OGROwc" },
+  44: { iframeSrc: "https://mega.nz/embed/1J1yzQJC#ZiuoyDmbDmD7Yitj3EY0LIRtE6JuhGXNDHL4OA6aJ24" },
+  45: { iframeSrc: "https://mega.nz/embed/8QlkgCpJ#ZWctU9vHdfP71nSapkK31mBfCgj8HitFfwVAJt23l_I" },
+  46: { iframeSrc: "https://mega.nz/embed/BJswyQzD#6-JRWdaRSm5fhDvSShA5EDZ8K8VB_T4-hBDEy1zA0pk" },
+  47: { iframeSrc: "https://mega.nz/embed/Rc1UXaiS#rcZri4dETT78mhXstsT8o0JZDddk_6cJIbnHDf8WqFw" },
+  48: { iframeSrc: "https://mega.nz/embed/Rds0UIiT#632pEQrCJrY3dLG5Ws-Ugt4Yb0YlJqqZUBhcvkCsogQ" },
+  49: { iframeSrc: "https://mega.nz/embed/QI1GFYhB#sEfZW0KDaCaxQ9M-c4x4RsxAXKxiJMasMS0lN1tqp_Q" },
+  50: { iframeSrc: "https://mega.nz/embed/5HEinAIY#bpqLk9AjktXJowU7o1MqP7a7i5_LWaiJI82nVJTV2d4" },
+  51: { iframeSrc: "https://mega.nz/embed/VdsABaKR#92U12FGA9jJiaK-gC088M3-pl8sTN-gB7ZvZjyuTsmc" },
+  52: { iframeSrc: "https://mega.nz/embed/MNkk1CCD#gPbaE5OIm0SgzGvjz_E6_Qqo2YLqujV0_WM3VaZCgIs" },
+  53: { iframeSrc: "https://mega.nz/embed/JAsAwCLL#EYGjP9NEZVT_XNgckSzMbNjb5Eh_AkdRv6sv764lW64" },
+  54: { iframeSrc: "https://mega.nz/embed/xI8m2KwA#KRJzXKFFxncySEgDcwehGmz12GGJzlNrOmpoqYJHcTU" },
+  55: { iframeSrc: "https://mega.nz/embed/YY9AXIqB#a2ykXNMSIWUzJcAUzPnP_KitE1JYOYcXvG94oCs756g" },
+  56: { iframeSrc: "https://mega.nz/embed/4Q8wSCIL#34b1VBR2oqcQ1OZqjQltqKPzIEYLN3zHhhgYyGwZo4E" },
+  57: { iframeSrc: "https://mega.nz/embed/dBkijCwJ#lxcy_00b-kxK0Xt5Y0L0dgKMLaxo1ORfIYEjav7KITM" },
+  58: { iframeSrc: "https://mega.nz/embed/RI0k0C4A#JUKvTd4WnxhX36SZfVzx635FqOdWtA02_-B1tE4CJ94" },
+  59: { iframeSrc: "https://mega.nz/embed/QJ8CwAKD#6xGidkpmy3EFN_ebcTOVDnL7kEU6-d6XaSpH4TKys4w" },
+  60: { iframeSrc: "https://mega.nz/embed/gR9mwYoK#tWOOP5eR4ezw7abhk11f3wxNsKN_ytoR2NdAC5-_JZY" },
+  61: { iframeSrc: "https://mega.nz/embed/dQkwjYrb#E91hqUZupgKdGyRWcuBMoKOyLTZs2luNm95snmXDTh8" },
+  62: { iframeSrc: "https://mega.nz/embed/AUtCXa4T#c-KYniXq_C053xRJnma-u1DAP3-BMJ35p4oZnUgu0H4" },
+  63: { iframeSrc: "https://mega.nz/embed/EdlUTCDa#3HVbpSg2sF3ssp-08UW81M9KxHsqxEcE6dV9czakg3Q" },
+  64: { iframeSrc: "https://mega.nz/embed/RMsEEQqJ#pwsmf9TbxKJx-9eOgz7WbSrmmEBXakgfMOOcG7PxN0g" },
+  65: { iframeSrc: "https://mega.nz/embed/tR9wXI4A#sRm0N3KHUoKiw1rIsFThIfPtlKq51gt7hkYy4Lwi7xU" },
+  66: { iframeSrc: "https://mega.nz/embed/ZAs2wKAR#HSH6X2JvrxhZ_ez5CfTN6UMqWGUcPBRhitksLTFGyHM" },
+  67: { iframeSrc: "https://mega.nz/embed/4EtmxCCb#fiRrNCgsgJm79TXMyvD-X06_51H-iN4NPbq56yx4gtk" },
+  68: { iframeSrc: "https://mega.nz/embed/oFl0RSTA#u7qIXtAJzHA1v7_Du-HfIosknZ3NZuCsmVtnZoOmmBQ" },
+  69: { iframeSrc: "https://mega.nz/embed/YQtgVSYZ#F5njx32a3mnSI-yEqaBqJb57n4duSDP3qhJ69rcbxZo" },
+  70: { iframeSrc: "https://mega.nz/embed/xckAnQ7Q#BPWbp2HhW07vUYFWtOMzoBo-blRfBVm9udy-v0GtMac" },
+  71: { iframeSrc: "https://mega.nz/embed/cNsi3YBL#DXpF9HTCu569I4stBUd28E21XVcbI-cqj2rIf9qWr5E" },
+  72: { iframeSrc: "https://mega.nz/embed/JLFhmarJ#oCMwqfHv--_b_h36KT7RSKxI2eYLYL3SwZcO8hNLsSQ" },
+  73: { iframeSrc: "https://mega.nz/embed/MsVnjTJB#KFPszdcSdC2ny-kVt_piN30xwe8qwMzgfjEpjetrNuU" },
+  74: { iframeSrc: "https://mega.nz/embed/sMsC2Qpa#ukXYRlnCE256nLR9QmCiY5ahnWs6REGGuEataiQnaOc" },
+  75: { iframeSrc: "https://mega.nz/embed/cd10AagK#9aHQ-gcsOg4-OlqK2CEnsRm8CmtJAotZ10If8xfZKfM" },
+  76: { iframeSrc: "https://mega.nz/embed/II8gRSpb#AKofm3a9QCzFMGpY1KRvQcf7RHXVigVlxFYxaNhj09g" },
+  77: { iframeSrc: "https://mega.nz/embed/VlEUCaBR#8yqW5qSen25lmA-ldJcAFWkNo7hvXHTyNw2t3KjmbOk" },
+  78: { iframeSrc: "https://mega.nz/embed/FdtkkYwA#dL9Q9YXl6DOPClbrzIWGzSsveLFmDi5myvCRGwLDVak" },
+  79: { iframeSrc: "https://mega.nz/embed/cc9EmYiB#cOVfAzVq5dG9dZCzn2Jwct87-EkKC9uMMCeCCklVtVQ" },
+  80: { iframeSrc: "https://mega.nz/embed/8Is2iYrR#xzY8kLG5VuQ9hX60V8Ar9MKR4uc0h-asONsfUnZb1uQ" },
+  81: { iframeSrc: "https://mega.nz/embed/kR8yCKKI#kOB_uwjTVO7IltqqB0UAhS1a0YoPvwx6bgvUR6_dmCw" },
+  82: { iframeSrc: "https://mega.nz/embed/FRlmHAya#Md7AZz4PPIz576AB6eLEK204HUrYo6ZM8DUc5Rbpv1Y" },
+  83: { iframeSrc: "https://mega.nz/embed/vq4jlSSa#MzJhtqapKLFVbLxmFzyqV5-G1Chd-Zj51hSrGqJmOpo" },
+  84: { iframeSrc: "https://mega.nz/embed/8ItUmIbJ#yKvbHk9VBYo7eGjCJ81fmhxFvSoKHqPt4Fy-GPCQ-Ko" },
+  85: { iframeSrc: "https://mega.nz/embed/FRkSGZ7K#TlydJP9WG45-tk6UreGiEVx9EZ_f-2jJRUhZ4RU6diw" },
+  86: { iframeSrc: "https://mega.nz/embed/ZZsCAJ4B#1WQAriFF2XXro_kY-9vHnXHF3uy8Btf41yVFmAbadsQ" },
+  87: { iframeSrc: "https://mega.nz/embed/ZF8G3LIR#Eu8FvI-RcgTj41VdzzS8g_9eFP3NNeoSSK2V7_1_mAw" },
+  88: { iframeSrc: "https://mega.nz/embed/ZV0W2TpL#UjuizvFv-KbYcoLFsXIc69rueDteRPMxIO5pNOXM6mg" },
+  89: { iframeSrc: "https://mega.nz/embed/dN1gDRob#bJJuqjz6PVpoEmOlcgEGMiMXaQkninheDObFQiK8DxI" },
+  90: { iframeSrc: "https://mega.nz/embed/Zd1ExDya#Ylibf4KHNFfSpFeS2JoqV2mxt031o4TmIzqNizVtP80" },
+  91: { iframeSrc: "https://mega.nz/embed/lQt0FBBC#S1B05g_o4avp1JIf-A76K6E4xSL05PXIVP8T9rStLig" },
+  92: { iframeSrc: "https://mega.nz/embed/VV12hTqC#ov3MocJB5HctrdbgJ-5axArxNr7LMmloDz5ZadGT0AM" },
+  93: { iframeSrc: "https://mega.nz/embed/1Q9ySDSQ#oNg5-qSlRvByYZBjb9s1WtJB4ymN6nnmuWfWW8ekHBM" },
+  94: { iframeSrc: "https://mega.nz/embed/ow0hBCZT#PCm2AS3htOKD-W1lljWJ6WKjtzvVGnOFfG9y9yqMMcE" },
+  95: { iframeSrc: "https://mega.nz/embed/E0EWSJbR#2_8hIYFSDTZ5tezLKHpIIk2RtJpxF5J1iDkILpZucPY" },
+  96: { iframeSrc: "https://mega.nz/embed/AkUyFDyR#BeYcjCM0JPDWRAbpBICuD0QxCcin4IJ2fOyBNNvg280" },
+  97: { iframeSrc: "https://mega.nz/embed/ltkDQK7R#5cHMK3qCstdnoRJAVS-TYR1MRI-xZ2skWTR5cqcS7KM" },
+  98: { iframeSrc: "https://mega.nz/embed/p0dwHQxb#XiPMdIgRs458fJURO-fnfLKShUvmgcWCbNBZk_HtUiw" },
+  99: { iframeSrc: "https://mega.nz/embed/h8UVSYpZ#pUfiT2JCIGJCeIHG14Xrp_9TvpLqsc8ozTyEvGsA720" },
+  100: { iframeSrc: "https://mega.nz/embed/Ews3SQSL#8Nfw1y-SVN-FHxneC3-ep3UrgZ5tj9JTUQ4qhukkF7g" },
+  101: { iframeSrc: "https://mega.nz/embed/AxsjkaqZ#rH39ME4fmFKo3y09rmw9-gF5ZamWS5bSECH7VO66-Ro" },
+  102: { iframeSrc: "https://mega.nz/embed/F5F3TCzT#CWLNrVISmxKew0T9uz6CRdFueJsxGpint4lXHsA1AhI" },
+  103: { iframeSrc: "https://mega.nz/embed/olNHkbRA#fO3OMwNL_lRGd2GSCj-mCUu_WeCNsfLoKGUhOv2RsFY" },
+  104: { iframeSrc: "https://mega.nz/embed/Vk8VXK7B#8tUJU0DcPimDFrCsmXHbBx9F6KjcSlJZi3ja38Yu4VY" },
+  105: { iframeSrc: "https://mega.nz/embed/4l1zASLY#JexGjHByhXvL4Kvp8vb4HBB4AS_3982bEMzc8jazc88" },
+  106: { iframeSrc: "https://mega.nz/embed/Vkkh0axT#wmT8oaD0NvyIdV49GoT9KuWGm_O_dQ_Em4eaJB6T-_U" },
+  107: { iframeSrc: "https://mega.nz/embed/94MnBSZD#aTgjnEyD4--aAbVPUAL9G-pAGhGpj2p78y6k6VP2ApY" },
+  108: { iframeSrc: "https://mega.nz/embed/zm5RBCJT#fLZURwrfY0V0qvhobHqbAPFQM70c12V3Z64wH08qv2M" },
+  109: { iframeSrc: "https://mega.nz/embed/t0sjgCRS#Yg2TFt2ENq3a3i7hEjMgNKS9_29Z4fQJ1cBKUifKZEY" },
+  110: { iframeSrc: "https://mega.nz/embed/Uxc1zB5K#o5X_zqVpYtM2yM4Nq_J8R_cEo3a37nb9ELdJwQvC6fo" },
+  111: { iframeSrc: "https://mega.nz/embed/YwknlSQD#FIDnhvk6KHAjM9guoEu_A99KBJM2D1v0l4CRZkooOu8" },
+  112: { iframeSrc: "https://mega.nz/embed/VPt1UQZR#tg6HZMNMb2TSY4_Ugf7-Bt5ooCtyRhQAq5I-BvTFB_U" },
+  113: { iframeSrc: "https://mega.nz/embed/w5dkTSoK#D_P0p_9ExoM99tGrsgWL0k3I-nib0NYAlBFCl1xSzyc" },
+  114: { iframeSrc: "https://mega.nz/embed/w4FgwaAb#_VTxC70G-bai-Y9qz3ma57-5tYLfVFLE1dOYNuHG4mg" },
+  115: { iframeSrc: "https://mega.nz/embed/p00mGToY#SaqJ72JqxReMNnc0f2vQ4hquhf8hV5tIYDfvaV_fqEU" },
+  116: { iframeSrc: "https://mega.nz/embed/gw92xQYB#Y15PHRH8ctUo7z9B1Hzp0S-o4C34u7Jg5VDpInZg-K0" },
+  117: { iframeSrc: "https://mega.nz/embed/0O0UFb7Y#dj-8IcwQweavTIk4jX4nv1bahv9JrPknaGQx2-14MG4" },
+  118: { iframeSrc: "https://mega.nz/embed/FoVTFTZb#otcoPsEQ4R2NnNtzabKnBin7wxMgGNa_EHVzWCKAMm8" },
+  119: { iframeSrc: "https://mega.nz/embed/7DZxQITS#ABk53gB_TGDFqUE3SJyLPABIRKUALLSHxdzUGUhGI84" },
+  120: { iframeSrc: "https://mega.nz/embed/Gi5EHaAB#-xLooBsxfnSUSkftjTeX9qdzu0KNE5GNNP1utYxMciE" },
+  121: { iframeSrc: "https://mega.nz/embed/CPpxwDxD#AHxpdgDqaegW29lMDeaZ9QDF220Au-HpFttXsQ1Mat0" },
+  122: { iframeSrc: "https://mega.nz/embed/TnoWkCyD#kDN0M3b47nCa0ZyiLtij7Bzw5L3WnKp5yPqP6sb6bW8" },
+  123: { iframeSrc: "https://mega.nz/embed/GTJUxRCT#AIik0AB0xY1kLtfIymptkAA2ZY4AK4vEZDNJYsr3ypQ" },
+  124: { iframeSrc: "https://mega.nz/embed/zKIW1Jyb#AIYg2gD4T7TyK2z1tcvVJgBdUDoAsKl08uAVFbWcGRM" },
+  125: { iframeSrc: "https://mega.nz/embed/CCBVkCqJ#AEVt3QAYKPb4ofQZVwy-OQCf7r4Aoot3-AsxLlehCeQ" },
+  126: { iframeSrc: "https://mega.nz/embed/zWBAjBSS#ADcRKABn_k3eD8j6hyZ6pACUWsoAJEhs3pZgzYen7c0" },
+  127: { iframeSrc: "https://mega.nz/embed/WPAAiYLY#ABNp-QAAl_7vlTDuBRsQ5gDmsBwA0RU678H-5QXLMvQ" },
+  128: { iframeSrc: "https://mega.nz/embed/abZS1D7b#ABxbyAD0u7MUCmqiU5MItACgEJoACH2aFMIB6lMPoK8" },
+  129: { iframeSrc: "https://mega.nz/embed/bLowgDDZ#AOsgQwDapDuzv57T9ah69wBypWcAscoTs5wIDfVIVAE" },
+  130: { iframeSrc: "https://mega.nz/embed/mbYUCKYZ#AFM59wDivpqLA5aizTlg6ACWUBoAeCxYi7P5B82kI-A" },
+  131: { iframeSrc: "https://mega.nz/embed/rLo0WKDA#AHLZFgBUGSRJgpaxBcPNJgBn21MAqMf4STe60gVczIs" },
+  132: { iframeSrc: "https://mega.nz/embed/XDoF2SaQ#ANNZQwDyGFjdnpqi-s5VLQDamfQAadSK3Xff6_rHwUA" },
+  133: { iframeSrc: "https://mega.nz/embed/XCokVRKJ#ACJF5gAF5ZGaFSzdjBynbwCbLQwAvr00mo4wR4wrDqQ" },
+  134: { iframeSrc: "https://mega.nz/embed/jCZBmK5Z#ANojQQDVjyMxyF3l4sQnCwDUZt4AazHdMcxMEOKBDkc" },
+  135: { iframeSrc: "https://mega.nz/embed/LWAUWSqA#AGRaxwCpRZCZXNSKcana0QAdU0wAt1zimbSRZnHFBcg" },
+  136: { iframeSrc: "https://mega.nz/embed/aTQlWaCZ#ABQZ-wAbStiFLilUBBl4RwBD50oAYMXghSWg-gRzNZ4" },
+  137: { iframeSrc: "https://mega.nz/embed/OG5mUKDD#AI5C_gCDmjWF6QtolGgfvwDV0iYAzmOBhanJsZRI1cM" },
+  138: { iframeSrc: "https://mega.nz/embed/jCJmAZAa#AAogGgBuFiytttYjVq8pHwA8TwYAfjW-rSZZ41YwYvA" },
+  139: { iframeSrc: "https://mega.nz/embed/6egy3SzL#ADqU7QAiD8lezbEOroQrrgAaXUIAQhd-XguET666-y8" },
+  140: { iframeSrc: "https://mega.nz/embed/3foyRBzb#AH9NAwDqwN2GF5F2G-TEUQDLR_EANZ4WhrwathslaS8" },
+  141: { iframeSrc: "https://mega.nz/embed/HvoExCha#r76OVk6dUHKtqEdsUKo7TXZnz5sHih1qBAGrh-snrMA" },
+  142: { iframeSrc: "https://mega.nz/embed/gKk1BaSJ#MaaP2YQFTAJ3drE1F6Vagspa3VvH1t8vh3lDWSAVkAU" },
+  143: { iframeSrc: "https://mega.nz/embed/Qx9k0KaT#DFZf_ZJgAx37Fw84DCSnQWR9SLUpYbFZiuT4gaeBWNc" },
+  144: { iframeSrc: "https://mega.nz/embed/iKBRxAba#ANCliwDfCxqtGhJu3kO4tgD5e_wA7D9YrUpLld4jIug" },
+  145: { iframeSrc: "https://mega.nz/embed/94lQAYTL#WAjYAPaDwwlQh31f1OHmKHSxVVjQi0TyW1F5XRzpWPU" },
+  146: { iframeSrc: "https://mega.nz/embed/bWRhiAYS#AO-dkgCESDkha3whR1IZmQAr284AwE6hIUqAfEcuD08" },
+  147: { iframeSrc: "https://mega.nz/embed/fTwDTJLA#ALx4XQDGBJ78P3ToBftNJABeuMkAE69P_EvY0gWrI3A" },
+  148: { iframeSrc: "https://mega.nz/embed/nOYywQjb#ACGfwwCm3ulpoHOmjwtSFgByM2cAWrQmaWoprY8FPlE" },
+  149: { iframeSrc: "https://mega.nz/embed/jCwzwA6T#AFIKUAD6ST9Lr76kuu2aHQA3-ZYAR7a-S5BtdrrWMCA" },
+  150: { iframeSrc: "https://mega.nz/embed/nCAkEIqD#AHNq8QC1qZvkgjPT0i7UKQAr0vUAQvJM5P1OS9IYiyQ" },
+  151: { iframeSrc: "https://mega.nz/embed/rLIQwBrT#AKopGQCFwhvpRWhjwVSsBwCaTuQAHdN-6QSnosHeues" },
+  152: { iframeSrc: "https://mega.nz/embed/STwAjCKR#AGUFJABUU3Wdd3-U9_CrRAA3KPMAdwT7nYozJvck47o" },
+  153: { iframeSrc: "https://mega.nz/embed/TWRXUIwS#AI9tlgDNuwiqE2N_T4I3nACA3okA_TjCqsWIH0-b4uM" },
+  154: { iframeSrc: "https://mega.nz/embed/2eBnQJ7C#ANbgFgCegwEuPJQlmId-ZgAj808AaAQlLvQ_NphqG34" },
+  155: { iframeSrc: "https://mega.nz/embed/yPhDiaYY#AKZhOQAy2zRgHB60IwNqBwDX6twAkmWkYCRi4yPTdXs" },
+  156: { iframeSrc: "https://mega.nz/embed/OWZCUaLD#AK1SZQCo9qteGouIBM4ABQBFjCYAWiu9XmSFywTwry8" },
+  157: { iframeSrc: "https://mega.nz/embed/GCwnjQAK#AAsrcgC_gWG22dJMYEYGpwC_jqkAhrlftp_8HmDblpY" },
+  158: { iframeSrc: "https://mega.nz/embed/ExcTxRhD#xHCLwJA5dv3NZYmjI4vLx311pNrtp0nBOq6DRUaVm8k" },
+  159: { iframeSrc: "https://mega.nz/embed/SbggGYzb#AJyKiQBR-2hEUIgbQn49WQAyk8oAT8S9RJESnUI4lLk" },
+  160: { iframeSrc: "https://mega.nz/embed/jXBwTSpS#AD_cGQD3Z9PRuoi7JwITZABdSkAAMOJG0ZfqZieuuhU" },
+  161: { iframeSrc: "https://mega.nz/embed/Ao1RgARQ#EEH4MmFnlfQsBTZ7s34XCQhXQSmgb6ITgeBD4umbzG4" },
+  162: { iframeSrc: "https://mega.nz/embed/rXInUCiB#AGrOnwAT94VTR1KUj-zA6gBY4O8AqBWFU1ITVo_yhos" },
+  163: { iframeSrc: "https://mega.nz/embed/DHwzHIyR#AKMsuQBVbkHMn3StIderIwA78lAAIhEmzPD-0CEILZA" },
+  164: { iframeSrc: "https://mega.nz/embed/XL4SHBwB#AC7ODQDtlGfL2cYSYnKzZwBl5uYATob4y9GtJGJBrSo" },
+  165: { iframeSrc: "https://mega.nz/embed/Z5cTlaxY#p7eFInTkQSFZZVm9bwrcG74U4RVpcI5rfrKuVbnRW8o" },
+  166: { iframeSrc: "https://mega.nz/embed/rfA23DIC#AM2LZQBrrg_VCyjEG8ZjqQCD2poAy4UW1TH73xs7ELk" },
+  167: { iframeSrc: "https://mega.nz/embed/XegHwLzT#ABzBogCyMTGNpAf13BDK5QD98p4AlieCjTu7SdzXAv8" },
+  168: { iframeSrc: "https://mega.nz/embed/2OBHXbqa#AOKMQACM9raUnOs_RzgrSQBwgDgAYA0_lBETSEdOS5I" },
+  169: { iframeSrc: "https://mega.nz/embed/2DxUwagS#ADhIewDPCAO-5usCMx4JAwB7MhMAfbHTvpicTDO1dCI" },
+  170: { iframeSrc: "https://mega.nz/embed/rCY0EQgJ#AFw8mgCSP5Q7726NSy7lWQBjXtwAIdgAO8NbW0uN1Qk" },
+  171: { iframeSrc: "https://mega.nz/embed/jTQEhYzZ#AKeQdgCviF8JbBU3lH8IhABLYWIAioZnCYEEGJRLBaA" },
+  172: { iframeSrc: "https://mega.nz/embed/3SBn0RCQ#ABMf7gCiaQWIp-5ohW3WPQB-cfAAfksXiH9EhIXUw20" },
+  173: { iframeSrc: "https://mega.nz/embed/SGQmkYiZ#AOwubgCp0kKAnAJHVd7lcwAcwisA-XG2gOhAv1WrUlA" },
+  174: { iframeSrc: "https://mega.nz/embed/Yh9GjAiZ#i3yDbQWzFtpwOLRa6U8eLF9j9RXxLrfCSoHEWkkcwWU" },
+  175: { iframeSrc: "https://mega.nz/embed/PKQxwLRI#AKRUVwDIn432z1kWCKK3NQBGO9YAuCBO9sjn0wh4yaY" },
+  176: { iframeSrc: "https://mega.nz/embed/jWpmmKgL#AD_cOwAEp94h8JdoESs62QC86YkA96_dIfa_ahEVGxk" },
+  177: { iframeSrc: "https://mega.nz/embed/2WoyXDrb#ALixegBSE8juVfpXzDDb0gCy1XsAfCbg7sLEgcxQnBw" },
+  178: { iframeSrc: "https://mega.nz/embed/WCxhAYxT#AFDf7ABbtiU6CMyGt8nFUwDmW-QActYZOvO0ErdzcBs" },
+  179: { iframeSrc: "https://mega.nz/embed/3PhljLwZ#ABTlzABug9mQ-rYe3sN_pwCtbB8AHb64kPVGN94I_Fo" },
+  180: { iframeSrc: "https://mega.nz/embed/GCBgWKpT#AKU8UQDpe6v_Pv6rMYLETAA29cgAOYKw_-BSazH1oiQ" },
+  181: { iframeSrc: "https://mega.nz/embed/7TIA0JAL#ABHqBwANZhIpFmF-YhlzMADRcBQA7zk7KdRLNmKK7Dw" },
+  182: { iframeSrc: "https://mega.nz/embed/qOwSzYyA#AELCwAAwocgbz2ot_Mf2_wB3cMEAwJBOG-mFpfyckrE" },
+  183: { iframeSrc: "https://mega.nz/embed/jGJh1KzZ#ALZMeABPQkHoJBIC9SIongBToy0ABj_U6Eb7_PWPObg" },
+  184: { iframeSrc: "https://mega.nz/embed/iTxUVRRY#ANcVIwA01VHUTnBojDaYYQCJ8EgAThLG1KxXy4zEzYo" },
+  185: { iframeSrc: "https://mega.nz/embed/yGYwwDoQ#AOYvHgCCl38E2Uo6zJ6keAA5gdoA7B9gBKf6Wsyi0m0" },
+  186: { iframeSrc: "https://mega.nz/embed/Kbh1yBTb#AJ7w4gAlm8C1stiFHr8fMQDgCm0AaiFwtTrmiR71lME" },
+  187: { iframeSrc: "https://mega.nz/embed/2rgXSCiT#dQmqX0fRLTT_jLo2TEV0xDKxjZDNPMuL8QnpisPj3sU" },
+  188: { iframeSrc: "https://mega.nz/embed/j2x1xKhS#Uw9DEPfn1qFZkA1evn1anfYw961AX4ywQx2uAbvZnMo" },
+  189: { iframeSrc: "https://mega.nz/embed/nXAkiITa#ALqR1ADZzDOo3tD1ugImygDokR0A5cCbqM49i7o6pTI" },
+  190: { iframeSrc: "https://mega.nz/embed/PHBREJwa#AMh9nQCtXZ6W9UTeatn2rwAjbEUAtyOsljAmR2rUYmQ" },
+  191: { iframeSrc: "https://mega.nz/embed/GCJHSS6T#ALtGcgBwQFCOsXUhYLqeZwC9lBcAi8crjpSTdmDMlGU" },
+  192: { iframeSrc: "https://mega.nz/embed/rfZkDbyQ#APEi_gAZ-1F6qlNXc9oCIQDAOIIAZi2MemXy_nPTMfM" },
+  193: { iframeSrc: "https://mega.nz/embed/7fpyAYpC#AHm8EwAwFq-gsfDVKZ9O3QBctoMAbEJPoFjG2Cltax8" },
+  194: { iframeSrc: "https://mega.nz/embed/uL5VgLQL#ABaqUABIQMpa3a65NGwkogCS7G8AprWhWmczLTTKGJs" },
+  195: { iframeSrc: "https://mega.nz/embed/TbZ1RBZY#AKD-CgCbYTSt6kgE4ux_WwCklHkAPDecre8AHuJp5cU" },
+  196: { iframeSrc: "https://mega.nz/embed/PO5yXBgR#AIE3CACD4KnfPmtBB0o8BQCRfesAWNEp3x6rpQfz2Bg" },
+  197: { iframeSrc: "https://mega.nz/embed/7HxnVQQK#AOknRQD2iEPSE-pc-fLwRgA4xqMA8_zu0mMEUvmcwtE" },
+  198: { iframeSrc: "https://mega.nz/embed/zT5gAAaT#ALdLJgDygkiw-cvh-tpV3gA0uhMAm42XsI6UlPp93eE" },
+  199: { iframeSrc: "https://mega.nz/embed/zG4ySSbK#AHP-EAAjOG-6q1Z3UYcECgBV61MA0z2Cuox5jlFWuKk" },
+  200: { iframeSrc: "https://mega.nz/embed/6Pp2HIqR#ABlmiADQKaFhTZfgbqoQFwBelyEAgYrCYR1KxG62OfY" },
+  201: { iframeSrc: "https://mega.nz/embed/ObxCmTYL#AGRw2wA2z18vDh7DXRUtuQDOOZQAv770L1fLUl1UZ9I" },
+  202: { iframeSrc: "https://mega.nz/embed/XKZwjIAZ#AP-JgwAMwc19OYfQTohlqADg2vYAHZc2fZpS5E41uTM" },
+  203: { iframeSrc: "https://mega.nz/embed/eGQR3QaT#AKncMACS8KbvZ-XSs7S-AAC8RnIAEsaa70XxKbNCltg" },
+  204: { iframeSrc: "https://mega.nz/embed/yewVyRoD#AFF5QQDGukYUPyHPwlxBDQCKgMIA4uDBFIzKBMJQ3e8" },
+  205: { iframeSrc: "https://mega.nz/embed/DWRU0A6A#AP269wDA1yd7zyKaK3rTKwAeXiQAeN_Je0VTuCuE3cE" },
+  206: { iframeSrc: "https://mega.nz/embed/yOJA1azI#ACa3kQAACFam7vmf0X49uAD5A2UAlSRHppQkUtGa9Pg" },
+  207: { iframeSrc: "https://mega.nz/embed/CPgFnT5a#ALSOzgAQdeEHZ_citn03HgB00vQA0lvVB_9mQbacBnM" },
+  208: { iframeSrc: "https://mega.nz/embed/ffYAlJ6T#AKDAvAAljvEGAwOIeZd-vwA1U9wAqm-mBo8D43nX2zs" },
+  209: { iframeSrc: "https://mega.nz/embed/qahAkZhb#AJYVRADOXS_Ta8oX34AfCwDFI5sAHdsM09stdN8Oc3Q" },
+  210: { iframeSrc: "https://mega.nz/embed/LOJAwT7R#AF2GjABlW4c8zvBG3v_4kgCIzHEAEJbRPNWUQt48BfU" },
+  211: { iframeSrc: "https://mega.nz/embed/CCA3UAJT#AExbRAD661sS2y_QJohy-wBU5W8AUP10Ei9mmCa51Gw" },
+  212: { iframeSrc: "https://mega.nz/embed/WWgUlb6b#AMI6zAAki3upicsxs86oLQCkbRwAc5WVqcYvebMoVhM" },
+  213: { iframeSrc: "https://mega.nz/embed/LDx0QKYS#AJWl9gCdbAkvkkIuDu5z1wCmmMEAgiCxLzW96g5tHGc" },
+  214: { iframeSrc: "https://mega.nz/embed/PT5mAZoR#ABUc0gDG5X93nq-GrUKVgQDzSOUASySBd7Lxn606fx4" },
+  215: { iframeSrc: "https://mega.nz/embed/6SISFSpI#AApolgAi4RsjagN6YN6CUgDjp9kAnBlzIyzmXGDEmIg" },
+  216: { iframeSrc: "https://mega.nz/embed/DLpFBZjY#ADAPRAD5B4E9D9dyQoQMxwABI-8AwiPBPae_sEIC5MA" },
+  217: { iframeSrc: "https://mega.nz/embed/mexm3Y6L#AJwKSwDXkru-FA2sJ8rCqgC_v98AgJOtvhSAUydcYdg" },
+  218: { iframeSrc: "https://mega.nz/embed/TWxigBBb#AJnbFwAiSmK1gFgms89ksABOjGwAg_0Dtf4_VbOcF20" },
+  219: { iframeSrc: "https://mega.nz/embed/jbxmlKJC#AFSeSADOQ22SMDex_m7hgQDFMt0AzwSjksRQsf503Ig" },
+  220: { iframeSrc: "https://mega.nz/embed/uXwj1LrJ#APjiOgDEvmpFPzxBgsMjaAAZve4ARdRdRZJktYJWnxY" },
+  221: { iframeSrc: "https://mega.nz/embed/HHwGCJbS#AIiWOADHn1Ju3lsG262STQCpcM0AwBhjbivvRduqg5I" },
+  222: { iframeSrc: "https://mega.nz/embed/qSAhnbDS#AE18swAAtZuYee5sST_GYABrB1IAshJemFgGpEl1Jng" },
+  223: { iframeSrc: "https://mega.nz/embed/yaBgAKBY#AGPI4QD0t3bqguBbDIi31wA6XLkAqxXA6gujMwwYLr0" },
+  224: { iframeSrc: "https://mega.nz/embed/XKhVWBSQ#AHlc3AAR8QYVSbDqhXAI2QCzz74AQxYSFS_brYXhEjg" },
+  225: { iframeSrc: "https://mega.nz/embed/HX5DgRha#AMsnagAIbwvrPP4IKpMydwCCstcAaIXk68cdaSrmKmw" },
+  226: { iframeSrc: "https://mega.nz/embed/OCoygBSC#AE4n9wA2LxgPC1jnvxaKmwBoswoA5ilnD_hDEr-SGMA" },
+  227: { iframeSrc: "https://mega.nz/embed/vHYWXJrB#AMlEVgDJbkYnphj2VcDbBACeHloA4CQdJ9IVLFUTEWw" },
+  228: { iframeSrc: "https://mega.nz/embed/mTwiSbCY#AC5h6wAPLOqxYCCeMthATgDN68oAnrLbsZkB9zJIAyE" },
+  229: { iframeSrc: "https://mega.nz/embed/mSxR0aLa#ABxAGwBnyoq76bdEZCee4QBaIawAcUSFu9LugWQTHCc" },
+  230: { iframeSrc: "https://mega.nz/embed/DHgQFK4Z#AKX8wAB9xFqfDYE46IZXMgDMRCEA8I3Yn3XqpOgbKBI" },
+  231: { iframeSrc: "https://mega.nz/embed/STRyGJDQ#AOwiGwB7CFqo48S5OqQvpwC_sQgA3OeWqBiF1zpbXAs" },
+  232: { iframeSrc: "https://mega.nz/embed/6bB3UCiI#AOsOjAC2HSBEZk7sUXf6pgA5nWkAx9cSRFmfT1FVX7M" },
+  233: { iframeSrc: "https://mega.nz/embed/fXAFVQbB#AMHgDwBs9lvfoVHXR1xLfwArHK0ACIa231NUAkdFnQw" },
+  234: { iframeSrc: "https://mega.nz/embed/qGwjAYBJ#AFO68AAvodk5ucFOa18NZwAa_hQAT3-5OWKjaGuliPk" },
+  235: { iframeSrc: "https://mega.nz/embed/OHQS1LIb#AKlhrwA8cocV2oWVTA1P_gCMsjoA3Z_jFTbsm0yuzXg" },
+  236: { iframeSrc: "https://mega.nz/embed/HGxmhbYJ#AOL3DgAC1YVifhZgimApWgDiPlQAlPl5Yn84p4qfAzY" },
+  237: { iframeSrc: "https://mega.nz/embed/ySwFwIoa#AJoFjgBRhpMzrsYXPtS2rgAqtREAMgTMM3MROD6ubqc" },
+  238: { iframeSrc: "https://mega.nz/embed/bfoUAQ6Z#AN5_IACz3LV4Naswhs1-VwA_7N0AuB6MePVOhIZwcho" },
+  239: { iframeSrc: "https://mega.nz/embed/XSx3xZRA#AALOSgAiTAMYwFUeDwP4VQA9ztUAjSY3GKruhg-DZz8" },
+  240: { iframeSrc: "https://mega.nz/embed/nKRXXR4C#AEppPQBb044HlARzMOVnmwDSxiUAzfqXBwXX7TCewyU" },
+  241: { iframeSrc: "https://mega.nz/embed/MoNl1SYQ#QmoLTHsM96aJZWCFedPIknBM4y5iGDDLYzgV82X4fLI" },
+  242: { iframeSrc: "https://mega.nz/embed/nOwWiYZL#AK2rxgA3wXhHzLdYd3TJmABjM8QAdn-cR5ew-HdNQpc" },
+  243: { iframeSrc: "https://mega.nz/embed/KWgU3ZSZ#AGROgQAnAQghuU9_TRtIhQDgC6EA-IqNIeJY_02PjYs" },
+  244: { iframeSrc: "https://mega.nz/embed/KHZUwawa#ABzgnACfpekhdvGyjT4kVgA_8Q4AiIRPIVL36I35FAk" },
+  245: { iframeSrc: "https://mega.nz/embed/fbIBESgB#APunHQBAm7p3t6rA3_K7VADDtSAAI9W_dzNYkN_vCOQ" },
+  246: { iframeSrc: "https://mega.nz/embed/2DB0DSoD#AOWZIABm0tX_OL_7rd1iJwBmkzEAOqjM_25Sg62NGZw" },
+  247: { iframeSrc: "https://mega.nz/embed/fT4QGYrJ#ADMxFwBkubS2y8VhAYODWwAt36EA254rtopWHwHQOO4" },
+  248: { iframeSrc: "https://mega.nz/embed/2CpC3TqZ#AGCY6QCY9g3Zsg575gfgVQD8TcMA2xco2YG7geYbSBY" },
+  249: { iframeSrc: "https://mega.nz/embed/STgDxKwZ#AF9XawAqJSXVWoNwLuviyADpbNkA18t71XZ0Ji5_K2w" },
+  250: { iframeSrc: "https://mega.nz/embed/iPIXGbbS#AEFcSAA-H860TaKzzk0ciwCtid4AWN8otIbRqc5Yhls" },
+  251: { iframeSrc: "https://mega.nz/embed/zaBS0YhQ#AFHDBgBnofzV7pnrKCuTUQDbZfkAmmuF1XnLuyhR_oQ" },
+  252: { iframeSrc: "https://mega.nz/embed/OKI1gIoK#APUuKQBmUMXuTzbKNMAwrwAjYfkAHhII7uQ49DRZt6w" },
+  253: { iframeSrc: "https://mega.nz/embed/LXZ0nITL#AEyC8QDL7hkYiPzBAyS_qgBsatYAoRfzGL1VdQO2jro" },
+  254: { iframeSrc: "https://mega.nz/embed/HWQ0UZyY#AHraTwBkUvMtXKOcwQSCQAB3CX0AIXDyLYjRb8HiK_c" },
+  255: { iframeSrc: "https://mega.nz/embed/s18CEbwa#GDvjT2TSjsyvMoPMslCXUTd-C3Bjr9A_c0HGi5Z6-9I" },
+  256: { iframeSrc: "https://mega.nz/embed/newSEAJb#AFi2vwCSV746hqrp4DPRBgC7MjYABdobOrZq0OB2vCc" },
+  257: { iframeSrc: "https://mega.nz/embed/KfJgiDBa#AAPdoAC2XUYfaEkxIQl4XgDOyc4AH73JH5CSzSGEu98" },
+  258: { iframeSrc: "https://mega.nz/embed/afJFRBJR#AAatgQCAeYnAvGBGgVlSIwB-ZqcA8_83wC3cJYEeXFs" },
+  259: { iframeSrc: "https://mega.nz/embed/COoB3DyK#AIGDggDKng5oPf0bjir22AAKMkQAr8bxaFPCt44fDM4" },
+  260: { iframeSrc: "https://mega.nz/embed/TfpWmLgL#AHAJPQDBKfXBT6U2UI55CAByGRgAkDOuwbuNh1D1hYU" },
+  261: { iframeSrc: "https://mega.nz/embed/2GwGBaZQ#AMaSbABVFbcSUojyqZtONwAJA08Ad0dBEjXFrqnUKNU" },
+  262: { iframeSrc: "https://mega.nz/embed/Tbp3AbRK#AP_6HAATlaVl_npi-cFCkwB8G0EA2FZ7ZfK6bPmXge4" },
+  263: { iframeSrc: "https://mega.nz/embed/XK4CRDZa#APT9egCX21Q0tYLG0_C07gDKlyQArVStNP3nbdOy6XA" },
+  264: { iframeSrc: "https://mega.nz/embed/0tkFhIiT#1EZECw5i553jl_gZkCxhoWu84FqzHrQCi2xvsfrRAGs" },
+  265: { iframeSrc: "https://mega.nz/embed/KDYX0KIA#ALKO3AAIXX_w0kKRDcYxdABde-YATspK8GIF4Q2ZBj8" },
+  266: { iframeSrc: "https://mega.nz/embed/6moz2AhL#xPCgZkyp68a2L1fcxfxssBisdQjsk0di4xk576vbHNo" },
+  267: { iframeSrc: "https://mega.nz/embed/uyoFiAxK#s0DW4vFeL7YRnwgQ5ahUiGqvViEP9AA7re596whwSvg" },
+  268: { iframeSrc: "https://mega.nz/embed/quwG3Qbb#A1wCzQwrd26h4jccm2lAvRn7lOiXeDtIzUfXGbURQ6o" },
+  269: { iframeSrc: "https://mega.nz/embed/qyxgWCKQ#QV_iraFiL3UYez37cXLtqPN46H1rDQc-uMKm34WKQj0" },
+  270: { iframeSrc: "https://mega.nz/embed/rjgACKpS#pkgP-0UGK8z_Cwy3EmAUTjcilUGZrIbh5Vjzg2HU4rI" },
+  271: { iframeSrc: "https://mega.nz/embed/GjoShKiR#dmthyYPFlytfhLyMx_yjT6yypRR4XU_m7JPYcbrHkKA" },
+  272: { iframeSrc: "https://mega.nz/embed/rrhWnCRD#rg92316I4XthMba_okHBCX6KXj9r8vCfoHxA-kbKKxk" },
+  273: { iframeSrc: "https://mega.nz/embed/vngWkYhZ#VyoeQ4-6_hoKB65_Cl3gUgMgNb1CaWzfudhGlwG-R-A" },
+  274: { iframeSrc: "https://mega.nz/embed/PjhSlSiQ#oGfsAA3QpqoHw4Ez0xIlNyn2h5d2AOVnB_UzojnvLRk" },
+  275: { iframeSrc: "https://mega.nz/embed/zzxynCCK#sI8qnKYKIT4if3c4MiFL_KojSjQdNkmB7DVwckuTOcY" },
+  276: { iframeSrc: "https://mega.nz/embed/e64gwa7a#wPxtGvDPGCtZvRLTM55vd9b3UIGXek4SEi6F1L213Oo" },
+  277: { iframeSrc: "https://mega.nz/embed/K3pgwYJS#cQx7eSHglXqMxGdnUID5r0DTb_p6v9pPLdppAyndJCE" },
+  278: { iframeSrc: "https://mega.nz/embed/rzxyUATY#s9Sr1Q6z_USAUtI0c4MpJ3KyQ53KydudzlQaBO1RgoQ" },
+  279: { iframeSrc: "https://mega.nz/embed/yvoA1IwB#NLI7vPw-YsFz77Jmgo2Db4mlnrTBOYbHRdlyW6PCACw" },
+  280: { iframeSrc: "https://mega.nz/embed/6uo0Va5C#e9H-ncmmipKfUuMNvJD9oberrNUejrHStmJHhYiHrSc" },
+  281: { iframeSrc: "https://mega.nz/embed/Gu4GWAqK#kVVY4t_cgk2rDLm5lA8fiYwyJrT5OlbXxOXLp66iX2A" },
+  282: { iframeSrc: "https://mega.nz/embed/HrpygIJY#mv61kMDbV5wAzkmXWNNOZuvO4cXgCIsMyn0v9lnz6s4" },
+  283: { iframeSrc: "https://mega.nz/embed/vnhUQS4Q#YSylSTaJZCM5oIYredZl5HOxFU4mkD4tIPWAEHzo7ys" },
+  284: { iframeSrc: "https://mega.nz/embed/P2gSVQzQ#XatDyM9pAuRS5BsqH394JvHgBSZW-HTr7jddRQvCafE" },
+  285: { iframeSrc: "https://mega.nz/embed/NTsClC6b#_VvtEbCG7JhuodVzc2h27XLJjZR_LnTRTIr0Ukimhug" },
+  286: { iframeSrc: "https://mega.nz/embed/yugi3IQD#yYq0DlNiOCGZ8yNEliip3lSZKQgRWxX7oYOQwWyfHoU" },
+  287: { iframeSrc: "https://mega.nz/embed/Sm50AYqC#zGMS9NJ3mmuBC4f9h0QceXojlN2FFol4M9J0ceRt13A" },
+  288: { iframeSrc: "https://mega.nz/embed/X6oAnQCA#-JLwTbNK2_o-fXw2zAgVXZaeDlwxcfdbZznAFGf75hA" },
+  289: { iframeSrc: "https://mega.nz/embed/rz4AkSjQ#A8Ps0bDur8nfoFm1U-1PwcbWe_iv9xQgYn9xBfIXj34" },
+  290: { iframeSrc: "https://mega.nz/embed/q3pUUS7C#P1APSK2dm6hnveRYTvgFC2GKon5LfT-IyZHASSSmk9Q" },
+  291: { iframeSrc: "https://mega.nz/embed/fzwEnK6Y#LDDRZ7dubwLg3HWBvtxAFI4_Q3w5hKJ1gdTPE4SEs4w" },
+    };
+
+    function changeVideo(button, episode, playerId) {
+      const playerContainer = document.getElementById(playerId);
+      const iframePlayer = playerContainer.querySelector('.iframe-player');
+      const videoPlayer = document.getElementById('videoPlayer');
+
+      // Ocultar todos los reproductores de iframe primero
+      document.querySelectorAll('.iframe-player').forEach(player => {
+        player.style.display = 'none';
+        player.src = '';
+      });
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      // Remover clase active de todos los botones
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+      
+      // Scroll suave al reproductor correspondiente
+      playerContainer.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
