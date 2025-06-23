@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Shingeki No Kyojin</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=85,width=1920/keyart/GR751KNZY-backdrop_wide" alt="Shingeki No Kyojin" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Para ti, dentro de 2000 años<br>La caída de Shiganshina, 1ª Parte</button>
+    <button onclick="changeVideo(this, 2)">Episodio 2<br>Aquel día<br>La caída de Shiganshina 2ª Parte</button>
+    <button onclick="changeVideo(this, 3)">Episodio 3<br>Una tenue luz en la desesperación<br>Restauración de la Humanidad 1ª Parte</button>
+    <button onclick="changeVideo(this, 4)">Episodio 4<br>La noche de la desbandada: Restauración de la humanidad 2ª Parte</button>
+    <button onclick="changeVideo(this, 5)">Episodio 5<br>La primera batalla: La defensa de Trost 1ª Parte</button>
+    <button onclick="changeVideo(this, 6)">Episodio 6<br>El mundo que ella vio: La defensa de Trost 2ª Parte</button>
+    <button onclick="changeVideo(this, 7)">Episodio 7<br>Una pequeña hoja: La defensa de Trost 3ª Parte</button>
+    <button onclick="changeVideo(this, 8)">Episodio 8<br>Puedo oír un latido: La defensa de Trost 4ª Parte</button>
+    <button onclick="changeVideo(this, 9)">Episodio 9<br>¿Dónde está el brazo izquierdo?: La defensa de Trost 5ª Parte</button>
+    <button onclick="changeVideo(this, 10)">Episodio 10<br>Respuesta: La defensa de Trost 6ª Parte</button>
+    <button onclick="changeVideo(this, 11)">Episodio 11<br>Ídolo: La defensa de Trost 7ª Parte</button>
+    <button onclick="changeVideo(this, 12)">Episodio 12<br>Herida: La defensa de Trost 8ª Parte</button>
+    <button onclick="changeVideo(this, 13)">Episodio 13<br>Deseos primarios: La defensa de Trost 9ª Parte</button>
+    <button onclick="changeVideo(this, 14)">Episodio 14<br>Sigo sin poder ver: Preludio del Contraataque 1ª Parte</button>
+    <button onclick="changeVideo(this, 15)">Episodio 15<br>Escuadrón de Operaciones Especiales: Preludio del Contraataque 2ª Parte</button>
+    <button onclick="changeVideo(this, 16)">Episodio 16<br>¿Y ahora qué hacemos?: Preludio del Contraataque 3ª Parte</button>
+    <button onclick="changeVideo(this, 17)">Episodio 17<br>Titán Hembra: 57ª Expedición más allá de los muros 1ª Parte</button>
+    <button onclick="changeVideo(this, 18)">Episodio 18<br>El bosque de los Titanes: 57ª Expedición más allá de los muros 2ª Parte</button>
+    <button onclick="changeVideo(this, 19)">Episodio 19<br>Mordida: 57ª Expedición más allá de los muros 3ª Parte</button>
+    <button onclick="changeVideo(this, 20)">Episodio 20<br>Erwin Smith: 57ª Expedición más allá de los muros 4ª Parte</button>
+    <button onclick="changeVideo(this, 21)">Episodio 21<br>Golpe aplastante: 57ª Expedición más allá de los muros 5ª Parte</button>
+    <button onclick="changeVideo(this, 22)">Episodio 22<br>La derrotada: 57ª Expedición más allá de los muros 6ª Parte</button>
+    <button onclick="changeVideo(this, 23)">Episodio 23<br>Sonrisa: Incursión en el Distrito Stohess 1ª Parte</button>
+    <button onclick="changeVideo(this, 24)">Episodio 24<br>Misericordia: Incursión en el Distrito Stohess 2ª Parte</button>
+    <button onclick="changeVideo(this, 25)">Episodio 25<br>Muralla: Incursión en el Distrito Stohess 3ª Parte</button>
+  </div>
+
+  <script>
+    const videos = {
+      1: { iframeSrc: "https://mega.nz/embed/NC9VgT7B#ahbrXqwUCnKTwv2G3p6HdkbLRhHCmFA44kfeDEbnqzA" },
+      2: { iframeSrc: "https://mega.nz/embed/9SlliYBB#n3aKwZsQ4lWEV7rajxR5S_tSSYa1KqYSvXypZhfWSEI" },
+      3: { iframeSrc: "https://mega.nz/embed/0DcTRJhC#C6wCp3owzgurkJzW-ktYaR5qRNpa-qG6FSNTAoXCQMU" },
+      4: { iframeSrc: "https://mega.nz/embed/JLcnWCCK#UNDbJC3mIC9vByuNddMo2RgHvvPKIazTAn_xONYZFb4" },
+      5: { iframeSrc: "https://mega.nz/embed/4a9HAATB#a-jt1bcUkvhXS024qxauJlwSCZG6vUG2-5hjirkaYVM" },
+      6: { iframeSrc: "https://mega.nz/embed/ELk2iQiQ#dT1aF4F5_4cwusdGxJGOfcEqcsBtWodEgXliJHifdLA" },
+      7: { iframeSrc: "https://mega.nz/embed/9H8AwJhJ#Z4-eTcIgTfxwL9aSoNfkn-FlzuXhoun8hTeA0jo1Fwo" },
+      8: { iframeSrc: "https://mega.nz/embed/VPdQiCrC#ay_SG1eMUe6wcL1jdykrRpI6mgMTdGcG__Jg088YPho" },
+      9: { iframeSrc: "https://mega.nz/embed/JPFTxQIb#mKGFqplRAKlEs3iHo2Plo_4AFPrDDEJfdofPNDH-lyE" },
+      10: { iframeSrc: "https://mega.nz/embed/cKMVyDxY#NS_z98413cK13uL4wbfskZJgtN_sCVHV9CyXxDXzYCY" },
+      11: { iframeSrc: "https://mega.nz/embed/dGdFTaKa#lysXv5mXHiBrN6opNFO2SX8nq5vQYYeo1dVXg_p6n6g" },
+      12: { iframeSrc: "https://mega.nz/embed/EHd2xLST#bFgd30RukaZleXNYZYJnurbKDvcgT05e4w1MkWOt9Vs" },
+      13: { iframeSrc: "https://mega.nz/embed/1bsnTLJa#J1_cNLK1Rmp_JfP0ZJeontPulFNXXDSyFXOtHkdLN-o" },
+      14: { iframeSrc: "https://mega.nz/embed/UCUQWTBB#YFublmM0VdvzWQagpdM-iEtQ1_82jvUbacSI3_xwYqY" },
+      15: { iframeSrc: "https://mega.nz/embed/sGd1xL5B#AxO_P8kebISnV8PEiFbyBKV65WtxNwtqtcpUDh2vZkk" },
+      16: { iframeSrc: "https://mega.nz/embed/EfNH0DZA#Zqfg0cWsll4d60wm-b2paPd-63pm3_7wGKQmKR8PcoI" },
+      17: { iframeSrc: "https://mega.nz/embed/gbUUDaiA#-oec9oSH_iaKTtMAd1iaQ1DthBc9zpUjzRqombtJ7c8" },
+      18: { iframeSrc: "https://mega.nz/embed/caUgjSTC#JWgpuDVTr1wal9TaUoZtazd5BWjitUiY-vvRD_dDnaU" },
+      19: { iframeSrc: "https://mega.nz/embed/9e0TDCjQ#usKdtevOmbxQQiFp8M4YYGSgh_wP5TKsvWcgoullWGM" },
+      20: { iframeSrc: "https://mega.nz/embed/EKEmyJ7Z#eOjDOujkCLNgFozdhGznmB4VROD7kk84oJkTWNLOl_o" },
+      21: { iframeSrc: "https://mega.nz/embed/Nb0mXBAK#bibOFxfNZOzFFocCxQizgc57c1R-kFZ03T3OKLUqrtk" },
+      22: { iframeSrc: "https://mega.nz/embed/4K0V1RpD#sja9pGtRlUVxF6GZDy8dhxrCrvWD9D81fQRn9K-rv-I" },
+      23: { iframeSrc: "https://mega.nz/embed/tftXEBqT#asYaRBnqZcWWe_WxcHTBPlEkDncGFgLAzyIBjSunLYs" },
+      24: { iframeSrc: "https://mega.nz/embed/Rac20DgB#x_YZbfKKMcJV2QGMPHng7x_pfJ8M7tBIztEXUTQ3mZg" },
+      25: { iframeSrc: "https://mega.nz/embed/QXURDCRR#vXsykt8sddGfcaR84hcVRQQbRkKZyhiUGopv-On72Q4" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+</body>
+</html>
