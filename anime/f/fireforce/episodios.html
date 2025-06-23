@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Fire Force</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://m.media-amazon.com/images/M/MV5BZWZlMTFjNDgtYTdkOC00MmYxLTk0YmEtZGQ4NmE5MTM3OTg0XkEyXkFqcGc@._V1_.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Shinra Kusakabe se enlista</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Corazón de soldado de fuego</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>Juegos de novatos</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>El héroe y la princesa</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Comienza la batalla</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>La chispa de la promesa</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>Comienza la investigación en la primera</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>Insectos infernales</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>Malicia propagada</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>La promesa</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>El gran Hikeshi</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>Tarde de hostilidades en Asakusa</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>Se tiende la trampa</button>
+<button onclick="changeVideo(this, 14)">Episodio 14<br>Por quien arden las llamas</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>El sueño del herrero</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>Somos familia</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>Blanco, negro y gris</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>Los secretos de la piroquinesis</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>Al Nether</button>
+<button onclick="changeVideo(this, 20)">Episodio 20<br>Su orgullo</button>
+<button onclick="changeVideo(this, 21)">Episodio 21<br>Los conectados</button>
+<button onclick="changeVideo(this, 22)">Episodio 22<br>La determinación de un hermano</button>
+<button onclick="changeVideo(this, 23)">Episodio 23<br>Sonríe</button>
+<button onclick="changeVideo(this, 24)">Episodio 24<br>El pasado ardiente</button>
+  </div>
+
+  <script>
+    const videos = {
+  1: { iframeSrc: "https://mega.nz/embed/xXsAWRTT#0emGMr2UnOV2FgmmyxgnxJnoM4wSVSLTY5C5d4LWzMI" },
+  2: { iframeSrc: "https://mega.nz/embed/cCtWwazS#rs-pc6ryKMOGomrt5TSxWKk8MWGQz0ASnF3a_ztWOqU" },
+  3: { iframeSrc: "https://mega.nz/embed/4WNDzYSI#EQ6zVVaJ0QQi5GS0hLJweDdvBuCw4g5D9NLH3UPLHEc" },
+  4: { iframeSrc: "https://mega.nz/embed/dCMAHTCA#ERV3Lwv8sp8_uRUGiVmvrKHHFNJFUaPS9NIjaf7hfoU" },
+  5: { iframeSrc: "https://mega.nz/embed/Ve8RST4J#piIdR6fv4F6DCU-75WO2IxdGFBJDJgo9wSWIr8NoKNM" },
+  6: { iframeSrc: "https://mega.nz/embed/kDNGwCCB#M6bA6CbDeVHYqjrAQgGVNWQpsC2yFWyHXjF5064opcE" },
+  7: { iframeSrc: "https://mega.nz/embed/kbElELyD#IZSqrT8cQHoTry2oLxcbAww9W_uTacNUat7Zx2Sr2V0" },
+  8: { iframeSrc: "https://mega.nz/embed/3jQ12KoB#Ubs2wNz28UDL3mw_8QbOyLlvanxWH3c7qkpovj5LdsU" },
+  9: { iframeSrc: "https://mega.nz/embed/eiQ1RYxL#HwP0tDpzivK1FtQYRKscPXIlbra1bvbcvSmejqgmoVY" },
+  10: { iframeSrc: "https://mega.nz/embed/HiADSaKS#_xfvANwuFie966JirvecZLHeKeln6K6SnSXlDKrT9VY" },
+  11: { iframeSrc: "https://mega.nz/embed/7vJ1TazD#QXp203UgnYbT2fauPtnw4pvtMbJ0iH8jUpOxGZaxWKk" },  
+12: { iframeSrc: "https://mega.nz/embed/daUAyKQD#5QdMvVYMKXMrUhhzMQ320DIziNVdcNS0LYCXwCgbCeY" },  
+13: { iframeSrc: "https://mega.nz/embed/JO9CBYAA#RmUfW6L6zpSHajf6bvDxvZSN4BS0PM6Gb86zjk_UcEU" },  
+14: { iframeSrc: "https://mega.nz/embed/ITV10Y6R#2FhwjJC5QTuQBlHcmAepomXf2VNPkFRK5cg4sHoGte0" },  
+15: { iframeSrc: "https://mega.nz/embed/sWsgEAYI#AWHXjOArzzrGsYH95VDXKMd4epYS2EK1jyeIwoJChDc" },  
+16: { iframeSrc: "https://mega.nz/embed/dLUUDbTC#j0hD8WhTjGFwKsOnUvO1i7CY-m81fqeU0vY1jWAZ-tA" },  
+17: { iframeSrc: "https://mega.nz/embed/9K9kjCRK#5u84BCyuMz0q9CM2AwsWeEOKI-KzWg6xRVutIizDmfY" },  
+18: { iframeSrc: "https://mega.nz/embed/xPc1DLID#C8oVc2_SqvLKuik2sZ58q_vje8YEAOJCKXWkfg6OiZM" },  
+19: { iframeSrc: "https://mega.nz/embed/IPkn1Z7b#R_MeQAwT3ZndIIzvSdZHxD8XvcKPx2T3aoZ9XGVPoAo" },  
+20: { iframeSrc: "https://mega.nz/embed/kGEkRIiJ#Vf8yFZMWYMK91SryemPa_OIO_P8NXOMnMG7Dd0yBA7o" },  
+21: { iframeSrc: "https://mega.nz/embed/dHVkQbZS#z6v-EL1CMRDqXql_xnLIY7nymCTd7AmPEjD3kn--PNk" },  
+22: { iframeSrc: "https://mega.nz/embed/VX9kFYSS#NyfWtpWpyju6PKcmn3X2aQhmp-_BOLCjejJ3aq4vWJA" },  
+23: { iframeSrc: "https://mega.nz/embed/UTUyBRgD#uLYCB8WjdsHwrkvgSHV7sOfkCpwVtE70Awt9i36t8ko" },  
+24: { iframeSrc: "https://mega.nz/embed/8WMhSTRI#OHVSN7x6PJn8GnV-7ursJp9vGvG0m0JWS3CzbRDXAcw" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+</body>
+</html>
