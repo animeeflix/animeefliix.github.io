@@ -1,1 +1,274 @@
-<h1>hola</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Jojo's Bizarre Adventure</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://m.media-amazon.com/images/M/MV5BMzIyNzY4NTMtNmVhYS00OWFhLTkwMWMtOGFkNTdmNWU2ZDdiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Dio el invasor</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Una carta del pasado</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>Juventud con Dio</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>Quinta marcha</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Los caballeros oscuros</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>El coraje del mañana</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>El sucesor afligido</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>¡Batalla sangrienta! JoJo y Dio</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>¡El Hamon final!</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>JoJo de Nueva York</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>El Game Master</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>El Hombre del Pilar</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>JoJo contra la forma de vida definitiva</button>
+<button onclick="changeVideo(this, 14)">Episodio 14<br>Los guerreros definitivos de la antigüedad</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>El requisito para ser un héroe</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>Lisa Lisa, la maestra del Hamon</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>Trampa sobre trampa</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>El escuadrón de Stroheim contraataca</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>Carrera al acantilado mortal</button>
+<button onclick="changeVideo(this, 20)">Episodio 20<br>La solitaria juventud de Caesar</button>
+<button onclick="changeVideo(this, 21)">Episodio 21<br>Una estrategia de 2 contra 100</button>
+<button onclick="changeVideo(this, 22)">Episodio 22<br>Un auténtico guerrero</button>
+<button onclick="changeVideo(this, 23)">Episodio 23<br>El guerrero que regresa al viento</button>
+<button onclick="changeVideo(this, 24)">Episodio 24<br>Los lazos que unen a JoJo</button>
+<button onclick="changeVideo(this, 25)">Episodio 25<br>El nacimiento de la forma de vida definitiva</button>
+<button onclick="changeVideo(this, 26)">Episodio 26<br>El hombre que se convirtió en dios</button>
+  </div>
+
+  <script>
+    const videos = {
+  1: { iframeSrc: "https://jkanime.net/jkplayer/jk?u=stream/jkmedia/cec819fa603e0b3f17e6aeaf4a6e6890/a28e5f284a491ba9f012bd30c66f58ee/1/139.47.113.58/" },
+  2: { iframeSrc: "https://mega.nz/embed/YC1CVKwa#hksQBlvAdIBkr-CAnnlupo0ouISfNILJv8h-iK7bRtk" },
+  3: { iframeSrc: "https://mega.nz/embed/c6cGgSqD#Kks4Pszll7KxRG4OiciPuId_VVBz0D2twjesXqgIIR8" },
+  4: { iframeSrc: "https://mega.nz/embed/839n2ZBJ#PVeRLTq0jsUPvTI9Rb_LqL9yyO2xtRwmoQ6M1YxJpHE" },
+  5: { iframeSrc: "https://mega.nz/embed/NiM2wIbZ#hDJPfYBUscvrbelt6CkXSdg7QVpiHwXxKr587A9D-ME" },
+  6: { iframeSrc: "https://mega.nz/embed/cr0jVKQQ#yMm4FN0sIrqatSHjFj9e0W3RHZj4o4i6BsqzQQBI1VI" },
+7: { iframeSrc: "https://mega.nz/embed/crUw1LgQ#YWpRUYUmfAAqzSOyRCuaHdihHxL1UbVtwpkivfwY6Y8" },
+8: { iframeSrc: "https://mega.nz/embed/hm9AlbqC#S-8PdgkUb2hps7H2ge7xDAd-fKVCT6uwhQ8cST3rfCE" },
+9: { iframeSrc: "https://mega.nz/embed/onlXCDzT#hFWhePdCkKjgy7_WJ8BRmgHc7NpCeNpJlvXYd8CaOfE" },
+10: { iframeSrc: "https://mega.nz/embed/IuFFlaRL#gDiHk6LVDDvXTHEBaOZ9qO39nUOxnM6P8Y0pmfHTdTk" },
+11: { iframeSrc: "https://mega.nz/embed/B2tXUCCY#6oWM8YTgFa2ckdd7Q9Ob9Heu9ARNmlFfSGm6_WI1zr0" },
+12: { iframeSrc: "https://mega.nz/embed/s683UIpB#8w3AaNC1HJt58dq4r3ztC_dM6wLugkhM9iigim61gns" },
+13: { iframeSrc: "https://mega.nz/embed/02sASKyA#h7EkOvWYcuDktyjAyvMwDCAsyzwJylhS3vtjSHXa7co" },
+14: { iframeSrc: "https://mega.nz/embed/d2cExTKK#dm3sRIMV9xFKqhWPvhvy8XP-Q2SykfDttIgUzgRhiwo" },
+15: { iframeSrc: "https://mega.nz/embed/161FkZhL#tS9e8tYmh0XIrRrzgp56qw_tBsXQFzXJ1kCdjkfDMXg" },
+16: { iframeSrc: "https://mega.nz/embed/I79QjJ5T#gDhYKdbtIfgsG6I3O20g22fVtznVzN_CsnsQbU1kuMc" },
+17: { iframeSrc: "https://mega.nz/embed/gvd2hLBL#u5Gr1HDmIa7VFgc18bY0GONvl2q4o0DsNKJ4IcG895c" },
+18: { iframeSrc: "https://mega.nz/embed/YndGXZJS#_t9sNOPrfe2kTT6GKQyYwGyjggl87L0Mt4hwEDSKnqs" },
+19: { iframeSrc: "https://mega.nz/embed/lucH2IZa#PoyixI5dBcCA0wASCTfcWl5V8GeimK1me2oNbB3EgkA" },
+20: { iframeSrc: "https://mega.nz/embed/oyE0lRQT#2Lc0BrtokshAW31scRqAKPN9PMikcrmp1hLx6-RrGmo" },
+21: { iframeSrc: "https://mega.nz/embed/520wCBiK#wNbZek9gLOBqLQ2l00F4Pxu_gXQe8v7juZMx7wk1BY0" },
+22: { iframeSrc: "https://mega.nz/embed/Rv8VhTiQ#A9081y8PfAeBA3NIcMJu1xSxspeRz3whuasOIKZcDnE" },
+23: { iframeSrc: "https://mega.nz/embed/8jtAQSAT#bBC9W3olMvy2BRQA-e4oM7cZndc0u5c8_4XGcCfpfuA" },
+24: { iframeSrc: "https://mega.nz/embed/V7cGzBiZ#l6Vux5oGO7mPtNdR7DigAj2r53ufjaO6J5ev6e1XVrU" },
+25: { iframeSrc: "https://mega.nz/embed/4vVXnKqR#8ocSF16KSua-xQcD9l3EeWDrJf9KguFPrZXqYGjISnA" },
+26: { iframeSrc: "https://mega.nz/embed/gr1xjBaA#QlL0YN4_q6He6eGCaZVjcjFIErtcUNIBr2Nid9yEv1g" }
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+</body>
+</html>
