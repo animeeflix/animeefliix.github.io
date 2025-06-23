@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Kuroko No Basket</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://images.justwatch.com/poster/181383869/s718/kuroko-no-basket.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Yo soy Kuroko</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Hablo en serio</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>Es mejor si no puedo ganar</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>Les encargo el Contra-Ataque</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Tu baloncesto</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>Déjame decirte dos cosas</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>Verás algo asombroso</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>Ahora que lo pienso</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>A ganar</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>No puedo aceptar eso</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>No es eso</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>¿Qué es la victoria?</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>Yo creí en ti</button>
+<button onclick="changeVideo(this, 14)">Episodio 14<br>Te pareces a él</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>No me hagas reír</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>Hagámoslo</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>Todos ustedes son ridículos</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>¡No!</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>En un nuevo desafío</button>
+<button onclick="changeVideo(this, 20)">Episodio 20<br>No quiero ser</button>
+<button onclick="changeVideo(this, 21)">Episodio 21<br>Comencemos</button>
+<button onclick="changeVideo(this, 22)">Episodio 22<br>Ganaré, incluso si eso me mata</button>
+<button onclick="changeVideo(this, 23)">Episodio 23<br>No soy lo suficientemente maduro</button>
+<button onclick="changeVideo(this, 24)">Episodio 24<br>No me malinterpreten</button>
+<button onclick="changeVideo(this, 25)">Episodio 25<br>¡Gana!</button>
+  </div>
+
+  <script>
+    const videos = {
+ 1: { iframeSrc: "https://mega.nz/embed/USUjzDAb#fm32y4kso78NBeGGWTahlSbVnwLVGAxnNbVGYr9_ABM" },
+  2: { iframeSrc: "https://mega.nz/embed/hGV3FRzD#_DZVffmDKiBxDrGrRcaYl5xT4fK5ldIx5E1ZTu_H2uk" },
+  3: { iframeSrc: "https://mega.nz/embed/Ve9TEQbY#zERC11ueI19Gb3plvX8QktGIEJ45M6n2FolIcMy2IrQ" },
+  4: { iframeSrc: "https://mega.nz/embed/oH12jQCb#pcOZdIs5p81miP47Gs0ZCY0S_8wHS9UmB6k-FK7cklo" },
+  5: { iframeSrc: "https://mega.nz/embed/hSVCCaBT#Ihx4Fn0d98uc21lep2EBi3sKdDt_piEaGhUfEB0_SmM" },
+  6: { iframeSrc: "https://mega.nz/embed/fcgjGaLS#5ys7pLDH4IgVMxYPHDRgZdeVneba6POKn23QGYtjdKU" },
+7: { iframeSrc: "https://mega.nz/embed/XdRWkaZA#xyfemIY3BgtEg9B3mpfDqBvqiJ0aWmooi7VNGEzChXM" },
+8: { iframeSrc: "https://mega.nz/embed/vc5iCSJJ#sRaArD6bH0jWp0xRxHptnvr0nuEZV55C5sA00fFbI28" },
+9: { iframeSrc: "https://mega.nz/embed/qNZglY4L#fngvCX1v7dP9yGAw_cK5lXhBAXaql5o7xQ1F2XqX3qU" },
+10: { iframeSrc: "https://mega.nz/embed/jRwy0RzD#IaShi564kZwAz8YiKNmXQMbONuWDD2COPJu_4okFSMg" },
+11: { iframeSrc: "https://mega.nz/embed/nB4RRJzD#95KbDTjJQ1zp08kTHzXF1cufbcPlKIAPtUppefL8Iy0" },
+12: { iframeSrc: "https://mega.nz/embed/jIYWnAKT#ATYBYoWAzAZdFVgBquupWl4pKjPVFioVFSp8-T7JvZA" },
+13: { iframeSrc: "https://mega.nz/embed/iB52SRQS#kZ31OnZSXKzjq2BUEMB4ANQ3Mue1dlWjDc2UmX8aXBc" },
+14: { iframeSrc: "https://mega.nz/embed/OUBTBSSR#VcAhU_On1jqJLhjUB6wWKj5h1-VkxdI3K_XwEjq5b8c" },
+15: { iframeSrc: "https://mega.nz/embed/TZBB0CZC#Zjw0ewN1MFcYCjePvp2LhNDBgQ-dzhll7Mt7Bv4gNb8" },
+16: { iframeSrc: "https://mega.nz/embed/7MQx2Q7A#SUqwITh5r6LxK6bIRyo4DaKyKAu3DkBq_jcasZQmN_Q" },
+17: { iframeSrc: "https://mega.nz/embed/3Mx1XDpI#WgkrLbfYH6023N7WNwVb0hBj_k2mMhbASKxiTUyxr3o" },
+18: { iframeSrc: "https://mega.nz/embed/aAhGHCZa#v3BSLLSqpzcJBSKLY4QtB6JvsfsgVbuiMUBbpAGtPwY" },
+19: { iframeSrc: "https://mega.nz/embed/rBBGWB7A#8LUQmb4xxy77_RhIBPDQHpKBRpDGL-ZG8kTYc4TF7_w" },
+20: { iframeSrc: "https://mega.nz/embed/vM4mkRKK#7pA3t85x1pwXjKueiO6RdLkze82hehBVIIEXaNHDruQ" },
+21: { iframeSrc: "https://mega.nz/embed/LBBl2Szb#lWkKYquuB-voX771jo0KC0m6hD_OFfP2qg0bLZKuvc8" },
+22: { iframeSrc: "https://mega.nz/embed/uN5FUKIB#7KhCpGhpWOhkW1v_SdLamQd0fhu3z3MyS3G-Zyh8vz8" },
+23: { iframeSrc: "https://mega.nz/embed/TMAQwAQB#_ccdeHQMp1hvHlweoZ8pFfcUBv5u5KYYRXzhANOXCX0" },
+24: { iframeSrc: "https://mega.nz/embed/vNQhGCpR#DcJpSK0yqEVTaCefkfcSjeGWJbBofqNuWuZ01HyJcxI" },
+25: { iframeSrc: "https://mega.nz/embed/7EhkyLCK#_akABs5R2RV7eQBrfodP2YIHXvyug5ofix-qFIAYrh4" },
+26: { iframeSrc: "https://mega.nz/embed/LTonxRjD#ACqDtgDLy0NdQvET7Pd-WQDVWeEAXSSdXU_uGexHPrg" },  
+27: { iframeSrc: "https://mega.nz/embed/WcI3XSJb#FRi6RFWnA44EWVAwAgq6IngBqIAXtTI4J151Fck-YT4" },  
+28: { iframeSrc: "https://mega.nz/embed/df8n2RzL#A6NB_xB2YED6ZRkfXTXB_-2h4LxkYmeKP6mjhnQ2aW0" },  
+29: { iframeSrc: "https://mega.nz/embed/ILVDhLDT#Qcvgp894mn0MSbThp-7c_TNjWbUvmSnpTZMbeO4t84M" },  
+30: { iframeSrc: "https://mega.nz/embed/zVRFESiK#LWz125ziotjuqWtcW1AlfNtNH6vjOxb4n4moBJtRjGU" },  
+31: { iframeSrc: "https://mega.nz/embed/eZIjSApQ#KbUbNEGFzxTyYoV9myIupgHB8OalrjolYjTzr7tOU5g" },  
+32: { iframeSrc: "https://mega.nz/embed/LYAVUY7S#n8oqq7DDPwW1nOC7ORH8vZRGBwBBhAJpkKLNZR0PP2w" },  
+33: { iframeSrc: "https://mega.nz/embed/7QBz3YwL#SQTO8uEPh2iNy66dggAi3iu3A4VyF4RXaTTvy0W7qIs" },  
+34: { iframeSrc: "https://mega.nz/embed/7JAHVa4a#xbXG0hkj0hQawoEwZ6Xj0l6vRxtfF9OnYjLS-ZAaHww" },  
+35: { iframeSrc: "https://mega.nz/embed/6NQzTYZQ#nOyCrD9c3wlzq-q3vja3XSyY9SZqbOshDH5fQ1ozP4c" },  
+36: { iframeSrc: "https://mega.nz/embed/KcI1wYAb#T_dl-vmuzxk3VP4My-5xXmLCb1sMNRDRUHdgYCZhkK0" },  
+37: { iframeSrc: "https://mega.nz/embed/LMJnVAYI#Lj2PeZJ4qtsRVErxFdDAQROqs6-TcCayNxT-Sq9iE74" },  
+38: { iframeSrc: "https://mega.nz/embed/KABFGQoJ#r3aVQWjhAO7NuDpZPzoAVRJlEMi2-8_wyxhTQkl0m-M" },  
+39: { iframeSrc: "https://mega.nz/embed/7RIHRaLZ#3EJa4qGkWrieOcGBSH3uOguv2WEE74xZj3ERg0irdbQ" },  
+40: { iframeSrc: "https://mega.nz/embed/nNQF3SoD#haqmTHGZmgE3UcXn_EnT6qU1_JwZ6EHzXpNg6vanGoo" },  
+41: { iframeSrc: "https://mega.nz/embed/zARFWQ7B#QyHDpnewR8QXtZcrlMF0PyXCr_sTB1l3v-kSyC5ZNLE" },  
+42: { iframeSrc: "https://mega.nz/embed/KQJh0aTb#qEBKCzEG6aiHz9Lx__qREIAUAB_sdnfupBbMwdTG9k4" },  
+43: { iframeSrc: "https://mega.nz/embed/aVQn3aya#XbG40JiFHvf6nwpzwcNa8js03xmKzNQ_Rz5EUCJMHks" },  
+44: { iframeSrc: "https://mega.nz/embed/OUZFXCIA#Fg9_ZsFM5s5lG7KLXITbnF4vfyfp_f-EPgQ3f8MHbY4" },  
+45: { iframeSrc: "https://mega.nz/embed/LAAFQQpR#ESsIXytZpQ6GTfpiH72oOZzgimC9xJHwSo_CQ6wEbAw" },  
+46: { iframeSrc: "https://mega.nz/embed/KIIFjAhQ#HDPcPGnvca6kZpt-BGqKXchqM55EiM8Z3eL_Z7ceJ68" },  
+47: { iframeSrc: "https://mega.nz/embed/vIR3GIxJ#MpUOm5Lqt_UMQwsOwxo_E0-okFhHuAqLLtjTd7LJnKU" },  
+48: { iframeSrc: "https://mega.nz/embed/KcR1gIDC#UU0P51m5cf3BVC_igr0Fj41ychxiAOWuoOR64fICeuI" },  
+49: { iframeSrc: "https://mega.nz/embed/jEB1gI7B#CTvUzsEpOip8xAGjoCUae2MMZlrkj-9BgU-J_x-87_w" },  
+50: { iframeSrc: "https://mega.nz/embed/DAYDVQzT#-wCEUGlyYz2SQbh1wypMOQhpQ8HtL3LELVf39cD1M5k" }, 
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+  <div class="episode-list" role="list">
+  <button onclick="changeVideo(this, 26)">Episodio 26<br>Nunca pensé que nos encontraríamos aquí</button>
+<button onclick="changeVideo(this, 27)">Episodio 27<br>En la Copa de Invierno</button>
+<button onclick="changeVideo(this, 28)">Episodio 28<br>¡¡Empecemos!!</button>
+<button onclick="changeVideo(this, 29)">Episodio 29<br>Solo hay una respuesta</button>
+<button onclick="changeVideo(this, 30)">Episodio 30<br>He estado esperando esto</button>
+<button onclick="changeVideo(this, 31)">Episodio 31<br>Te superé hace mucho tiempo</button>
+<button onclick="changeVideo(this, 32)">Episodio 32<br>Rendirse</button>
+<button onclick="changeVideo(this, 33)">Episodio 33<br>Somos el equipo de baloncesto de la Preparatoria Seirin!</button>
+<button onclick="changeVideo(this, 34)">Episodio 34<br>¡Te venceré!</button>
+<button onclick="changeVideo(this, 35)">Episodio 35<br>Es confianza</button>
+<button onclick="changeVideo(this, 36)">Episodio 36<br>No seas ridículo</button>
+<button onclick="changeVideo(this, 37)">Episodio 37<br>Lo espero con ansias</button>
+<button onclick="changeVideo(this, 38)">Episodio 38<br>Esta vez, sin duda</button>
+<button onclick="changeVideo(this, 39)">Episodio 39<br>Esfuerzo inútil</button>
+<button onclick="changeVideo(this, 40)">Episodio 40<br>Está conteniendo su alegría</button>
+<button onclick="changeVideo(this, 41)">Episodio 41<br>Ganar ahora</button>
+<button onclick="changeVideo(this, 42)">Episodio 42<br>Yo creo</button>
+<button onclick="changeVideo(this, 43)">Episodio 43<br>No perderé</button>
+<button onclick="changeVideo(this, 44)">Episodio 44<br>Dime</button>
+<button onclick="changeVideo(this, 45)">Episodio 45<br>Claro que no es fácil</button>
+<button onclick="changeVideo(this, 46)">Episodio 46<br>¡Primera canasta!</button>
+<button onclick="changeVideo(this, 47)">Episodio 47<br>Es Obvio</button>
+<button onclick="changeVideo(this, 48)">Episodio 48<br>¡No quiero perder!</button>
+<button onclick="changeVideo(this, 49)">Episodio 49<br>Suficiente</button>
+<button onclick="changeVideo(this, 50)">Episodio 50<br>¡Gana!</button>
+</div>
+</body>
+</html>
