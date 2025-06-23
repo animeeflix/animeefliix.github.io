@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Boku No Hero Academia</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://m.media-amazon.com/images/M/MV5BNzgxMzI3NzgtYzE2Zi00MzlmLThlNWEtNWVmZWEyZjNkZWYyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>Izuku Midoriya: Origen</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Lo que necesita un héroe</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>Músculos excelentes</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>Línea de salida</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Lo que puedo hacer por ahora</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>¡Enójate, maldito friki!</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>Deku vs. Kacchan</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>Línea de salida de Bakugo</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>¡Sí, vamos por todas, Iida!</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>Encuentro con lo desconocido</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>Game Over</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>All Might</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>En cada uno de nuestros corazones</button>
+  </div>
+
+  <script>
+    const videos = {
+  1: { iframeSrc: "https://mega.nz/embed/t3EyAD4K#hrAC-ncB15NljHMqUDAbTHJaH38-f5Pbpbd27uz8qPI" },
+  2: { iframeSrc: "https://mega.nz/embed/Rn92CY4Q#bavA3fDOWhvXgQDsm6QM_Ob5gIpqt2Gt-qjHy-4_EOs" },
+  3: { iframeSrc: "https://jkanime.net/jkplayer/um?e=dHJ4YzNDUjBjUEs5Tnl5ZWZQYVZSbThPVUh0Uld1UUlkRU5rSjhOTkVkN0crak9PWmRCdHVGQjBJclpRMm5PcEtzWEJ3amZGVGpCQ2hTMmxQeUJaSmc9PTo6aiRyh4mWboyRK3jylw1wGQ--&t=e90d8b88bd5eff7998b57f730c10dd80" },
+  4: { iframeSrc: "https://mega.nz/embed/x3klTIYZ#_DmRpThY4hWaGL1T-KqCTwAxOGVmfEMzMKwE6mtWlss" },
+  5: { iframeSrc: "https://mega.nz/embed/8m9ExS4L#xCezBk8NdC8A53Wkr2c0xwIBECx4ymIMT5qKxraOPdQ" },
+  6: { iframeSrc: "https://mega.nz/embed/trFhWTjR#SxQ1F9STJoe_mC9hWdJA-gMmih_ufCUG-122ZbdZr_M" },
+  7: { iframeSrc: "https://mega.nz/embed/IuMVGaDA#FGyGaewU0M4njKb01xkyACSAs6ci2pxm98UBtOAoPFo" },
+  8: { iframeSrc: "https://mega.nz/embed/M3sRELoD#atkEUoglDeFji9Pspcd_p8FfQuUdPmOy0d8BiD7Kz5w" },
+  9: { iframeSrc: "https://mega.nz/embed/J61WwKRI#YrumNCkd89l9Hqw0zOmNtG_9x0lQCLnUFyivT-qsSEM" },
+  10: { iframeSrc: "https://mega.nz/embed/hiVmlYhJ#xBVNy_9pQxUA6lJB9IHfNzsHgDXLjNFjyn8_KqI2T3w" },
+  11: { iframeSrc: "https://mega.nz/embed/FutGGaJJ#hhOsltyhHtypqJdeyULr3kN3mwu5Aktfbb4VCUfmxaI" },
+  12: { iframeSrc: "https://mega.nz/embed/hyURiDoY#av_rsSnod08UGvBIDcff0-hwChFPkgu2brt1oEQkq6c" },
+  13: { iframeSrc: "https://mega.nz/embed/tyVBDAaK#lGDNDi1M41XBDDvk05Eis_GpqSAeuLUE1ggOeCX8eeI" },
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1>
+</body>
+</html>
