@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, #iframePlayer {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    #iframePlayer {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      #iframePlayer {
+        height: 300px;
+      }
+    }
+
+    
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de Sword Art Online</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://alfabetajuega.com/hero/2023/03/sword-art-online-anime.jpg?width=1200" alt="Naruto" />
+  </div>
+  
+  
+  <div class="player-container video-anchor" id="playerTop">
+    <h1>Temporada 1</h1>
+    <iframe
+      id="iframePlayer"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <div class="episode-list" role="list">
+    <button onclick="changeVideo(this, 1)">Episodio 1<br>El mundo de las espadas</button>
+<button onclick="changeVideo(this, 2)">Episodio 2<br>Beater</button>
+<button onclick="changeVideo(this, 3)">Episodio 3<br>El reno de la nariz roja</button>
+<button onclick="changeVideo(this, 4)">Episodio 4<br>El Espadachín Negro</button>
+<button onclick="changeVideo(this, 5)">Episodio 5<br>Asesinato en la zona segura</button>
+<button onclick="changeVideo(this, 6)">Episodio 6<br>Vengador ilusorio</button>
+<button onclick="changeVideo(this, 7)">Episodio 7<br>La temperatura del corazón</button>
+<button onclick="changeVideo(this, 8)">Episodio 8<br>La danza de espadas blanca y negra</button>
+<button onclick="changeVideo(this, 9)">Episodio 9<br>El demonio de ojos azules</button>
+<button onclick="changeVideo(this, 10)">Episodio 10<br>Sed de sangre carmesí</button>
+<button onclick="changeVideo(this, 11)">Episodio 11<br>La chica del rocío del alba</button>
+<button onclick="changeVideo(this, 12)">Episodio 12<br>El corazón de Yui</button>
+<button onclick="changeVideo(this, 13)">Episodio 13<br>Al borde del abismo</button>
+<button onclick="changeVideo(this, 14)">Episodio 14<br>El fin del mundo</button>
+<button onclick="changeVideo(this, 15)">Episodio 15<br>Regreso</button>
+<button onclick="changeVideo(this, 16)">Episodio 16<br>País de hadas</button>
+<button onclick="changeVideo(this, 17)">Episodio 17<br>Reina cautiva</button>
+<button onclick="changeVideo(this, 18)">Episodio 18<br>Hacia el Árbol del Mundo</button>
+<button onclick="changeVideo(this, 19)">Episodio 19<br>El corredor Lugru</button>
+<button onclick="changeVideo(this, 20)">Episodio 20<br>El general de la llama ardiente</button>
+<button onclick="changeVideo(this, 21)">Episodio 21<br>La verdad sobre ALfheim</button>
+<button onclick="changeVideo(this, 22)">Episodio 22<br>La gran misión</button>
+<button onclick="changeVideo(this, 23)">Episodio 23<br>Vínculos</button>
+<button onclick="changeVideo(this, 24)">Episodio 24<br>Héroe dorado</button>
+<button onclick="changeVideo(this, 25)">Episodio 25<br>La Semilla del Mundo</button>
+
+
+  </div>
+
+  <script>
+    const videos = {
+ 1: {    iframeSrc: "https://mega.nz/embed/wp8UQD7K#8hJYgksxcVZhsQNAAFNmYR30U1SVfz3hugHG2W3orEQ"  },
+  2: {    iframeSrc: "https://mega.nz/embed/chFBGa4S#39M4aKbD2sssQ_wXNvZAQAejoqwG0VqTE5Z8AjEx0x4"  },
+  3: {    iframeSrc: "https://mega.nz/embed/5xEF2RJa#8z_Ysmd54JFNziS4glg9gY_pm_qW8go7ucV8NupJv0o"  },
+  4: {    iframeSrc: "https://mega.nz/embed/R99TyLIY#A5XwCEUBOZh3vtRITYGnpotn6F-3o8D1kgw0DmQ0Hhs"  },
+  5: {    iframeSrc: "https://mega.nz/embed/Noty0QiD#oJeHq-43FRI1r_A-MZ8mWHxgFiOHbzWkBcTEG4jbK_0"  },
+  6: { iframeSrc: "https://mega.nz/embed/oPkDTQJA#0SziKpo_wGYSER5f5uwTumPUqWReyaFoB4bicZguKDU" },
+  7: { iframeSrc: "https://mega.nz/embed/hwVEHDBQ#HO5p_y7SR5WRW2UmfVic8nirAzP11aD5n7O8moPwsxw" },
+  8: { iframeSrc: "https://mega.nz/embed/A81BASCI#NL6uZYELiPmxnr0WGJQLUy5BaojatENYcGGMLMjh3js" },
+  9: { iframeSrc: "https://mega.nz/embed/ZlkkHLyL#cOKB_YBG_6vBMWtuEAQz5eYWGVYz5huNkgXtQpphwA0" },
+  10: { iframeSrc: "https://mega.nz/embed/Mpdm1KpI#bahD2hE1bQNaVMJnx6serTNIuWsTWJZ0fV2I66iKJ2M" },
+  11: { iframeSrc: "https://mega.nz/embed/goFzTZ7Z#aWKUpykcytuQwnPfZhFwBVzshj4LTXN_nj4DWlXHF7M" },
+  12: { iframeSrc: "https://mega.nz/embed/p19j3TYJ#XSWtiGEo5DSSsilK-GCaXiOj3KYVNc0DgkTTM2WEAi4" },
+  13: { iframeSrc: "https://mega.nz/embed/tpFHmaAK#WRWhtk5lBSLsqd2WKueRkIaBVXLhFzEmkDJcgvBPtMA" },
+  14: { iframeSrc: "https://mega.nz/embed/dkFhnbzb#s9gKoFEdta5qIEZxFFCOJaukpxz7lcG_6CrcPrDi1Jc" },
+  15: { iframeSrc: "https://mega.nz/embed/4000wbJT#7Xvq3_zaJ249PAMH7CG5gezIWYZ2yupCwL6aFXo78x4" },
+  16: { iframeSrc: "https://mega.nz/embed/JkkBSZAK#JnU9mIukZheXUFkHWeKmev5mkSwVzAZF2im-lxKudmc" },
+  17: { iframeSrc: "https://mega.nz/embed/wo8mnA4Y#A2GwP4FarbWUQqQfCJ4yYtKk_a8eHO_sNVfQtwTi93I" },
+  18: { iframeSrc: "https://mega.nz/embed/I5lXmYzB#zUJCWdWHADWLvZxE2joCWN0uHy75fplouOKwFS8ixNc" },
+  19: { iframeSrc: "https://mega.nz/embed/Jk0XRICQ#JSQWjgb9NYrPqSgijqdOyzkL2YqA3baPID0LQGR9CX8" },
+  20: { iframeSrc: "https://mega.nz/embed/c1F1yZIR#ENuwZ8ebUSLFUdLBbjUapq5MOE4pN4Ac4IBHuOOyb34" },
+  21: { iframeSrc: "https://mega.nz/embed/U4s3xRRb#8kSDLFTxm1fz8WFnMrtCWoQeLBq35J2fEmAqhYiTHbY" },
+  22: { iframeSrc: "https://mega.nz/embed/d58A3T4D#TpEWC3nQZgbimYDyzwOhXrYJpT9M8cEeCXfP2r70gIA" },
+  23: { iframeSrc: "https://mega.nz/embed/sGsSVQQA#fnIHI0xxVrPDoddWuHsrkDkeAFV4iCYvD1VdXn-3QCg" },
+  24: { iframeSrc: "https://mega.nz/embed/1xN0ADbD#u1hlr6YjdjgRU22LP1ZgSu31wE9FfVrEyXo3BUhWBNs" },
+  25: { iframeSrc: "https://mega.nz/embed/NtMhRDbZ#xtCu8F7C_pV_BjXZ6EFfpx0XfpInbQzcnRjkzGbnptY" },
+  
+    };
+
+    function changeVideo(button, episode) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const iframePlayer = document.getElementById('iframePlayer');
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        iframePlayer.src = '';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      
+      button.classList.add('active');
+      
+      
+      document.getElementById('playerTop').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+  <h1>Temporada 2</h1><br>
+
+</div>
+</body>
+</html>
