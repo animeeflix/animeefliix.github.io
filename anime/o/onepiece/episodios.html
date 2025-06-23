@@ -1,1 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimeFlix - Videos</title>
+  <link rel="icon" href="../../../3268b0130e0eb44aaf4ff4dfbf23aaca~tplv-tiktokx-cropcenter_1080_1080.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e30;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      padding: 2rem;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4d6d;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #ff4d6d;
+    }
+
+    .back a {
+      color: #ff4d6d;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .back a:hover {
+      color: #ff758c;
+    }
+
+    .anime-header img {
+      width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d6d;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .anime-header img:hover {
+      transform: scale(1.05);
+    }
+
+    .player-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+    }
+
+    #videoPlayer, .iframe-player {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff4d6d;
+      outline: none;
+      background-color: #000;
+    }
+
+    .iframe-player {
+      height: 506px; 
+      border: none;
+      display: none;
+    }
+
+    #videoPlayer {
+      display: none;
+    }
+
+    .episode-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem auto;
+      padding-top: 20px;
+    }
+
+    .episode-list button {
+      background-color: #2a2a40;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.2rem 1rem;
+      color: #ff4d6d;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: normal;
+      box-shadow: 0 0 10px #000;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .episode-list button:hover,
+    .episode-list button.active {
+      background-color: #ff4d6d;
+      border-color: #ff758c;
+      color: #1e1e30;
+      box-shadow: 0 0 15px #ff758c;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 1000px) {
+      .episode-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .episode-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .anime-header img {
+        width: 100%;
+      }
+      
+      .player-container {
+        width: 100%;
+      }
+      
+      .iframe-player {
+        height: 300px;
+      }
+    }
+
+    .video-anchor {
+      scroll-margin-top: 20px;
+    }
+    
+    .saga-container {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Episodios de One Piece</h1>
+  <div class="back">
+    <a href="../../../anime.html">← Volver al catálogo</a>
+  </div>
+  <div class="anime-header">
+    <img src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg" alt="Naruto" />
+  </div>
+  
+  <!-- Reproductor principal (para la primera saga) -->
+  <div class="player-container video-anchor" id="playerTop">
+    <iframe
+      id="iframePlayer"
+      class="iframe-player"
+      src=""
+      allowfullscreen
+    ></iframe>
+
+    <video id="videoPlayer" controls preload="metadata">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <!-- Primera saga -->
+  <div class="saga-container">
+    <h1>Romance Dawn</h1>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 1, 'playerTop')">Episodio 1<br>¡Soy Luffy! ¡El hombre que se convertirá en el Rey de los Piratas!</button>
+      <button onclick="changeVideo(this, 2, 'playerTop')">Episodio 2<br>¡Aparece el gran espadachín! El cazador de piratas, Roronoa Zoro</button>
+      <button onclick="changeVideo(this, 3, 'playerTop')">Episodio 3<br>¡Morgan vs. Luffy! ¿Quién es esa guapa muchacha?</button> 
+      
+    </div>
+  </div>
+
+  <!-- Segunda saga -->
+  <div class="saga-container">
+    <h1>Orange Town</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga2">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 4, 'playerSaga2')">Episodio 4<br>¡El pasado de Luffy! El pelirrojo Shanks aparece</button>
+<button onclick="changeVideo(this, 5, 'playerSaga2')">Episodio 5<br>¡Teme el misterioso poder! ¡El capitán payaso Buggy!</button>    
+<button onclick="changeVideo(this, 6, 'playerSaga2')">Episodio 6<br>¡Situación desesperada! ¡Mohji el domador de bestias vs. Luffy!</button>    
+<button onclick="changeVideo(this, 7, 'playerSaga2')">Episodio 7<br>¡Gran duelo! ¡Zoro el espadachín vs. Cabaji el acróbata!</button>    
+<button onclick="changeVideo(this, 8, 'playerSaga2')">Episodio 8<br>¿Quién ganará? ¡Duelo entre los usuarios de las frutas del diablo!</button>
+    </div>
+  </div>
+
+  <!-- Tercera saga -->
+  <div class="saga-container">
+    <h1>Syrup Village</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga3">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 9, 'playerSaga3')">Episodio 9<br>¿Honorable mentiroso? Capitán Usopp</button>
+<button onclick="changeVideo(this, 10, 'playerSaga3')">Episodio 10<br>¡El hombre más raro del mundo! Jango el hipnotizador</button>
+<button onclick="changeVideo(this, 11, 'playerSaga3')">Episodio 11<br>Revelando la Conspiración! el Pirata enmascarado, Captain Kuro!</button>
+<button onclick="changeVideo(this, 12, 'playerSaga3')">Episodio 12<br>Batalla! La tripulación Pirata del Gato Negro. Combate en la Costa!</button>
+<button onclick="changeVideo(this, 13, 'playerSaga3')">Episodio 13<br>El Dúo aterrador! Los Hermanos Nyaban VS Zoro</button>
+<button onclick="changeVideo(this, 14, 'playerSaga3')">Episodio 14<br>Luffy Revive! Kaya-ojousama confrontación al borde la vida y la muerte</button>
+<button onclick="changeVideo(this, 15, 'playerSaga3')">Episodio 15<br>Derrotar a Kuro! la determinación de Usopp!</button>
+<button onclick="changeVideo(this, 16, 'playerSaga3')">Episodio 16<br>Proteger a Kaya! los Piratas de Usopp entran en Acción!</button>
+<button onclick="changeVideo(this, 17, 'playerSaga3')">Episodio 17<br>Completamente enfurecido! Kuro VS Luffy, Batalla Final!</button>
+<button onclick="changeVideo(this, 18, 'playerSaga3')">Episodio 18<br>Eres un animal Especial! Gaimon y sus nakamas</button>
+      
+    </div>
+  </div>
+
+  <!-- Cuarta saga -->
+  <div class="saga-container">
+    <h1>Baratie</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga4">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 19, 'playerSaga4')">Episodio 19<br>El pasado de las tres espadas! La promesa entre Zoro y Kuina!</button>
+<button onclick="changeVideo(this, 20, 'playerSaga4')">Episodio 20<br>El famoso cocinero! Sanji del restaurante flotante</button>
+<button onclick="changeVideo(this, 21, 'playerSaga4')">Episodio 21<br>Un huesped inesperado! La comida de Sanji y la gracia de Gin</button>
+<button onclick="changeVideo(this, 22, 'playerSaga4')">Episodio 22<br>La flota pirata mas Grande: Capitán Don Krieg</button>
+<button onclick="changeVideo(this, 23, 'playerSaga4')">Episodio 23<br>Proteger el Baratie! El gran pirata: Zeff "Pierna Roja"</button>
+<button onclick="changeVideo(this, 24, 'playerSaga4')">Episodio 24<br>"Ojos de Halcón" Mihawk! El Espadachín Zoro cae al mar!</button>
+<button onclick="changeVideo(this, 25, 'playerSaga4')">Episodio 25<br>Emerge la magnifica habilidad con las Perlas de Hierro: Sanji VS Pearl "Muro de Hierro"</button>
+<button onclick="changeVideo(this, 26, 'playerSaga4')">Episodio 26<br>El sueño de Sanji y Zeff: El mar de los Sueños - All Blue</button>
+<button onclick="changeVideo(this, 27, 'playerSaga4')">Episodio 27<br>El demonio sin corazón: Gin, el comandante de la Flota Pirata</button>
+<button onclick="changeVideo(this, 28, 'playerSaga4')">Episodio 28<br>No voy a morir! Conclusión: Luffy VS Krieg</button>
+<button onclick="changeVideo(this, 29, 'playerSaga4')">Episodio 29<br>Resultado de una batalla mortal! La lanza!</button>
+<button onclick="changeVideo(this, 30, 'playerSaga4')">Episodio 30<br>Partida! el cocinero del mar y Luffy viajan juntos!</button>
+      
+    </div>
+  </div>
+
+  <!-- Quinta saga -->
+  <div class="saga-container">
+    <h1>Arlong Park</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga5">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 31, 'playerSaga5')">Episodio 31<br>El hombre mas travieso del East Blue! El Gyojin Pirata Arlong</button>
+      <button onclick="changeVideo(this, 32, 'playerSaga5')">Episodio 32<br>La Bruja de la Villa Cocoyasi, la oficial mujer de Arlong</button>
+      <button onclick="changeVideo(this, 33, 'playerSaga5')">Episodio 33<br>La muerte de Usopp?! Luffy aun no aparece?</button>
+      <button onclick="changeVideo(this, 34, 'playerSaga5')">Episodio 34<br>Reunidos! Usopp cuenta la verdad sobre Nami</button>
+      <button onclick="changeVideo(this, 35, 'playerSaga5')">Episodio 35<br>El pasado oculto! La mujer guerrera Bellemere!</button>
+      <button onclick="changeVideo(this, 36, 'playerSaga5')">Episodio 36<br>Sobrevive! La madre Bellemere y la familia de Nami!</button>
+      <button onclick="changeVideo(this, 37, 'playerSaga5')">Episodio 37<br>Luffy se levanta! El final de una promesa rota!</button>
+      <button onclick="changeVideo(this, 38, 'playerSaga5')">Episodio 38<br>Luffy en apuros! Luffy vs. los Piratas Gyojin!</button>
+      <button onclick="changeVideo(this, 39, 'playerSaga5')">Episodio 39<br>La caída de Luffy! Zoro vs. el pulpo Hatchan!</button>
+      <button onclick="changeVideo(this, 40, 'playerSaga5')">Episodio 40<br>Los guerreros orgullosos en alto! La dramática batalla de Sanji y Usopp!</button>
+      <button onclick="changeVideo(this, 41, 'playerSaga5')">Episodio 41<br>Lo mejor de Luffy! El valor de Nami y el Sombrero de Paja</button>
+      <button onclick="changeVideo(this, 42, 'playerSaga5')">Episodio 42<br>Estalla su exterior! El Gyojin Arlong, terrible ataque desde el mar!</button>
+      <button onclick="changeVideo(this, 43, 'playerSaga5')">Episodio 43<br>Fin del Imperio Gyojin! Nami es mi nakama!</button>
+      <button onclick="changeVideo(this, 44, 'playerSaga5')">Episodio 44<br>Partiendo con una sonrisa! Hasta siempre mi hogar, Villa Cocoyasi!</button>
+      <button onclick="changeVideo(this, 45, 'playerSaga5')">Episodio 45<br>Recompensa! Sombrero de Paja Luffy se hace mundialmente famoso!</button>
+      
+    </div>
+  </div>
+
+  <!-- Sexta saga -->
+  <div class="saga-container">
+    <h1>Aventuras de la Tripulación de Buggy</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga6">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 46, 'playerSaga6')">Episodio 46<br>Tras los Sombreros de Paja! La gran aventura del pequeño Buggy</button>
+      <button onclick="changeVideo(this, 47, 'playerSaga6')">Episodio 47<br>Lo estabas esperando! El regreso del Capitán Buggy!</button>
+    </div>
+  </div>
+
+  <!-- Séptima saga -->
+  <div class="saga-container">
+    <h1>Loguetown</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga7">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 48, 'playerSaga7')">Episodio 48<br>La ciudad del inicio y el fin - Llegada a Loguetown</button>
+<button onclick="changeVideo(this, 49, 'playerSaga7')">Episodio 49<br>¡Sandai Kitetsu y Yukibashiri! Las nuevas espadas de Zoro, y la Sargento Mayor</button>
+<button onclick="changeVideo(this, 50, 'playerSaga7')">Episodio 50<br>Usopp vs. el padre Daddy. Confrontación al medio día!</button>
+<button onclick="changeVideo(this, 51, 'playerSaga7')">Episodio 51<br>Una ardiente batalla culinaria? Sanji vs. la esplendida chef</button>
+<button onclick="changeVideo(this, 52, 'playerSaga7')">Episodio 52<br>La venganza de Buggy! El hombre que sonríe en la plataforma de ejecución!</button>
+<button onclick="changeVideo(this, 53, 'playerSaga7')">Episodio 53<br>La leyenda ha comenzado! Rumbo a Grand Line</button>
+     
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Dragón Milenario</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga8">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 54, 'playerSaga8')">Episodio 54<br>Comienza una nueva aventura! La misteriosa muchacha, Apis</button>
+<button onclick="changeVideo(this, 55, 'playerSaga8')">Episodio 55<br>La sagrada bestia! El secreto de Apis y la Isla Legendaria</button>
+<button onclick="changeVideo(this, 56, 'playerSaga8')">Episodio 56<br>Incursión de Erik! El gran escape de la Isla Bugue de guerra!</button>
+<button onclick="changeVideo(this, 57, 'playerSaga8')">Episodio 57<br>Una isla solitaria a mar lejano! La legendaria isla perdida</button>
+<button onclick="changeVideo(this, 58, 'playerSaga8')">Episodio 58<br>Duelo en las ruinas! un tenso Zoro vs Erik!</button>
+<button onclick="changeVideo(this, 59, 'playerSaga8')">Episodio 59<br>Luffy, completamente rodeado! El plan secreto del almirante Nelson</button>
+<button onclick="changeVideo(this, 60, 'playerSaga8')">Episodio 60<br>Los que se elevan en los cielos abiertos! Renacimiento de la leyenda de 1000 años!</button>
+<button onclick="changeVideo(this, 61, 'playerSaga8')">Episodio 61<br>Final angustioso! Cruzar el Red Line!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Reverse Mountain</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga9">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 62, 'playerSaga9')">Episodio 62<br>¿El primer obstáculo? La ballena gigante Laboon aparece</button>
+<button onclick="changeVideo(this, 63, 'playerSaga9')">Episodio 63<br>La promesa de un hombre. Luffy y la ballena prometen encontrarse nuevamente</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Whisky Peak</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga10">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 64, 'playerSaga10')">Episodio 64<br>Un pueblo de amante de los piratas? Llegada a Whiskey Peak</button>
+<button onclick="changeVideo(this, 65, 'playerSaga10')">Episodio 65<br>¡Santoryu explosivo! Zoro vs. Baroque Works!</button>
+<button onclick="changeVideo(this, 66, 'playerSaga10')">Episodio 66<br>Una lucha seria! Luffy vs. Zoro: duelo desconcertante!</button>
+<button onclick="changeVideo(this, 67, 'playerSaga10')">Episodio 67<br>Entregar a la princesa Vivi! los Piratas de Luffy huyen</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Diario de Kobbymeppo</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga11">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 68, 'playerSaga11')">Episodio 68<br>Esfuérzate Coby! Diario marine de la dura lucha de Coby y Helmeppo</button>
+<button onclick="changeVideo(this, 69, 'playerSaga11')">Episodio 69<br>Determinación de Coby‑Meppo! Orgullo paternal del Vicealmirante Garp</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Little Garden</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga12">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 70, 'playerSaga12')">Episodio 70<br>Isla prehistórica! La sombra que está al acecho en Little Garden!</button>
+<button onclick="changeVideo(this, 71, 'playerSaga12')">Episodio 71<br>La gran batalla! Los gigantes Dorry y Broggy!</button>
+<button onclick="changeVideo(this, 72, 'playerSaga12')">Episodio 72<br>La ira de Luffy! Un truco sucio en una batalla sagrada</button>
+<button onclick="changeVideo(this, 73, 'playerSaga12')">Episodio 73<br>Broggy se lamenta la victoria! El juicio de Elbaf</button>
+<button onclick="changeVideo(this, 74, 'playerSaga12')">Episodio 74<br>La vela del diablo! Lágrimas de arrepentimiento y lágrimas de cólera</button>
+<button onclick="changeVideo(this, 75, 'playerSaga12')">Episodio 75<br>Luffy atacado con magia! Colors Trap</button>
+<button onclick="changeVideo(this, 76, 'playerSaga12')">Episodio 76<br>Contraataque crítico! El Kaenboshi e ingenio de Usopp!</button>
+<button onclick="changeVideo(this, 77, 'playerSaga12')">Episodio 77<br>Adiós a la Isla de los Gigantes! Rumbo hacia Arabasta</button>
+      
+    </div>
+  </div>
+
+
+  <div class="saga-container">
+    <h1>Isla de Drum</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga13">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 78, 'playerSaga13')">Episodio 78<br>Nami está enferma? Más allá de la nieve donde cae en el océano!</button>
+<button onclick="changeVideo(this, 79, 'playerSaga13')">Episodio 79<br>Emboscada! El Bliking y Wapol el Blik</button>
+<button onclick="changeVideo(this, 80, 'playerSaga13')">Episodio 80<br>Una isla sin médicos? Aventura en el país sin nombre!</button>
+<button onclick="changeVideo(this, 81, 'playerSaga13')">Episodio 81<br>Ya eres feliz? El doctor que es llamada bruja!</button>
+<button onclick="changeVideo(this, 82, 'playerSaga13')">Episodio 82<br>La solución de Dalton! Desembarco del ejército de Wapol</button>
+<button onclick="changeVideo(this, 83, 'playerSaga13')">Episodio 83<br>La isla que vive en la nieve! Escalar las Drum Rockies!</button>
+<button onclick="changeVideo(this, 84, 'playerSaga13')">Episodio 84<br>El reno de nariz azul! El secreto de Chopper</button>
+<button onclick="changeVideo(this, 85, 'playerSaga13')">Episodio 85<br>El sueño de un forajido! El curandero Hiluluk</button>
+<button onclick="changeVideo(this, 86, 'playerSaga13')">Episodio 86<br>Los cerezos de Hiluluk y la voluntad heredada</button>
+<button onclick="changeVideo(this, 87, 'playerSaga13')">Episodio 87<br>VS el ejército de Wapol! Las habilidades de la Baku Baku no Mi!</button>
+<button onclick="changeVideo(this, 88, 'playerSaga13')">Episodio 88<br>Fruta del Diablo de la familia Zoan! Los siete niveles de trasformación de Chopper</button>
+<button onclick="changeVideo(this, 89, 'playerSaga13')">Episodio 89<br>Cuando la tiranía del reino acaba! La bandera de la convicción dura para siempre</button>
+<button onclick="changeVideo(this, 90, 'playerSaga13')">Episodio 90<br>Los cerezos de Hiruluk! Milagro en Drum Rockies</button>
+<button onclick="changeVideo(this, 91, 'playerSaga13')">Episodio 91<br>¡Adiós, isla de Drum! ¡Me voy a hacer a la mar!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Alabasta</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga14">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 92, 'playerSaga14')">Episodio 92<br>El héroe de Arabasta y la bailarina del barco</button>
+<button onclick="changeVideo(this, 93, 'playerSaga14')">Episodio 93<br>¡Hacia el reino desértico! El polvo que provoca la lluvia y el ejército rebelde</button>
+<button onclick="changeVideo(this, 94, 'playerSaga14')">Episodio 94<br>¡La reunión de los héroes! Su nombre es Puño de Fuego Ace</button>
+<button onclick="changeVideo(this, 95, 'playerSaga14')">Episodio 95<br>¡Ace y Luffy! Ardientes emociones y vínculos fraternales</button>
+<button onclick="changeVideo(this, 96, 'playerSaga14')">Episodio 96<br>¡La ciudad verde, Erumalu, y los Kung Fu Dugongs!</button>
+<button onclick="changeVideo(this, 97, 'playerSaga14')">Episodio 97<br>¡Aventura en el país de la arena! Los monstruos que viven en la tierra abrasadora</button>
+<button onclick="changeVideo(this, 98, 'playerSaga14')">Episodio 98<br>¡Llegan los Piratas del Desierto! Los hombres que viven libremente</button>
+<button onclick="changeVideo(this, 99, 'playerSaga14')">Episodio 99<br>¡Una fortaleza falsa! ¡Camu, el soldado rebelde de corazón!</button>
+<button onclick="changeVideo(this, 100, 'playerSaga14')">Episodio 100<br>¡Koza, el guerrero rebelde! ¡El sueño que le prometió a Vivi!</button>
+<button onclick="changeVideo(this, 101, 'playerSaga14')">Episodio 101<br>¡Enfrentamiento en una neblina de calor! Ace contra Scorpion, el valiente</button>
+<button onclick="changeVideo(this, 102, 'playerSaga14')">Episodio 102<br>¡Ruinas y gente perdida! Vivi, sus amigos y la forma del país</button>
+<button onclick="changeVideo(this, 103, 'playerSaga14')">Episodio 103<br>En el Spiders Café a las ocho en punto. Se reúnen los líderes del enemigo</button>
+<button onclick="changeVideo(this, 104, 'playerSaga14')">Episodio 104<br>¡Luffy contra Vivi! Los compañeros prometen que arriesgarán sus vidas</button>
+<button onclick="changeVideo(this, 105, 'playerSaga14')">Episodio 105<br>¡El frente de Arabasta! Rainbase, la ciudad de los sueños</button>
+<button onclick="changeVideo(this, 106, 'playerSaga14')">Episodio 106<br>¡La trampa de la derrota segura! Asalto a Raindinners</button>
+<button onclick="changeVideo(this, 107, 'playerSaga14')">Episodio 107<br>¡Comienza la Operación Utopía! El desconcierto se aviva</button>
+<button onclick="changeVideo(this, 108, 'playerSaga14')">Episodio 108<br>El temible bananadrilo y Mr. Prince</button>
+<button onclick="changeVideo(this, 109, 'playerSaga14')">Episodio 109<br>¡La llave del gran escape! ¡La Doru Doru Ball!</button>
+<button onclick="changeVideo(this, 110, 'playerSaga14')">Episodio 110<br>¡Un despiadado combate a muerte! Luffy contra Crocodile</button>
+<button onclick="changeVideo(this, 111, 'playerSaga14')">Episodio 111<br>¡Una carrera para lograr el milagro! El reino animal de Arabasta</button>
+<button onclick="changeVideo(this, 112, 'playerSaga14')">Episodio 112<br>¡El ejército rebelde contra el ejército real! ¡Enfrentamiento en Alubarna!</button>
+<button onclick="changeVideo(this, 113, 'playerSaga14')">Episodio 113<br>¡Alubarna se lamenta! ¡El fiero capitán Karoo!</button>
+<button onclick="changeVideo(this, 114, 'playerSaga14')">Episodio 114<br>¡El juramento del sueño de un compañero! La batalla de la madriguera, cuarta manzana</button>
+<button onclick="changeVideo(this, 115, 'playerSaga14')">Episodio 115<br>¡Hoy es el día del estreno! ¡El montaje Mane Mane!</button>
+<button onclick="changeVideo(this, 116, 'playerSaga14')">Episodio 116<br>¡Transformado en Nami! El Ballet Kenpo de Bon Clay</button>
+<button onclick="changeVideo(this, 117, 'playerSaga14')">Episodio 117<br>¡El Aviso de Ciclones de Nami! Explota el Clima Tact</button>
+<button onclick="changeVideo(this, 118, 'playerSaga14')">Episodio 118<br>¡El secreto de la familia real! Pluton, el arma de la antigüedad</button>
+<button onclick="changeVideo(this, 119, 'playerSaga14')">Episodio 119<br>¡El secreto de la poderosa esgrima! La capacidad de cortar el acero y el ritmo de las cosas</button>
+<button onclick="changeVideo(this, 120, 'playerSaga14')">Episodio 120<br>¡Terminó la batalla! Koza levanta la bandera blanca</button>
+<button onclick="changeVideo(this, 121, 'playerSaga14')">Episodio 121<br>¡El destino de la voz de Vivi! ¡El héroe desciende!</button>
+<button onclick="changeVideo(this, 122, 'playerSaga14')">Episodio 122<br>¡El cocodrilo de arena contra el Luffy de agua! El segundo asalto del duelo</button>
+<button onclick="changeVideo(this, 123, 'playerSaga14')">Episodio 123<br>¡Es cocodrilesco! ¡Luffy, corre hacia la tumba real!</button>
+<button onclick="changeVideo(this, 124, 'playerSaga14')">Episodio 124<br>¡La pesadilla se acerca! Esta es la base del Clan Suna Suna</button>
+<button onclick="changeVideo(this, 125, 'playerSaga14')">Episodio 125<br>¡Unas maravillosas alas! Soy Pell, el dios guardián del país</button>
+<button onclick="changeVideo(this, 126, 'playerSaga14')">Episodio 126<br>¡Te superaré! ¡Cae la lluvia en Arabasta!</button>
+<button onclick="changeVideo(this, 127, 'playerSaga14')">Episodio 127<br>¡Adiós a las armas! Los piratas y las diferentes ideas de justicia</button>
+<button onclick="changeVideo(this, 128, 'playerSaga14')">Episodio 128<br>¡El banquete de los piratas y la operación de huida de Arabasta!</button>
+<button onclick="changeVideo(this, 129, 'playerSaga14')">Episodio 129<br>¡Comenzó aquel día! ¡Vivi cuenta la historia de su aventura!</button>
+<button onclick="changeVideo(this, 130, 'playerSaga14')">Episodio 130<br>¡El aroma del peligro! ¡El séptimo miembro es Nico Robin!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Post Alabasta</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga145">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 131, 'playerSaga145')">Episodio 131<br>¡El primer paciente! La historia no revelada de la Rumble Ball</button>
+<button onclick="changeVideo(this, 132, 'playerSaga145')">Episodio 132<br>¡El levantamiento de la navegadora! ¡Por el sueño firme!</button>
+<button onclick="changeVideo(this, 133, 'playerSaga145')">Episodio 133<br>¡Una receta heredada! Sanji, el hombre de hierro del curry</button>
+<button onclick="changeVideo(this, 134, 'playerSaga145')">Episodio 134<br>¡Haré que florezca! Usopp el Hombre y el cohete de dos metros</button>
+<button onclick="changeVideo(this, 135, 'playerSaga145')">Episodio 135<br>¡El afamado cazador de piratas! Zoro, el espadachín errante</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Isla Cabra</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga15">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 136, 'playerSaga15')">Episodio 136<br>¡Zenny de la Isla de las Cabras y el barco pirata dentro de la montaña!</button>
+<button onclick="changeVideo(this, 137, 'playerSaga15')">Episodio 137<br>¿Cómo haces el dinero? ¡La ambición del prestamista Zenny!</button>
+<button onclick="changeVideo(this, 138, 'playerSaga15')">Episodio 138<br>¡La ubicación del tesoro de la isla! ¡Los piratas de Zenny salen al ataque!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Niebla Arco Iris</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga16">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 139, 'playerSaga16')">Episodio 139<br>¡La leyenda de la Niebla Arcoíris! El viejo Henzo de la Isla Luluka</button>
+<button onclick="changeVideo(this, 140, 'playerSaga16')">Episodio 140<br>¡Los habitantes de la tierra eterna! ¡Los piratas Pumpkin!</button>
+<button onclick="changeVideo(this, 141, 'playerSaga16')">Episodio 141<br>¡Los recuerdos del hogar! ¡El cementerio de piratas sin escapatoria!</button>
+<button onclick="changeVideo(this, 142, 'playerSaga16')">Episodio 142<br>¡Una trifulca inevitable! Los planes de Wetton y la Torre Arcoíris</button>
+<button onclick="changeVideo(this, 143, 'playerSaga16')">Episodio 143<br>¡Y así, empieza la leyenda! Vamos hacia el otro lado del arcoíris</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Jaya</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga17">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 144)">Episodio 144<br>¡El Log robado! ¡El rey de los salvamentos, Masira!</button>
+<button onclick="changeVideo(this, 145)">Episodio 145<br>¡Aparecen los monstruos! No le hagan nada a la tripulación de Barbablanca</button>
+<button onclick="changeVideo(this, 146)">Episodio 146<br>¡No sueñes! ¡Mock Town, la ciudad del ridículo!</button>
+<button onclick="changeVideo(this, 147)">Episodio 147<br>¡Piratas de primera! El hombre que habla de sueños y el rey de la búsqueda submarina</button>
+<button onclick="changeVideo(this, 148)">Episodio 148<br>¡La familia legendaria! Noland el Mentiroso</button>
+<button onclick="changeVideo(this, 149)">Episodio 149<br>¡Rumbo a las nubes! ¡Capturen el South Bird!</button>
+<button onclick="changeVideo(this, 150)">Episodio 150<br>¡¿Los sueños no se vuelven realidad?! Bellamy contra la Alianza Saruyama</button>
+<button onclick="changeVideo(this, 151)">Episodio 151<br>¡El hombre de los 100 millones! El mayor poder del mundo y el pirata Barbanegra</button>
+<button onclick="changeVideo(this, 152)">Episodio 152<br>¡El barco transita el cielo! Súbanse a la Knock-Up Stream</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Skypiea</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga18">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 153)">Episodio 153<br>¡Este es el océano del cielo! El caballero del cielo y la puerta de los cielos</button>
+<button onclick="changeVideo(this, 154)">Episodio 154<br>¡El país de Dios, Skypiea! Ángeles en una playa de nubes</button>
+<button onclick="changeVideo(this, 155)">Episodio 155<br>¡La tierra prohibida! ¡La isla en la que vive Dios y el Juicio del Cielo!</button>
+<button onclick="changeVideo(this, 156)">Episodio 156<br>¡¿Ya somos criminales?! Los defensores de la ley de Skypiea</button>
+<button onclick="changeVideo(this, 157)">Episodio 157<br>¡¿Es posible escapar?! ¡La Prueba de Dios se pone en marcha!</button>
+<button onclick="changeVideo(this, 158)">Episodio 158<br>¡Una trampa en la calle Lovely! El todopoderoso Enel</button>
+<button onclick="changeVideo(this, 159)">Episodio 159<br>¡Avanza, Cuervo! Hacia el altar de sacrificios</button>
+<button onclick="changeVideo(this, 160)">Episodio 160<br>¡10 % de probabilidad de supervivencia! ¡Satori, el sacerdote usuario del mantra!</button>
+<button onclick="changeVideo(this, 161)">Episodio 161<br>¡La amenaza de la Prueba de las Esferas! Batalla a muerte en el Bosque de las Ilusiones</button>
+<button onclick="changeVideo(this, 162)">Episodio 162<br>¡Chopper está en peligro! El antiguo Dios contra el sacerdote Shura</button>
+<button onclick="changeVideo(this, 163)">Episodio 163<br>¡Un gran misterio! ¡¿La Prueba de la Cuerda y la Prueba del Amor?!</button>
+<button onclick="changeVideo(this, 164)">Episodio 164<br>¡Enciendan el fuego de Shandora! Wyper el Guerrero</button>
+<button onclick="changeVideo(this, 165)">Episodio 165<br>¡Jaya, la ciudad de oro en el cielo! ¡Hacia el Templo de Dios!</button>
+<button onclick="changeVideo(this, 166)">Episodio 166<br>¡Festival la noche antes de buscar el oro! ¡Sentimientos por Vearth!</button>
+<button onclick="changeVideo(this, 167)">Episodio 167<br>¡Aparece el dios Enel! Alborada a los supervivientes</button>
+<button onclick="changeVideo(this, 168)">Episodio 168<br>¡Una serpiente gigante muestra sus colmillos! Empieza el juego de supervivencia</button>
+<button onclick="changeVideo(this, 169)">Episodio 169<br>¡El Reject mortal! La determinación del Demonio Guerrero Wyper</button>
+<button onclick="changeVideo(this, 170)">Episodio 170<br>¡Pelea intensa en el aire! El pirata Zoro contra el guerrero Braham</button>
+<button onclick="changeVideo(this, 171)">Episodio 171<br>¡La bazuca ardiente que ruge! Luffy contra el Demonio Guerrero Wyper</button>
+<button onclick="changeVideo(this, 172)">Episodio 172<br>La Prueba del Pantano! ¡Chopper contra el sacerdote Gedatsu!</button>
+<button onclick="changeVideo(this, 173)">Episodio 173<br>¡La habilidad invencible! Se revela la verdadera forma de Enel</button>
+<button onclick="changeVideo(this, 174)">Episodio 174<br>¡La capital legendaria! ¡Las grandiosas ruinas de Shandora!</button>
+<button onclick="changeVideo(this, 175)">Episodio 175<br>¡Probabilidad de supervivencia: 0%! Chopper contra el sacerdote Ohm</button>
+<button onclick="changeVideo(this, 176)">Episodio 176<br>¡Escala la Giant Jack! Combate a muerte en las ruinas superiores</button>
+<button onclick="changeVideo(this, 177)">Episodio 177<br>¡La verdadera Prueba de Hierro! ¡Duelo a muerte entre las púas blancas!</button>
+<button onclick="changeVideo(this, 178)">Episodio 178<br>¡Un corte lleno de energía! ¡Zoro contra el sacerdote Ohm!</button>
+<button onclick="changeVideo(this, 179)">Episodio 179<br>¡Las ruinas superiores se derrumban! ¡El quinteto para el final!</button>
+<button onclick="changeVideo(this, 180)">Episodio 180<br>¡Enfrentamiento en las ruinas antiguas! ¡El objetivo del dios Enel!</button>
+<button onclick="changeVideo(this, 181)">Episodio 181<br>El anhelo de Fairy Vearth ¡El Arca Maxim!</button>
+<button onclick="changeVideo(this, 182)">Episodio 182<br>¡Al fin se enfrentan! ¡El pirata Luffy contra el dios Enel!</button>
+<button onclick="changeVideo(this, 183)">Episodio 183<br>¡Maxim se asoma! ¡Se activa Deathpiea!</button>
+<button onclick="changeVideo(this, 184)">Episodio 184<br>¡Luffy se cae! ¡El juicio de Dios y el deseo de Nami!</button>
+<button onclick="changeVideo(this, 185)">Episodio 185<br>¡Los dos que despertaron! ¡Un ardiente rescate del amor!</button>
+<button onclick="changeVideo(this, 186)">Episodio 186<br>Capriccio para la desesperación ¡La inminente destrucción de las islas del cielo!</button>
+<button onclick="changeVideo(this, 187)">Episodio 187<br>¡Guiado por una campanada! La historia del Gran Guerrero y el explorador</button>
+<button onclick="changeVideo(this, 188)">Episodio 188<br>¡Liberados del hechizo! ¡Las lágrimas del Gran Guerrero!</button>
+<button onclick="changeVideo(this, 189)">Episodio 189<br>¡Amigos para siempre! ¡La campana del juramento resuena a través del poderoso mar!</button>
+<button onclick="changeVideo(this, 190)">Episodio 190<br>¡Isla Ángel arrasada! ¡El horror del advenimiento de Raigo!</button>
+<button onclick="changeVideo(this, 191)">Episodio 191<br>¡Derriben la Giant Jack! La última esperanza de huida</button>
+<button onclick="changeVideo(this, 192)">Episodio 192<br>¡Un milagro en la tierra de Dios! La canción de amor que llegó a los ángeles</button>
+<button onclick="changeVideo(this, 193)">Episodio 193<br>¡El final de la batalla! La orgullosa fantasía resuena a lo lejos</button>
+<button onclick="changeVideo(this, 194)">Episodio 194<br>¡Llegué hasta aquí! La historia que cuenta el Poneglyph</button>
+<button onclick="changeVideo(this, 195)">Episodio 195<br>¡Hacia el Mar Azul! Un final lleno de sentimientos</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Navarone</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga19">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 196)">Episodio 196<br>¡Se anuncia una situación de emergencia! ¡Se infiltró un infame barco pirata!</button>
+<button onclick="changeVideo(this, 197)">Episodio 197<br>¡Sanji el Cocinero! ¡Demostrando su valor en el comedor de la Marina!</button>
+<button onclick="changeVideo(this, 198)">Episodio 198<br>¡Zoro capturado y las cirugías de emergencia de Chopper!</button>
+<button onclick="changeVideo(this, 199)">Episodio 199<br>¡Se acerca la redada de la Marina! ¡Capturan al segundo miembro!</button>
+<button onclick="changeVideo(this, 200)">Episodio 200<br>¡Luffy y Sanji están decididos! ¡El gran plan de rescate!</button>
+<button onclick="changeVideo(this, 201)">Episodio 201<br>¡Aparecen las impulsivas fuerzas especiales! ¡Batalla en el puente!</button>
+<button onclick="changeVideo(this, 202)">Episodio 202<br>¡Atraviesen el asedio! Recuperen el Going Merry</button>
+<button onclick="changeVideo(this, 203)">Episodio 203<br>¡El barco pirata desaparecido! Segundo asalto de la batalla en la fortaleza</button>
+<button onclick="changeVideo(this, 204)">Episodio 204<br>¡Los planes para recuperar el oro y el Waver!</button>
+<button onclick="changeVideo(this, 205)">Episodio 205<br>¡El plan para capturar a todos juntos! La táctica secreta en la que confía Jonathan</button>
+<button onclick="changeVideo(this, 206)">Episodio 206<br>¡Adiós, fortaleza de la Marina! La última batalla por la huida</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Long Ring Long Land</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga20">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 207)">Episodio 207<br>¡Gran aventura en Long Ring Long Land!</button>
+<button onclick="changeVideo(this, 208)">Episodio 208<br>¡Un Davy Back contra los piratas Foxy!</button>
+<button onclick="changeVideo(this, 209)">Episodio 209<br>¡Primer asalto! Una vuelta de la Donut Race</button>
+<button onclick="changeVideo(this, 210)">Episodio 210<br>¡Zorro Plateado Foxy! La Obstrucción Despiadada</button>
+<button onclick="changeVideo(this, 211)">Episodio 211<br>¡Segunda ronda! Irrumpan en el Groggy Ring</button>
+<button onclick="changeVideo(this, 212)">Episodio 212<br>¡Un aluvión de tarjetas rojas en el Groggy Ring!</button>
+<button onclick="changeVideo(this, 213)">Episodio 213<br>¡Tercera ronda! ¡El Roller Race giratorio!</button>
+<button onclick="changeVideo(this, 214)">Episodio 214<br>¡Una carrera apasionante! ¡Vamos a la ronda final!</button>
+<button onclick="changeVideo(this, 215)">Episodio 215<br>¡Un apasionante bombardeo! ¡El balón prisionero pirata!</button>
+<button onclick="changeVideo(this, 216)">Episodio 216<br>¡Enfrentamiento en la colina! ¡El Escondite Inglés!</button>
+<button onclick="changeVideo(this, 217)">Episodio 217<br>¡Se enfrentan los capitanes! ¡El combate de la última ronda!</button>
+<button onclick="changeVideo(this, 218)">Episodio 218<br>Un violento ataque masivo ralentizado contra Luffy el invencible</button>
+<button onclick="changeVideo(this, 219)">Episodio 219<br>¡Un combate épico y apasionante! La fatídica conclusión</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Ocean's Dream</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga21">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 220)">Episodio 220<br>¿Perdido? ¿Robado? ¿Quién eres?</button>
+<button onclick="changeVideo(this, 221)">Episodio 221<br>¡Un chico misterioso con un cuerno y la deducción de Robin!</button>
+<button onclick="changeVideo(this, 222)">Episodio 222<br>¡Recuperemos nuestros recuerdos! La tripulación pirata desembarca</button>
+<button onclick="changeVideo(this, 223)">Episodio 223<br>¡La amenaza de Zoro! ¡Un animal salvaje se interpone en el camino!</button>
+<button onclick="changeVideo(this, 224)">Episodio 224<br>¡El contraataque del ladrón de recuerdos que mostró su verdadera naturaleza!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Regreso de Foxy</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga22">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 225, 'playerSaga20')">Episodio 225<br>¡Un hombre orgulloso! Zorro Plateado Foxy</button>
+<button onclick="changeVideo(this, 226, 'playerSaga20')">Episodio 226<br>¿El hombre más próximo a la invencibilidad? ¡Y el hombre más peligroso!</button>
+      
+    </div>
+  </div>
+
+  <div class="saga-container">
+    <h1>Water 7</h1>
+    <!-- Reproductor para esta saga -->
+    <div class="player-container video-anchor" id="playerSaga23">
+      <iframe class="iframe-player" src="" allowfullscreen></iframe>
+    </div>
+    <div class="episode-list" role="list">
+      <button onclick="changeVideo(this, 227)">Episodio 227<br>¡El almirante de la Marina, Aokiji! La ferocidad de un puntal definitivo</button>
+<button onclick="changeVideo(this, 228)">Episodio 228<br>¡Un duelo entre la goma y el hielo! Luffy contra Aokiji</button>
+      
+    </div>
+  </div>
+
+
+
+
+  <script>
+    const videos = {
+      1: {        iframeSrc: "https://mega.nz/embed/I2sn2TTS#YytSsdxTUVaZc9wb6oZrrLpagSbnSAwMZWRXqbVcUsk"      },
+      2: {        iframeSrc: "https://mega.nz/embed/FutAXYCA#4DxxlxkKbnz7UcuTghFTv_Ws2XtH1s-Ohp1N6p8LuD8"      },
+      3: {        iframeSrc: "https://mega.nz/embed/tr9wQBBI#ie57mt1eWW03vutdGsj1_5cwDgUsFp51bzure9iCM-g"      },
+      4: {        iframeSrc: "https://mega.nz/embed/N2FCDJjL#s0sk3C0I-_mL1R7bu5qtcMW1gfLJ3RVtPsRR4Y-p7FM"      },
+      5: {        iframeSrc: "https://mega.nz/embed/xzUHxbDL#At21avl31JgWmfvZzrEAc7oZnM7-9LXmxqd0pNgoQd0"      },
+      6: {        iframeSrc: "https://mega.nz/embed/Zqs3ARZT#OKx9TQlF2Sy5bF3oh8UZGT2LUsDT60fLyAI-Diillqg"      },
+      7: {        iframeSrc: "https://mega.nz/embed/ZiMECCiS#H8sNcnE8ukcvlC0ZfN2e5mY2CbyYjSdtMm4xkArfrhI"      },
+      8: {        iframeSrc: "https://mega.nz/embed/RudxjB6A#ZxWsGN1NLJGGiEkArnjbT-tCARpI2LsTVBI2DOIAkk0"      },
+      9: {        iframeSrc: "https://mega.nz/embed/sycmETpD#5IZNqUdC7DJsS6rfYZLIaYbtUY9_2uTutM_QkUh7AIc"      },
+      10: {        iframeSrc: "https://mega.nz/embed/N78CVR7J#asjqW1CtwqfMnQ8yENaxeXIT8Mw-_4puiMrKSg3g_hw"      },
+      11: { iframeSrc: "https://mega.nz/embed/59kD2AqY#mKinXuJ2XyDqtp-yRB3w6xTAX_zX4NafE8DPkzLTbSc" },
+      12: { iframeSrc: "https://mega.nz/embed/B58UjAJT#gg1hjIVaq9CbGNayZB6soKRWtSDqz8UpfLJIcf0STgo" },
+     13: { iframeSrc: "https://mega.nz/embed/phMCQAbT#Qiukd0809KkkdquM5OyBI4YzNWsWZyxy7WM4-yq2wdc" },
+     14: { iframeSrc: "https://mega.nz/embed/xscR2IwL#U16qXWeACGqLqgJBixIgbrUtovNNc1RvtszfbD07ja4" },
+     15: { iframeSrc: "https://mega.nz/embed/psFUla6B#IL7ud8fVlzTZpFaxOWo3dM2h88ypG7YX131k_ow-XKw" },
+      16: { iframeSrc: "https://mega.nz/embed/55tHmKTL#sKmWkip7BlernpuX11s1ci9blvYIhn-fNSzRt_RxFGw" },
+     17: { iframeSrc: "https://mega.nz/embed/lwkWAIRB#GWvZjM8UoAaK7Zhx4qUgEmPK4r0zRDXnI2A-3WeXuBs" },
+      18: { iframeSrc: "https://mega.nz/embed/U9kD0C7R#GYuBRUi6ppRpaqekyXHkiio6VqPq6mLH5IpDJNvRtEU" },
+      19: { iframeSrc: "https://mega.nz/embed/00F1gJaA#eYNG7z8bsF0mv-ZMPBZWfeetfKdNyf9iqksyoDvT99w" },
+20: { iframeSrc: "https://mega.nz/embed/EetDVSIC#BeV5LYQH1sH2eG3OuHvrt9mjWHtVsO96SAT7O_RB5fk" },
+21: { iframeSrc: "https://mega.nz/embed/89tFgYqT#Vom828F8xaPGR4a_U7VQQmY1GXddn28zh15BsqbGHiE" },
+22: { iframeSrc: "https://mega.nz/embed/Q81kkYQK#oYBozdoLWvpUQIuItabTmybkEFkXYrDnDCfObGSFpPY" },
+23: { iframeSrc: "https://mega.nz/embed/hgd2lKKC#3pLVYxXkyUAGr53OwzEmTJ6TjZKWVDVKlb334TaZHVg" },
+24: { iframeSrc: "https://mega.nz/embed/E0kilCYI#9AuyBwb7YLgKXESNk87mumDxn6xKSrMkCqpz0lZf4Qg" },
+25: { iframeSrc: "https://mega.nz/embed/VkkiQaCZ#LwiZQQYEvqws7ZEZrSTV9Frph5KrccAfoW42aQ7qj1E" },
+26: { iframeSrc: "https://mega.nz/embed/49VRmKSD#drD9ewo9t_9FS06ZqTIm-9qshfAQ6GunCScXdS3F23c" },
+27: { iframeSrc: "https://mega.nz/embed/49VwRJSK#9GKNbTlbweyyLyN07gv9fPdidSIDduTterhh0Fi4OJA" },
+28: { iframeSrc: "https://mega.nz/embed/d9VzTBxD#wdIkAOuxlNdxQP2sA5xAnxwHFUEZhbA9fLbjfwXjy5I" },
+29: { iframeSrc: "https://mega.nz/embed/M48EVKJK#IAaCtb2_iljLYi5jyVhoI7rwBGMrdphZ4vPwVzU08D4" },
+30: { iframeSrc: "https://mega.nz/embed/pfMiCIiT#WjfrDLskPJSLb4F33derzKS0W1S02WlZd01dyM_EnOU" },
+31: { iframeSrc: "https://mega.nz/embed/ElEAHSZZ#5dsPlXy2qUGb3wW2HDJbw_9ieW9f2DB-qapmijgxujc" },
+32: { iframeSrc: "https://mega.nz/embed/0xNUlayR#igmTc-Z5RSk6gmrMVeMaiPfsMRl08CCuLZW92_-sqc0" },
+33: { iframeSrc: "https://mega.nz/embed/p510iJhT#22UxOPv_hzCidG81Prw_i6Q2kUv9cF070GhRNqebIhI" },
+34: { iframeSrc: "https://mega.nz/embed/N1dBmBRZ#-p71b52RetELzH0gxUYgbysG7WlVgL0KiQTP19RkTrY" },
+35: { iframeSrc: "https://mega.nz/embed/E8830YpI#2bGgzvrGAvB9GQ6zmtQOQXgxdKhn928OMjg-hWCMFN8" },
+36: { iframeSrc: "https://mega.nz/embed/kl8HzTZQ#2ebmfMoi352ckjQXw4RRy_lhh_uo1AdXODtKD9d2W9U" },
+37: { iframeSrc: "https://mega.nz/embed/lotU2BLL#BiH9_CWMRsabaN3U7M7WRHvafAUPf9ab35662paE7ss" },
+38: { iframeSrc: "https://mega.nz/embed/o4MWUYDS#pBdq-j2fk7ZL1Ut8zoivDI1H2zcizIXjcdudgSEtOB0" },
+39: { iframeSrc: "https://mega.nz/embed/N0dTlCJQ#veAZmsiQjVcT5bMtEKneTV3nMixZTxa-GOFUVls8_6k" },
+40: { iframeSrc: "https://mega.nz/embed/Yp9ViQiI#EwE6395aDzhojPDsikeE4xTxElQJKWdew5oUdukc9F0" },
+41: { iframeSrc: "https://mega.nz/embed/UlFxBQrJ#TcG3x3eUcl9bp0rbifdZjbNoLCmXeKf9khmTVZPdi-w" },
+42: { iframeSrc: "https://mega.nz/embed/l48n2KqC#EwECswaK6xBAuCdBcn3aFQEl8yByqpWCp5OazmrEC7c" },
+43: { iframeSrc: "https://mega.nz/embed/4ptEhR4R#EMa9ZTYDJTXPRdW4-1TX095mvxjVOYcYqO_ICNSLtGA" },
+44: { iframeSrc: "https://mega.nz/embed/sxEjEByK#FG8n535B2VmBikow0-ofirD6E4UAvKDHi87e9n_I20U" },
+45: { iframeSrc: "https://mega.nz/embed/dk0kUbBa#TMSx59zAWx7N3r3C5Jmguxw87890YOkGRUvdh1v0QY0" },
+46: { iframeSrc: "https://mega.nz/embed/EGV13YSQ#TZa9RJPqidI2v-lCjdstXH35FbojTARDV_FscloL8C4" },
+47: { iframeSrc: "https://mega.nz/embed/lgFyxYRC#vnGjh8HmTe2_VqdJyPkBLezVXPAovkSS3KF26PiD2r4" },
+48: { iframeSrc: "https://mega.nz/embed/okVHDQQR#gk4DT7vB7OcuP64KAj9KZuIV7NXM8plvahArdi4dgn4"},
+  49: { iframeSrc: "https://mega.nz/embed/gtdXnITQ#JI764CVms82vdiwzhHfSckDaOItGIsDZ7T11U65NguM"},
+  50: { iframeSrc: "https://mega.nz/embed/N9ES2ZAR#LWzBvOoTPSF82Wn2qoUC8POTcD9jZCU9lcl2Hh58PVM"},
+  51: { iframeSrc: "https://mega.nz/embed/Jxs2FYSb#oDqo0NI2J-rdOdWb5RAw5AnGp48OdV73fQz9RfGbNBQ"},
+  52: { iframeSrc: "https://mega.nz/embed/09dRDY7Q#MdjrWHieP_PulS7NcA_X93I3GY28kc_qcX8hb-JCkSo"},
+  53: { iframeSrc: "https://mega.nz/embed/I4cxSLJT#DyDnn0yoD7luQQThrxyZXjt9_MswRzK_qLN26qGeap4"},
+  54: { iframeSrc: "https://mega.nz/embed/wlETDaZB#Sj5ppoSw27ypG9LOeBCH3tl8OCv1IlroIKwmi0eGHN8"},
+  55: { iframeSrc: "https://mega.nz/embed/VgVmkJyb#VaSk0QcNGnz_l0kDF2APALDVw0pDcJ-ksID3yXwTk74"},
+  56: { iframeSrc: "https://mega.nz/embed/iYdmxYaZ#7MXbQukTWKardOjgy_DuP1XXt3hfboZzlC4Wi9FHm90"},
+  57: { iframeSrc: "https://mega.nz/embed/xw1xxASa#gFRGq9kZ9mSg34-Uv1-QDtC1BKxvV5tBENR-JxAyzD0"},
+  58: { iframeSrc: "https://mega.nz/embed/8wcRVYYZ#mHCSg758cVe1lH6wHlzO-SOH-CB7ooKQ99ip12AlOTU"},
+  59: { iframeSrc: "https://mega.nz/embed/c5sVBbRa#pcah-iABjRFq3FIkz-qYNqEEGk09uPh4tuAsmrvik2k"},
+  60: { iframeSrc: "https://mega.nz/embed/tktjTKrI#CZtqSH0kEF40eKU4rPRthF-sMXJqcQ1PBSHKKqHTXKY"},
+  61: { iframeSrc: "https://mega.nz/embed/pxVU1AYR#516CC2CK25dLE8vpHDniB91vHBQC726Stzd8q__Kois"},
+  62: { iframeSrc: "https://mega.nz/embed/BtsnhD7I#XB05cN6bpgdTynNnfXHZoH5aKtcftZ9TEHKtZ5akFD8"},
+  63: { iframeSrc: "https://mega.nz/embed/Zw8n0aAA#qRYt8RLBu1mug9iIGXCsUjOXZZa9ZnKy79ZJ25kCJl4"},
+  64: { iframeSrc: "https://mega.nz/embed/pp1QGJBY#4QYj1wS3--3z-_nYUWtDxYZG7QVX7KZnHNXtaMXhpFg"},
+  65: { iframeSrc: "https://mega.nz/embed/IpdnEYoT#YeSMpU2lSiEinywyQj7ye8ZMgqZmib3xnxXoHT2Aezc"},
+  66: { iframeSrc: "https://mega.nz/embed/ok80ER4T#MjQteIRjotnCgZWWlmsCzPgbKtZk33ZDkrr57LoysCU"},
+  67: { iframeSrc: "https://mega.nz/embed/QsNnwbjR#uPASXVwLXPTDClivzA7nbEHmi6qegL_12ASSD6JJ6B4"},
+  68: { iframeSrc: "https://mega.nz/embed/N9lDHIaa#W16EgAEAzNTmBlVsXj_B6N_1aGBx24MnhCpSvcYab2E"},
+  69: { iframeSrc: "https://mega.nz/embed/E8tzUZrA#hSXtWQaRntts30qgxNGeCE2tryM6XYlsb-2dINDKUlY"},
+  70: { iframeSrc: "https://mega.nz/embed/5xcFTCSC#uLqhnlwH0cS-VY42TElaplwzhM_AIeEOremI0IMyV2k"},
+  71: { iframeSrc: "https://mega.nz/embed/h9NUVQCD#gYd40iekUkdPFObOi2PTd6NLMGXcFmXwJNtlimKYt4c"},
+  72: { iframeSrc: "https://mega.nz/embed/ls1R2QKI#FCiCNzt4lDK3QtsUtm7unqkUJQXvMWtBDOMPA864qy4"},
+  73: { iframeSrc: "https://mega.nz/embed/lxFiXbxD#MbWwqyFf7AQVargrblyCOL9JYBZHn5A1vqxMqAUHa68"},
+  74: { iframeSrc: "https://mega.nz/embed/s40i3awL#1hiLT8JohSmIZkKV8ds0-M4rQgD9IjWGsgK8FXkQCNc"},
+  75: { iframeSrc: "https://mega.nz/embed/lhFEyDxS#C7p5zNmp3DoM0erdy9j7X42yM6UusMMnZkVfE1CaqqY"},
+  76: { iframeSrc: "https://mega.nz/embed/stdwkIhI#DxYyQEfcTRxDRcIf92aNpYv7V9nqA_ahBFwq3bU0ALU"},
+  77: { iframeSrc: "https://mega.nz/embed/t0dU0AYS#G5hyWBZHXHZF3K-xfw07M3DSAB9aTxu9fwjRwK7oa8Q"},
+  78: { iframeSrc: "https://mega.nz/embed/k9MghDbA#5bJH2aiCwgwmTM5_TcF2bc56wY6MSG24SqR5b16CTgw"},
+  79: { iframeSrc: "https://mega.nz/embed/J5F0VbqD#9OIEZj7oglFPDFqbgzafN1URWgxV2w1D9_a5kaKfSRk"},
+  80: { iframeSrc: "https://mega.nz/embed/hgkUzbCC#tlutUBMVb64zXWqJxzLZNGF4_sYlbT1hEcwCKhG0sQI"},
+  81: { iframeSrc: "https://mega.nz/embed/h1lw1DTR#eiwieBlK19S-a-SKgk3qLCbfW5OPt3wZfGkxFDFky1g"},
+  82: { iframeSrc: "https://mega.nz/embed/N1cUQb7J#REglZbZtzYJpN7jwB9ESdGDf7by-En_Vh06px2exQIU"},
+  83: { iframeSrc: "https://mega.nz/embed/AltCFa7A#MeMlI5G7lnA10gAw6PEATZCjT8ppNb_Z1TAn1Qsww6o"},
+  84: { iframeSrc: "https://mega.nz/embed/g9EDmQwZ#75ONnFc8uzUHoHbPBZu5I7wElm1O_UaOrprTWQGcRV0"},
+  85: { iframeSrc: "https://mega.nz/embed/N8c0AYJb#rpFWk9Hj064HrXzavwhjaG_Pat1vaEoW-kFQNKOZYyU"},
+  86: { iframeSrc: "https://mega.nz/embed/cbNlFIAR#I_C3EEMeAFnvFMLE4ZfekwD2CyF0e5UcAna41_g8oLI"},
+  87: { iframeSrc: "https://mega.nz/embed/s1VVjIYI#CaT0j3i0B2H9PZfVGMj6TbTdJaMutbpv1_iDmPkgCHk"},
+  88: { iframeSrc: "https://mega.nz/embed/F9kmQbjS#xJVRljQszApMYHo_5RQ_57ii_3hGc1B3tX8CNyvknZI"},
+  89: { iframeSrc: "https://mega.nz/embed/t0sBRZRL#xHPzAaKBZ6W5qKZSTf1bg5sdcNdcy9uzFwqx1C_PLW8"},
+  90: { iframeSrc: "https://mega.nz/embed/o1ECEaKI#K1cftMgJ9kVPh3CZX0bappKTdij00WQLro1F8nNG3GU"},
+  91: { iframeSrc: "https://mega.nz/embed/kgkBSDIJ#Y9xTLCVCTmabl55HETXqnNhLyBApfilReQfy4Q3ruPg"},
+  92: { iframeSrc: "https://mega.nz/embed/850hABwa#YbVzh9a4S5TEU_0He4CiNTEEbsTZZk3gc5E8HwKzCX0"},
+  93: { iframeSrc: "https://mega.nz/embed/QwcxATAa#XjJqOmzUiCS0v0rzwdW2sZIlRQcKIJGQmQkr1oIErUs"},
+  94: { iframeSrc: "https://mega.nz/embed/s1MSyZgS#Rz06Z-Y1uPqvHEUix3Op06Jyn4tQyxqiznNFtXtlDeg"},
+  95: { iframeSrc: "https://mega.nz/embed/NotCEZbY#TUiDE_oSN9k8jgOuk9BBY7XSSJs8SD_PlUofKl6Byf4"},
+  96: { iframeSrc: "https://mega.nz/embed/t8lC0TYS#LGJnYYh5BL_mE3-wuUIxP1HgIRbqdXcGrd7Nn5IsREw"},
+  97: { iframeSrc: "https://mega.nz/embed/Ut1W0YyQ#LR2r2DvNgXCac7M74AGPYJXYn8GsnFD3UYpotzcZ7wQ"},
+  98: { iframeSrc: "https://mega.nz/embed/8kUzwL7I#OWlJoAWSLbV605mc_xXvBWL-66Du9QoOCykmwZiSPRE"},
+  99: { iframeSrc: "https://mega.nz/embed/Q9ERECRC#Y1LsmgZltE5bnHYAm2ITgL-C6JELWjb1Ow9_Omd0rvM"},
+  100: { iframeSrc: "https://mega.nz/embed/I0UBiZpQ#QxF5T8mCxPPYahh43F_ZbuUtSmjfsipiA9dDp9t4uW4"},
+  101: { iframeSrc: "https://mega.nz/embed/l111UYgK#DKRNXM1b0ICNe-Nz2ATjkR8wgqi6riT9SPtjcfp3XC8"},
+  102: { iframeSrc: "https://mega.nz/embed/AxVhBLZI#bqRra2uP_txvnDVb7s2ZlcF35m1JTMdGf7sXAkV11y0"},
+  103: { iframeSrc: "https://mega.nz/embed/50FzEAKT#6Tq3Qb1pf-jtRt-6xPQG6tRoMD8-xMpD2ATVSKZjWwA"},
+  104: { iframeSrc: "https://mega.nz/embed/R0VQALDT#zECs6xMO3VUcontsVwWEvgcLXAC9ok3QbYkQ6FILGsk"},
+  105: { iframeSrc: "https://mega.nz/embed/041HmQ4Q#vPae7JmtRW33C3wUz4lfjkwS_Sq1Baofykr3LaDloFc"},
+  106: { iframeSrc: "https://mega.nz/embed/B4FThYDQ#uQdmVB8T1kK-nAfYBqq92uCYVt1dfmLerbE25Qfz9F4"},
+  107: { iframeSrc: "https://mega.nz/embed/JtNFSbxZ#0n2PtmPnw2BQE2RT8AjsTCmC7V_MknIp2cj6R8zqDRo"},
+  108: { iframeSrc: "https://mega.nz/embed/85ERhSCR#4D329TaJ3zB-5p_DK3M57bcWiTM24gG2YGz4yGJESg4"},
+  109: { iframeSrc: "https://mega.nz/embed/AgUyBLYS#XX7Bnzns9L_TBZtekNqlbTtOUAnGVTxksS1Lt7Ju6os"},
+  110: { iframeSrc: "https://mega.nz/embed/El1EHIbD#knfByqMLMdcV3rHizQB5uywgDhsq_eSs1EvwPy-gzqo"},
+  111: { iframeSrc: "https://mega.nz/embed/thMBCCQQ#n16kKBZUzclxM_0gOXy-lvws7YxS9MiP1bSyJtiqMWk"},
+  112: { iframeSrc: "https://mega.nz/embed/1sURiJzB#XB4gAXPHc3cw--5WyNOMoyHEMyBTWcsMD6QfWqRIo9w"},
+  113: { iframeSrc: "https://mega.nz/embed/4lVyHLAK#wb59Wz7TpaM6W8f1CIslU3mQ9eR5MDIyJOwaPyIQ2Yc"},
+  114: { iframeSrc: "https://mega.nz/embed/6pgQVLhA#kWe3VKsjJxO5QJqA8N21YClhM18Exh1W9omhrXJxdl8"},
+  115: { iframeSrc: "https://mega.nz/embed/Ax0zkQ6D#Qy-XtlVQOkmfnALGFw0zxSDg2hc7me86PUKO12baGis"},
+  116: { iframeSrc: "https://mega.nz/embed/99VknZxT#PeseByRvbHq-BKQzZ-iTbMGbwHOo6P9IM7ILKbYKjjQ"},
+  117: { iframeSrc: "https://mega.nz/embed/41tWXQZJ#DONIVjNoAki_cr6lSZMceu2miLcq9O2ai3_lcyAVNxA"},
+  118: { iframeSrc: "https://mega.nz/embed/Vh10kTyS#VhcmS-_1KddaNgeugCNGeMGxpQPLfFFslqA8vQUfIHU"},
+  119: { iframeSrc: "https://mega.nz/embed/JtNwFZwI#5ZTiEoy1q_0eXJ8CcB8NYFNpIwGA5aS0WG23E1HxEvo"},
+  120: { iframeSrc: "https://mega.nz/embed/V1EnQTKD#uVBMVEe75S-C6VzrSXt8oR_VwzKQmYiKeeiKC_K0nPM"},
+  121: { iframeSrc: "https://mega.nz/embed/NplEXSbZ#ASc2cNqe2tcQF-yoJIDrg4hN6NAK6yeARBPbjw96wHM"},
+  122: { iframeSrc: "https://mega.nz/embed/BoMTQSzQ#GNyyULY_Hs5RRMk00jEe8_3RiKlhlD7IC6quXgt3mFQ"},
+  123: { iframeSrc: "https://mega.nz/embed/gldSFSCb#9ybzAca-to4o6aTXxW1Y3XiayFESgVX1aWP9SBdebrM"},
+  124: { iframeSrc: "https://mega.nz/embed/FwkHnYTa#9fEevAt5r37d15BBz8PuciuuVNi6GVb8jxPrcJMd1xM"},
+  125: { iframeSrc: "https://mega.nz/embed/QRJzTaaA#Sk8DGul97OORjmMEFy4mnZACBXICBIDk4uKbewPGER8"},
+  126: { iframeSrc: "https://mega.nz/embed/hRZz2SiA#nEtb1o9uF30BBnahYIEiAbbCNlifoIIfg_zXTLKz5P4"},
+  127: { iframeSrc: "https://mega.nz/embed/wYBD2QBB#75rBmvsH-2Yn0M-rd_lceWEESg2gqUWThoB2rC-4yB0"},
+  128: { iframeSrc: "https://mega.nz/embed/hMQT3QDY#yz6n3OMtAyQdkKbWL3zugTciTMGtleXeyh6B3PiDV_0"},
+  129: { iframeSrc: "https://mega.nz/embed/dUJVCA6Q#e2uBYTaMOURG63yfp5LR3519Zc6KsZsQ1wxIzInOWtE"},
+  130: { iframeSrc: "https://mega.nz/embed/dJZXkYTA#kDY_nBkP2ZTaOgZX0ZxT1WpQ_0Iv_MBgDKjYTiasWJs"},
+  131: { iframeSrc: "https://mega.nz/embed/VdRj0QAI#3TBzDHQT1Cm_Q2do6yBt90SbzWi7FIMgi1vto_GdGD8"},
+  132: { iframeSrc: "https://mega.nz/embed/ABBTCKIY#e2U7Auuttib3LbG7uXHXO8Mga81RLuxv3IRs1v2G9BU"},
+  133: { iframeSrc: "https://mega.nz/embed/c48WRSxT#KpBhjVXFrpGbrbusqUCnQh3X_kQ8TxAFOeFQc1NckHE"},
+  134: { iframeSrc: "https://mega.nz/embed/URBDGQzR#OYmPE6MHBnlxLBMOM5Pp3mR6zk8OBdDTK61OQA3zjV0"},
+  135: { iframeSrc: "https://mega.nz/embed/VhUzmRLJ#wfpY3AkBi-v3aQi0RJ9QIglj4f_zPLmHuwLJCYKwwAs"},
+  136: { iframeSrc: "https://mega.nz/embed/d4czVZSQ#JZA1ViV5wgIcs7QcIJ3vr3iWkNo92wTd4D6qXJs4_So"},
+  137: { iframeSrc: "https://mega.nz/embed/ZNADEQxC#owRlJLZ4c9GqxtEyu2twBAVtkfjxK7YSGWziGyoqIWA"},
+  138: { iframeSrc: "https://mega.nz/embed/EVY1mQKK#rHHx5MEl7xCP4e992dtZeT_6AGBSAuAsitquHa39UIw"},
+  139: { iframeSrc: "https://mega.nz/embed/JARnyABK#SxJMPDJTWi1fMlAM0teQC8eMk4Z21H3ChlE3H7yiEgA"},
+  140: { iframeSrc: "https://mega.nz/embed/0cABTYBR#RVeOF9OB0Be0y3TEvzhcGucEcPU1xzHKKEwuGld8ujM"},
+  141: { iframeSrc: "https://mega.nz/embed/g0sHSSyA#ZGZftnquyiWiZlRbf7DYDO0CZhyS-80DPIYWQHMohzo"},
+  142: { iframeSrc: "https://mega.nz/embed/J9NgyKKD#Mg0McQHAXz-kkelIqnPaUSPgjx4baxHJimNyGY58xKA"},
+  143: { iframeSrc: "https://mega.nz/embed/ZdZhyQrK#A_2TuQAMTVrJ-aA7fQZdGrcIUwx-eyazZYdwuD9yUWw"},
+  144: { iframeSrc: "https://mega.nz/embed/9UJ3yIDC#f6o43ioDJrps4N5lJ0vRCTCsSpoOarfWlO8wBPfQUdc"},
+  145: { iframeSrc: "https://mega.nz/embed/scRnjIqC#CO9WZApieRr5g55uIccQaOIsdIgCPaXECAtKbU0IRDU"},
+  146: { iframeSrc: "https://mega.nz/embed/hNYR2ChA#8exW6YFK0hgPkY4BvBvxsEOqHY0_jHGYJ2MHFChTjww"},
+  147: { iframeSrc: "https://mega.nz/embed/hQYjWSaL#VLENycN_efjohDn_GQWO0Ii0bBkKJs9IfgDBs9JepCM"},
+  148: { iframeSrc: "https://mega.nz/embed/NFAH2SKD#wN7Wnauu-X86FRSfoV0ebac9s6SmnXyb_566VO1wBYk"},
+  149: { iframeSrc: "https://mega.nz/embed/xEBDTAxb#0BkvniQOtzbUjiwvdVctflwApkS44YBrWfD6qU7uiO4"},
+  150: { iframeSrc: "https://mega.nz/embed/cBJBACoB#-KgVczd7cAtxFSFwpTHQn9nMUxRiFxpCFrUEf7WETcg"},
+  151: { iframeSrc: "https://mega.nz/embed/YEIFzYYK#0Z9kodJqN8Zyn6wMt53Yj-u-khZFkb8TJ4ZbUrwK508"},
+  152: { iframeSrc: "https://mega.nz/embed/gQIViSAB#cwKdM7evvFFHeGmKiJdL0ZeI8xR_3J8wYUc_6LG8ChQ"},
+  153: { iframeSrc: "https://mega.nz/embed/FFYX2YwI#D7DScGUdJLbBHivIw_wxFp_34wsHioJ9Al1LFI5Xx-c"},
+  154: { iframeSrc: "https://mega.nz/embed/lNIzmA4B#bQdEhH0jLP9xcNaj6zQAAH-9bXUOz4puolVxErP51lA"},
+  155: { iframeSrc: "https://mega.nz/embed/t9VlyIDD#xmFKSM5FSYTYOrnpKH8diupCAty_NyuSKfndzNfGg74"},
+  156: { iframeSrc: "https://mega.nz/embed/oJR3lSLL#ib0R1ShoCxn5-WdkFzNPD4c2BhyqYWXEMXuwfPlwYT4"},
+  157: { iframeSrc: "https://mega.nz/embed/NIAXmaLQ#K8QoUtc3dAVXelv_s5mYs6HEpE3hmhUDFNdagTntsUo"},
+  158: { iframeSrc: "https://mega.nz/embed/998VyTrC#su_spqoIGsO88Hf336NKljeV7duY4IgFpcmoNpgQIPo"},
+  159: { iframeSrc: "https://mega.nz/embed/1YQV1AaZ#b3gXKWIGr_BACT27mQQlnjz-HQGc9y_GgTdr_v95-DQ"},
+  160: { iframeSrc: "https://mega.nz/embed/wIInTCxB#DtA9wdecW-BfPykp40dgvW5FmfAvK4v6pe-65Dwev4I"},
+  161: { iframeSrc: "https://mega.nz/embed/8UZ3iICK#cCJhSudWHu4aGcAv0Yu1P5BNfFbNaVmji2y9hJAtN0E"},
+  162: { iframeSrc: "https://mega.nz/embed/5YBBCaCB#lG9IuTurDlYcealHgNkOUtBdhchye7snVQTaVhAViXg"},
+  163: { iframeSrc: "https://mega.nz/embed/9cR1QY6A#1h4flmRJFD3_KnP7VajS8lBqoQl2GZNbbn7M108VN4E"},
+  164: { iframeSrc: "https://mega.nz/embed/M5t12BgT#yXjjXMcY8HoKukTx4_UZXY7uFekmeY2A2TL2ZXpBQbU"},
+  165: { iframeSrc: "https://mega.nz/embed/NIJRhAAD#JS5rnBjTWenDQ4qL4_RVvFjPhCcfHRdNc7pKOo6Q2GY"},
+  166: { iframeSrc: "https://mega.nz/embed/coFzTbRb#OL75WmPz_PjYfSxiDBOTnhA4-YiQBk4ZNCQIlk7de7I"},
+  167: { iframeSrc: "https://mega.nz/embed/MEATVYhK#QjEgVhgBz_pwbT6GRN4iTvPovqNta-njqFh4D8kn8Xg"},
+  168: { iframeSrc: "https://mega.nz/embed/pRRV2a6L#a1sk-LqyD5iE7PPj1eWnpvU9VcvDW5utsJpiwOVXJQQ"},
+  169: { iframeSrc: "https://mega.nz/embed/hBRBAICT#FFnpGMgP5Yr0IBGyM1zfWMPCN7LTk8pqOqiTr7dkvrQ"},
+  170: { iframeSrc: "https://mega.nz/embed/MMQ3CQwT#r8TXlTNhxJ3RkFBdN4uadjGBPX4OW_hhbPh1oPORVW0"},
+  171: { iframeSrc: "https://mega.nz/embed/ZEBxAKLA#WS6IKmYzWaFdgO0wJIiI75RcyTAe_NpMeFadNkuoj_U"},
+  172: { iframeSrc: "https://mega.nz/embed/kIRBSAxK#LIwDnuWpSUHqvUQheu7bO3BbWwg4Du2Vw4-iUvaLl8c"},
+  173: { iframeSrc: "https://mega.nz/embed/c9Ux2Y5b#AIm0H0QNRlekSKDDHKA1_omGLlSdNqy_-gi8h9kmhu8"},
+  174: { iframeSrc: "https://mega.nz/embed/N5sHjD6Y#EYFKAwcUIgX498oh9O9STcjgenQuxMtt9erfBWHT0H0"},
+  175: { iframeSrc: "https://mega.nz/embed/tMBFHQqb#tdnljNiwlF0KIieSzaWB_h62bXb4RuGq-l7Y-qo3xEU"},
+  176: { iframeSrc: "https://mega.nz/embed/8UATFIaB#BjKlCiBL30DHfG2CLuInVNmizeeDgvm8AEHxpvNzJFU"},
+  177: { iframeSrc: "https://mega.nz/embed/o8syTThK#jZIsBtKQuifeQnPA5e7kMcUYR3GCfTmiPG1u7i-rIpQ"},
+  178: { iframeSrc: "https://mega.nz/embed/AUARhCTC#ZFgY50_s8gsekSXCvLC8gsaAWPGvc_nd1eacXSr5ii8"},
+  179: { iframeSrc: "https://mega.nz/embed/kBQhzSYD#9PD2VFjeuMYOPYY1ql-mYJkV6gEAzyoxKzXLGgKHIkY"},
+  180: { iframeSrc: "https://mega.nz/embed/IVAzWahZ#idqC5eyMNuh1rNVUucDJEPwWbNLWWPo55VtB2HXRF8k"},
+  181: { iframeSrc: "https://mega.nz/embed/0BZDTQJY#klR088eCeo2ggeq5x8j-C0y2ULHY3Kvsceje6cwe-YQ"},
+  182: { iframeSrc: "https://mega.nz/embed/BJZnGQyL#dyK3V2lGIccJMyNi0gLfhnXpvjQsXls1dFA-XgGpaO4"},
+  183: { iframeSrc: "https://mega.nz/embed/8EJnUQZC#jAuTEuLCu4689FZA_eU8FOhU3JoqwbPpV0hyv1GrshY"},
+  184: { iframeSrc: "https://mega.nz/embed/FdQzkAZD#Of7AmMAxilIXG_QVag9xU6VvPcefJG7HYh8C-gcoVcE"},
+  185: { iframeSrc: "https://mega.nz/embed/hsklFAqb#C5k91ohsQOIu9goWWQgR_I1n_YVXJlLLDnN0kLXy7Cc"},
+  186: { iframeSrc: "https://mega.nz/embed/VMAxhAzR#qfZSYeHY_RnJKaJ_UjJ-Zv7QHilY4sR5riBvdeejl3c"},
+  187: { iframeSrc: "https://mega.nz/embed/YcAByQBD#StkdDN8ZDGAoZ5rReEVZWQqYKZB-EUFbtBFyE_oJf40"},
+  188: { iframeSrc: "https://mega.nz/embed/UUR3USLb#vn1RzxWdkaTnv4bwBPI3ywZDsfWkByXrRvrUbBg1drA"},
+  189: { iframeSrc: "https://mega.nz/embed/BMB1wYbK#bRbsNIH76GDW1Tf3nYcfibxW35ovnXChfCJb52hSoNE"},
+  190: { iframeSrc: "https://mega.nz/embed/oMRHFaKI#mJMiLGgVxALPuEbFzveTOz3XgOg5eEDTiJhr0l-61to"},
+  191: { iframeSrc: "https://mega.nz/embed/9AJDnSzD#IYG5Db004OHg7Lw6KyMHvIY8iHCdk1ZfHMujHc5fIHo"},
+  192: { iframeSrc: "https://mega.nz/embed/9RI3zISR#GzCfE-fTIQhUSfDpka3hky3n5oQlg7G-r--0SO2jRtA"},
+  193: { iframeSrc: "https://mega.nz/embed/RJIFEQ5K#rR9isFh4vEfDV-RFvE4OJADHp7W345KT_HavpQda8GY"},
+  194: { iframeSrc: "https://mega.nz/embed/xRI3lAbb#HqThHL5XzyqWaTHo2KWhcCXdo0S1AsNwFJuZa1QBNuE"},
+  195: { iframeSrc: "https://mega.nz/embed/9t9RCb7L#RIjbm0EwPXH7Z0y6Yva1M36PPdojudDr-WFCCnwuCYs"},
+  196: { iframeSrc: "https://mega.nz/embed/pAAThILB#_8If-0SBC_8wv-5HuRDfGI0Fuy6bA-dWV5qo9rQbZhk"},
+  197: { iframeSrc: "https://mega.nz/embed/IQRBQQzA#_M94mLbak8_7sO13LziM-zzI9spYIjPKMIbrjlfUhvg"},
+  198: { iframeSrc: "https://mega.nz/embed/tUAVWQzR#RsN8gmtNPqCmlrSgbRWKFAnCRejXAdJY-d9jQaBMK38"},
+  199: { iframeSrc: "https://mega.nz/embed/EldGTTTS#W7lawV8c2bA9JLBZ4MFQHYn_bg2I0A1FxO4bNboyZQc"},
+  200: { iframeSrc: "https://mega.nz/embed/tNI1BChT#apffA0H6SXkcc7KV73LBmcyfY6nsMEToCrX8gCoGyv8"},
+  201: { iframeSrc: "https://mega.nz/embed/hcB1UKJR#isjINXJf1V2LiIWAtvxfxRHqWfqrbFcHiJ7Z7rs3CRk"},
+  202: { iframeSrc: "https://mega.nz/embed/RAADkYRI#uSp7xcehuFJaO6Vr2qJ66ktW7xeJx7RJHwwPl3qdoXM"},
+  203: { iframeSrc: "https://mega.nz/embed/85NRiLyK#jjxtGWMiLuZbYTMFe2ambd0pRWO8AjjESgWblrGmZ3E"},
+  204: { iframeSrc: "https://mega.nz/embed/A5MyAIoa#b7SomyPL9btTY90G2M6JTvVOvXiSvI9JRqYEaQ0t1d0"},
+  205: { iframeSrc: "https://mega.nz/embed/IkszCBTI#VjDljuLJWFGhRvlD89E7F-9942MvjhhaBvUDsFkgJ40"},
+  206: { iframeSrc: "https://mega.nz/embed/RFZjVapD#pwnwoKtQ9XVkpNSAT4QPyFWXxmuBmdpbd6_tH0K1wkE"},
+  207: { iframeSrc: "https://mega.nz/embed/IdZzhSQB#jOCDODvuxH649ptp3Y9j1Zj872UeIhmh_43BAE3wetE"},
+  208: { iframeSrc: "https://mega.nz/embed/9CFBDIyY#s2Bctq5K3gghK2rMAYlgYNFl_cR-hpWDGFSbx9Iu92Q"},
+  209: { iframeSrc: "https://mega.nz/embed/05dEHThT#XBDuDVzBKLYrVcuPtKQtMgaDoN0-pmaVQrygqNx9H7E"},
+  210: { iframeSrc: "https://mega.nz/embed/JfV3hIjK#dX6CTlvv0o3iLx7TOs_lozRKPvWUFjvyLVn-2Zeo_JY"},
+  211: { iframeSrc: "https://mega.nz/embed/ANQ1mSRA#F_yU6ty9iwQrOMFt2zcDtZx4g7PaDaR5l2olWDf6MIU"},
+  212: { iframeSrc: "https://mega.nz/embed/1MB3xI7A#wVyktbSadlzjb4Zaq4rQpIjeVfOu9xHpN2jrDm2HqTI"},
+  213: { iframeSrc: "https://mega.nz/embed/dQBRBAyC#ytP-RtrCBXfZlLFf33dQCnsAd2eFGPX5XJ3FuKTMFwI"},
+  214: { iframeSrc: "https://mega.nz/embed/gBJ1mS7B#n0dgzb2t1KZGIxYLlQK6eacYQ3WAbnOOZ2RkXQjbTTs"},
+  215: { iframeSrc: "https://mega.nz/embed/wBAlxQqQ#y2ghIZ-lgOCTViQezXSIsFSXSo9o-yT0DAWFIe9ww08"},
+  216: { iframeSrc: "https://mega.nz/embed/padSwKYb#SNHqIyxo6bAkzxYOSlBtS4eVfPOicYa_IZy_hV0XYxs"},
+  217: { iframeSrc: "https://mega.nz/embed/lQY33ShQ#wXqTNT74W5USBY0-SuU8E5OT5qqWrFpGZ68slu8G8V8"},
+  218: { iframeSrc: "https://mega.nz/embed/MYZl0A7b#J6XXrXxFvDiVWrt8TvDvTbpjNlUHLUI4fngbaIUvJtk"},
+  219: { iframeSrc: "https://mega.nz/embed/cZJ3lIZb#KqfhSyqi9XfF-WVcnoI_tOp_4npDQM_k4MVE-elTUUk"},
+  220: { iframeSrc: "https://mega.nz/embed/0NBnlAyJ#i-cYXXAEbpPdNMuHZLhOVVa1I3dJRhpD2-XSaXZZlos"},
+  221: { iframeSrc: "https://mega.nz/embed/cUABSS5a#dLQ5tbIF98tJHCfLzHAjuQP-4C3ccL11yXIv6WZ6H_k"},
+  222: { iframeSrc: "https://mega.nz/embed/lkVURRAY#NroAJwduZTNZxoca5AN_WuFrq7icSrlw9mpVMXxUJRE"},
+  223: { iframeSrc: "https://mega.nz/embed/ZZZVjYoQ#uHixIHCLnPWo_mwu5Zm0PLujNO8ULckaEUAwM54xqxM"},
+  224: { iframeSrc: "https://mega.nz/embed/QcJXTARK#OM5alYBGTjHEMToIBGzZdK4dv1t_wQfM8LtJv7qVmp4"},
+  225: { iframeSrc: "https://mega.nz/embed/wMBDDIrL#Gfz9XE1aIHPVm035N2PrSvAXdpYrGuvajJFlzpCuP54"},
+  226: { iframeSrc: "https://mega.nz/embed/MAAzXYJA#gwMedOfSAiJGTN-cqJaM-wg7o2bBT1qPnfTIwakva-8"},
+  227: { iframeSrc: "https://mega.nz/embed/FxE0zKqJ#EmPH6dsfhNz8T3G0E8HD3v4gcZEFqA287rrvHigrXaw"},
+  228: { iframeSrc: "https://mega.nz/embed/YZRHlK4T#2zGQQye4W3BhLr30078u3-iPIlTimEtWEmhRXDGxZy0"},
+    };
+
+    function changeVideo(button, episode, playerId) {
+      const playerContainer = document.getElementById(playerId);
+      const iframePlayer = playerContainer.querySelector('.iframe-player');
+      const videoPlayer = document.getElementById('videoPlayer');
+
+      // Ocultar todos los reproductores de iframe primero
+      document.querySelectorAll('.iframe-player').forEach(player => {
+        player.style.display = 'none';
+        player.src = '';
+      });
+
+      if(videos[episode].iframeSrc) {
+        videoPlayer.style.display = 'none';
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = videos[episode].iframeSrc;
+      } else {
+        iframePlayer.style.display = 'none';
+        videoPlayer.style.display = 'block';
+
+        while (videoPlayer.firstChild) {
+          videoPlayer.removeChild(videoPlayer.firstChild);
+        }
+        videos[episode].sources.forEach(sourceData => {
+          const source = document.createElement('source');
+          source.src = sourceData.src;
+          source.type = sourceData.type;
+          videoPlayer.appendChild(source);
+        });
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+
+      // Remover clase active de todos los botones
+      document.querySelectorAll('.episode-list button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Añadir clase active al botón clickeado
+      button.classList.add('active');
+      
+      // Scroll suave al reproductor correspondiente
+      playerContainer.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    window.addEventListener('load', function() {
+      if(window.location.hash) {
+        setTimeout(() => {
+          document.getElementById('playerTop').scrollIntoView();
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
