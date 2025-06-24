@@ -928,6 +928,9 @@
     function changeVideo(button, episode, iframeId, videoId, playerContainerId) {
       const videoPlayer = document.getElementById(videoId);
       const iframePlayer = document.getElementById(iframeId);
+document.querySelectorAll('iframe[id^="iframePlayer"], video[id^="videoPlayer"]').forEach(el => {
+  el.style.display = 'none';
+});
 
       if(videos[episode].iframeSrc) {
         videoPlayer.style.display = 'none';
