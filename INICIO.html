@@ -148,6 +148,64 @@
   </style>
 </head> 
 <body>
+  <header class="site-header" id="masthead">
+
+<a id="logo" href="https://katanime.net"><h2><img alt="Logo Katanime" src="https://katanime.net/img/kata-dark2.png"></h2></a>
+
+
+<ul id="menubtn" class="m">
+<li><a href="https://katanime.net/animes"><i class="mdi mdi-compass"></i> Directorio</a></li>
+<li><a href="https://katanime.net/emision/"><i class="mdi mdi-calendar"></i> Emision</a></li>
+<li><a href="https://katanime.net/populares/"><i class="mdi mdi-fire"></i> Top</a></li>
+<li><a href="https://katanime.net/aleatorio/"><i class="mdi mdi-shuffle"></i> Aleatorio</a></li>
+</ul>
+
+<nav id="navigation" style="display: none;"><div class="js-menu-show" id="menuToggle"><span></span><span></span><span></span></div></nav>
+     
+<div id="user"> 
+<div class="userBtn">
+<div class="user_menu dropdownbtn" data-drop="user-menu"><img src="https://katanime.net/archivos/default-perfil-h.png"><div class="username">TioBiz</div></div>
+<ul class="user-menu ul-drop hidden">
+<li><a href="https://katanime.net/usuario/TioBiz/"><span class="mdi mdi-account-outline"></span> Mi perfil</a></li>
+
+<li><a href="https://katanime.net/biblioteca"><span class="mdi mdi-playlist-star"></span> Mi biblioteca</a></li>
+
+<li><a href="https://katanime.net/historial"><span class="mdi mdi-history"></span> Mi historial</a></li>
+
+<li><a href="https://katanime.net/salir"><span class="mdi mdi-logout"></span> Salir</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="notify">
+
+<div class="user-notify">
+<div class="notify dropdownbtn" data-ajax="https://katanime.net/notificaciones" data-callback="notify_user" data-drop="notify-list"><i class="mdi mdi-bell" aria-hidden="true"><b style="display: none;" class="notcount">0</b></i></div>
+
+<ul class="notify-list ul-drop hidden">
+<div id="cargando">
+<div class="spinner">
+<div class="bounce1"></div>
+<div class="bounce2"></div>
+<div class="bounce3"></div>
+</div>
+</div>
+</ul>
+
+</div>
+
+</div>
+
+<span id="searchBtn" class="mdi mdi-magnify"></span>
+
+<form action="https://katanime.net/buscar" class="search-menu" autocomplete="off" method="get" name="searchForm" target="_parent"><div id="qbac"></div><div id="qbox"><ul class="qdiv" style="display: none;"><div id="qres"></div></ul><input id="buscador-menu" name="q" placeholder="Buscar" size="28" type="text" value=""><span id="searchsubmit"></span></div>
+
+<svg _ngcontent-ocu-c42="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="closeSearch"><path _ngcontent-ocu-c42="" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+
+</form>
+    
+</header>
   <h1>Catálogo de Anime</h1>
   <div class="back">
     <a href="index.html">← Volver a inicio</a>
