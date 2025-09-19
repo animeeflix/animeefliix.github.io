@@ -123,12 +123,6 @@
     border-radius: 4px;
     font-size: 12px;
 }
-#header.header-area {margin: auto;display: inline-block;margin: 0 auto;border-radius: 0;border: none;padding: 8px 0px;width: 100%;position: relative;z-index: 5;}
-header#masthead.cap {height: 45px;}
-
-header#masthead img {
-    margin-left: 10px;
-}
     @media screen and (max-width: 1100px) {
       .grid {
         grid-template-columns: repeat(4, 1fr);
@@ -148,6 +142,46 @@ header#masthead img {
       .grid {
         grid-template-columns: 1fr;
       }
+      element.style {
+}
+@media only screen and (max-width: 600px) {
+    #primary, #header.header-area {
+        /* float: left; */
+    }
+}
+#header.header-area {
+    margin: auto;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 0;
+    border: none;
+    padding: 8px 0px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+body {
+    color: #f7f7f7;
+    margin: 0 auto;
+    font: 13px / 140% Nunito-SemiBold, 'Microsoft JhengHei', 'Microsoft Yahei', arial, helvetica, sans-serif;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
     }
     
   </style>
